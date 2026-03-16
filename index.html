@@ -2653,16 +2653,18 @@
           let wenHtml = "";
 
           if (state.currentSection === 0) {
+            // นำประโยคสนทนา คำว่า "问" (wèn) และคำถาม มารวมกัน
+            const fullTextToSpeak = `${q.audio} 问 ${q.question}`.replace(
+              /'/g,
+              "\\'"
+            );
+
             audioHtml = `<div class="q-audio-row">
-        <button class="btn-play" id="playBtn${
-          q.id
-        }" onclick="speakText('${q.audio.replace(/'/g, "\\'")}', ${q.id})">
+        <button class="btn-play" id="playBtn${q.id}" onclick="speakText('${fullTextToSpeak}', ${q.id})">
           ▶ 播放
         </button>
         <span class="audio-text-preview">
-          <div style="font-size: 11px; color: var(--gray-400); font-family: 'Sarabun', sans-serif;">${
-            q.audioPy
-          }</div>
+          <div style="font-size: 11px; color: var(--gray-400); font-family: 'Sarabun', sans-serif;">${q.audioPy}</div>
           <div style="font-size: 15px;">${q.audio}</div>
         </span>
       </div>`;
