@@ -1,0 +1,3045 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK 2 Practice Test</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #c0392b;
+        --red-dark: #96281b;
+        --red-light: #e74c3c;
+        --gold: #f39c12;
+        --gold-light: #f1c40f;
+        --bg: #fdf6ec;
+        --white: #ffffff;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-400: #9ca3af;
+        --gray-600: #4b5563;
+        --gray-800: #1f2937;
+        --green: #27ae60;
+        --green-light: #2ecc71;
+        --blue: #2980b9;
+        --blue-light: #3498db;
+        --dark-footer: #1a1b26; /* สีพื้นหลัง Footer */
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+        background: var(--bg);
+        min-height: 100vh;
+        color: var(--gray-800);
+        display: flex;
+        flex-direction: column; /* เพื่อดัน Footer ลงไปข้างล่างสุด */
+      }
+      .page {
+        display: none;
+        flex: 1; /* ให้เนื้อหาขยายเต็มพื้นที่ที่เหลือ */
+      }
+      .page.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== GLOBAL FOOTER CSS ===== */
+      .global-footer {
+        background-color: var(--dark-footer);
+        color: #a0a0b0;
+        padding: 30px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin-top: auto; /* ดันให้ Footer อยู่ล่างสุดเสมอ */
+      }
+      .global-footer .f-left {
+        max-width: 400px;
+      }
+      .global-footer .f-left .f-title {
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 6px;
+        font-family: "Noto Sans SC", "Sarabun", sans-serif;
+      }
+      .global-footer .f-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-align: right;
+      }
+      .global-footer .f-right .f-copy {
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+      .global-footer .f-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--gold);
+      }
+      @media (max-width: 768px) {
+        .global-footer {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+          padding: 24px 20px;
+        }
+        .global-footer .f-right {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      /* ===== PAGE 1: LANDING ===== */
+      #page1 {
+        background: linear-gradient(
+          160deg,
+          #7b1414 0%,
+          #c0392b 40%,
+          #e74c3c 70%,
+          #f39c12 100%
+        );
+        position: relative;
+        overflow-x: hidden;
+      }
+      #page1::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      #page1::after {
+        content: "";
+        position: absolute;
+        bottom: 50px;
+        left: -80px;
+        width: 400px;
+        height: 400px;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 50%;
+      }
+      .landing-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 60px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+      .landing-header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .chinese-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 6px 18px;
+        margin-bottom: 16px;
+      }
+      .chinese-badge span {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      .flag-icon {
+        font-size: 20px;
+      }
+      .main-title {
+        color: white;
+        font-size: clamp(28px, 5vw, 42px);
+        font-weight: 700;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .main-title .hsk-num {
+        color: var(--gold-light);
+        font-size: 1.2em;
+      }
+      .main-subtitle {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 16px;
+        font-weight: 300;
+      }
+      .card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        margin-bottom: 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      }
+      .card-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card-title::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 20px;
+        background: var(--red);
+        border-radius: 2px;
+      }
+
+      /* ===== CREATOR CARD CSS ===== */
+      .creator-card {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        background: linear-gradient(135deg, #ffffff, #fffdfa);
+        border: 1px solid #fef08a;
+      }
+      .creator-img-wrap {
+        width: 150px;
+        height: 150px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        padding: 6px;
+        background: linear-gradient(135deg, var(--red), var(--gold));
+        box-shadow: 0 8px 24px rgba(192, 57, 43, 0.2);
+      }
+      .creator-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 4px solid white;
+      }
+      .creator-info {
+        flex: 1;
+      }
+      .creator-info .c-role {
+        font-size: 14px;
+        color: var(--gray-400);
+        font-weight: 600;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .creator-info .c-name {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 8px;
+      }
+      .creator-info .c-desc {
+        font-size: 15px;
+        color: var(--gray-600);
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+      .creator-info .c-badge {
+        display: inline-block;
+        background: #fffbeb;
+        color: #b45309;
+        border: 1px solid #fde68a;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .exam-info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .info-box {
+        background: linear-gradient(135deg, #fff5f5, #fff);
+        border: 1px solid #ffd7d7;
+        border-radius: 14px;
+        padding: 14px 10px;
+        text-align: center;
+      }
+      .info-box .icon {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+      .info-box .label {
+        font-size: 12px;
+        color: var(--gray-600);
+        margin-bottom: 4px;
+      }
+      .info-box .value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--red);
+      }
+      .info-box .unit {
+        font-size: 11px;
+        color: var(--gray-600);
+      }
+      .section-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .section-table th {
+        background: var(--red);
+        color: white;
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .section-table th:first-child {
+        border-radius: 10px 0 0 0;
+      }
+      .section-table th:last-child {
+        border-radius: 0 10px 0 0;
+      }
+      .section-table td {
+        padding: 10px 14px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--gray-100);
+        color: var(--gray-800);
+      }
+      .section-table tr:last-child td {
+        border-bottom: none;
+      }
+      .section-table tr:nth-child(even) td {
+        background: #fafafa;
+      }
+      .section-tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-listen {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+      .tag-read {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .tag-write {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .pass-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(135deg, #fff7ed, #fffbeb);
+        border: 1px solid #fed7aa;
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .pass-icon {
+        font-size: 32px;
+      }
+      .pass-text .title {
+        font-weight: 700;
+        color: var(--gold);
+        font-size: 16px;
+      }
+      .pass-text .detail {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin-top: 3px;
+        line-height: 1.5;
+      }
+      .name-section {
+        margin-top: 4px;
+      }
+      .name-label {
+        display: block;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--gray-800);
+        margin-bottom: 8px;
+      }
+      .name-input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        font-size: 16px;
+        font-family: inherit;
+        color: var(--gray-800);
+        transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none;
+      }
+      .name-input:focus {
+        border-color: var(--red);
+        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+      }
+      .name-hint {
+        font-size: 12px;
+        color: var(--gray-400);
+        margin-top: 6px;
+      }
+      .btn-start {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+        margin-top: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-start:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(192, 57, 43, 0.5);
+      }
+      .btn-start:not(:disabled):active {
+        transform: translateY(0);
+      }
+      .btn-start:disabled {
+        background: linear-gradient(135deg, #ccc, #aaa);
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+      .btn-start .btn-icon {
+        margin-right: 8px;
+      }
+
+      /* ===== PAGE 2: EXAM ===== */
+      #page2 {
+        background: #f0f4f8;
+        font-family: "Noto Sans SC", "Noto Sans Thai", sans-serif;
+        padding-bottom: 70px; /* Space for nav-bar */
+      }
+      .exam-topbar {
+        background: linear-gradient(135deg, #7b1414, #c0392b);
+        color: white;
+        padding: 0 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+      }
+      .exam-topbar-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        gap: 12px;
+      }
+      .exam-title-bar {
+        font-size: 18px;
+        font-weight: 700;
+        white-space: nowrap;
+        font-family: "Sarabun", sans-serif;
+      }
+      .section-tabs {
+        display: flex;
+        gap: 4px;
+      }
+      .section-tab {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-family: "Sarabun", sans-serif;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.1);
+        cursor: default;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .section-tab.active {
+        background: white;
+        color: var(--red);
+      }
+      .section-tab.done {
+        background: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .timer-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        padding: 6px 14px;
+        white-space: nowrap;
+      }
+      .timer-box .timer-icon {
+        font-size: 16px;
+      }
+      .timer-display {
+        font-size: 20px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 1px;
+        font-family: monospace;
+      }
+      .timer-display.warning {
+        color: #ffd700;
+        animation: pulse 1s infinite;
+      }
+      .timer-display.danger {
+        color: #ff6b6b;
+        animation: pulse 0.5s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .exam-body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+        flex: 1;
+      }
+      .section-header {
+        background: white;
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .section-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .icon-listen {
+        background: #dbeafe;
+      }
+      .icon-read {
+        background: #dcfce7;
+      }
+      .icon-write {
+        background: #fef3c7;
+      }
+      .section-header-text .sh-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--gray-800);
+        font-family: "Sarabun", sans-serif;
+      }
+      .section-header-text .sh-sub {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin-top: 2px;
+        font-family: "Sarabun", sans-serif;
+      }
+      .progress-bar-wrap {
+        background: var(--gray-100);
+        border-radius: 10px;
+        height: 6px;
+        flex: 1;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--red), var(--gold));
+        border-radius: 10px;
+        transition: width 0.3s;
+      }
+      .question-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        position: relative;
+      }
+      .q-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: var(--red);
+        color: white;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-family: monospace;
+      }
+      .q-audio-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #f0f4f8;
+        border-radius: 12px;
+        padding: 12px 16px;
+        margin-bottom: 14px;
+      }
+      .btn-play {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.15s;
+        white-space: nowrap;
+      }
+      .btn-play:hover {
+        background: var(--blue-light);
+      }
+      .btn-play.playing {
+        background: var(--red);
+      }
+      .audio-text-preview {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-family: "Noto Sans SC", sans-serif;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* WEN Separator for Listening Section */
+      .wen-separator {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: var(--red);
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 12px;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .wen-separator .py {
+        font-size: 12px;
+        color: #ef4444;
+        font-weight: normal;
+        font-family: "Sarabun", sans-serif;
+      }
+
+      .q-text {
+        font-size: 17px;
+        color: var(--gray-800);
+        margin-bottom: 16px;
+        line-height: 1.6;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .q-text .pinyin {
+        display: block;
+        font-size: 12px;
+        color: var(--gray-400);
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+        font-family: "Sarabun", sans-serif;
+      }
+      .q-text .hanzi {
+        font-size: 18px;
+      }
+      .choices {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .choice-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.15s;
+        text-align: left;
+        width: 100%;
+        font-family: inherit;
+      }
+      .choice-btn:hover:not(.selected):not(.disabled) {
+        border-color: var(--red);
+        background: #fff5f5;
+      }
+      .choice-btn.selected {
+        border-color: var(--red);
+        background: linear-gradient(135deg, #fff5f5, #fff);
+      }
+      .choice-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        background: var(--gray-100);
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gray-600);
+        flex-shrink: 0;
+        transition: all 0.15s;
+      }
+      .choice-btn.selected .choice-label {
+        background: var(--red);
+        color: white;
+      }
+      .choice-text {
+        font-size: 15px;
+        color: var(--gray-800);
+        line-height: 1.5;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .choice-text .py {
+        font-size: 11px;
+        color: var(--gray-400);
+        display: block;
+        font-family: "Sarabun", sans-serif;
+      }
+      .write-input-wrap {
+        margin-top: 4px;
+      }
+      .write-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        font-size: 18px;
+        font-family: "Noto Sans SC", sans-serif;
+        color: var(--gray-800);
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .write-input:focus {
+        border-color: var(--red);
+        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
+      }
+      .write-hint {
+        font-size: 12px;
+        color: var(--gray-400);
+        margin-top: 6px;
+        font-family: "Sarabun", sans-serif;
+      }
+      .nav-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid var(--gray-200);
+        padding: 12px 20px;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        z-index: 99;
+      }
+      .nav-bar-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .q-counter {
+        font-size: 14px;
+        color: var(--gray-600);
+        font-family: "Sarabun", sans-serif;
+      }
+      .btn-nav {
+        padding: 12px 28px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: "Sarabun", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+      }
+      .btn-prev {
+        background: var(--gray-100);
+        color: var(--gray-600);
+      }
+      .btn-prev:hover {
+        background: var(--gray-200);
+      }
+      .btn-next {
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        box-shadow: 0 3px 12px rgba(192, 57, 43, 0.3);
+      }
+      .btn-next:hover {
+        transform: translateY(-1px);
+      }
+      .btn-submit {
+        background: linear-gradient(135deg, var(--green), #1e8449);
+        color: white;
+        padding: 12px 28px;
+        box-shadow: 0 3px 12px rgba(39, 174, 96, 0.3);
+      }
+      .btn-submit:hover {
+        transform: translateY(-1px);
+      }
+      .section-transition {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+        backdrop-filter: blur(4px);
+      }
+      .section-transition.hidden {
+        display: none;
+      }
+      .transition-card {
+        background: white;
+        border-radius: 24px;
+        padding: 48px 40px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        animation: popIn 0.3s ease;
+      }
+      @keyframes popIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .transition-card .tc-icon {
+        font-size: 52px;
+        margin-bottom: 16px;
+      }
+      .transition-card .tc-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--gray-800);
+        margin-bottom: 8px;
+        font-family: "Sarabun", sans-serif;
+      }
+      .transition-card .tc-sub {
+        font-size: 14px;
+        color: var(--gray-600);
+        margin-bottom: 28px;
+        font-family: "Sarabun", sans-serif;
+        line-height: 1.6;
+      }
+      .btn-continue {
+        padding: 14px 36px;
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        font-family: "Sarabun", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 16px rgba(192, 57, 43, 0.35);
+      }
+      .btn-continue:hover {
+        transform: translateY(-2px);
+      }
+
+      /* ===== PAGE 3: RESULTS ===== */
+      #page3 {
+        background: #f0f4f8;
+        font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+      }
+      .result-topbar {
+        background: linear-gradient(135deg, #7b1414, #c0392b);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .result-topbar h1 {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .result-body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+        flex: 1;
+      }
+      .score-hero {
+        background: linear-gradient(135deg, #7b1414, #c0392b 50%, #e67e22);
+        border-radius: 24px;
+        padding: 36px;
+        text-align: center;
+        color: white;
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .score-hero::before {
+        content: "🎓";
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        font-size: 80px;
+        opacity: 0.15;
+      }
+      .score-hero .greet {
+        font-size: 18px;
+        margin-bottom: 8px;
+        opacity: 0.9;
+      }
+      .score-circle {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        height: 140px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 4px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        margin: 16px auto;
+      }
+      .score-num {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .score-denom {
+        font-size: 18px;
+        opacity: 0.8;
+      }
+      .score-pct {
+        font-size: 16px;
+        opacity: 0.85;
+        margin-top: 4px;
+      }
+      .pass-badge {
+        display: inline-block;
+        padding: 8px 24px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 8px;
+      }
+      .pass-badge.passed {
+        background: var(--green-light);
+        color: white;
+      }
+      .pass-badge.failed {
+        background: #e74c3c;
+        color: white;
+      }
+      .section-scores {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .sscore-box {
+        background: white;
+        border-radius: 16px;
+        padding: 18px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .sscore-box .ss-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      .sscore-box .ss-label {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .sscore-box .ss-score {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--red);
+      }
+      .sscore-box .ss-max {
+        font-size: 13px;
+        color: var(--gray-400);
+      }
+      .analysis-section {
+        margin-bottom: 28px;
+      }
+      .analysis-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--gray-800);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .analysis-title::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 20px;
+        background: var(--red);
+        border-radius: 2px;
+      }
+      .q-result-card {
+        background: white;
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid transparent;
+      }
+      .q-result-card.correct {
+        border-left-color: var(--green);
+      }
+      .q-result-card.wrong {
+        border-left-color: #e74c3c;
+      }
+      .qr-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .qr-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gray-600);
+      }
+      .qr-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .qr-badge.correct {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .qr-badge.wrong {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .qr-question {
+        font-size: 15px;
+        color: var(--gray-800);
+        margin-bottom: 8px;
+        line-height: 1.5;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .qr-answers {
+        display: flex;
+        gap: 16px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+      .qr-user-ans {
+        color: var(--gray-600);
+      }
+      .qr-user-ans .ans-label {
+        font-weight: 700;
+      }
+      .qr-correct-ans {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .qr-correct-ans .ans-label {
+        font-weight: 700;
+      }
+      .qr-explain {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13px;
+        color: var(--gray-600);
+        line-height: 1.65;
+        border: 1px solid var(--gray-100);
+      }
+      .qr-explain strong {
+        color: var(--red);
+      }
+      .strength-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .strength-box {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .strength-box.good {
+        border-top: 4px solid var(--green);
+      }
+      .strength-box.improve {
+        border-top: 4px solid var(--gold);
+      }
+      .sb-title {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .sb-title.good {
+        color: var(--green);
+      }
+      .sb-title.improve {
+        color: var(--gold);
+      }
+      .sb-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--gray-700);
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+      .sb-item::before {
+        content: "•";
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .strength-box.good .sb-item::before {
+        color: var(--green);
+      }
+      .strength-box.improve .sb-item::before {
+        color: var(--gold);
+      }
+      .btn-restart {
+        display: block;
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 20px rgba(192, 57, 43, 0.35);
+        letter-spacing: 1px;
+      }
+      .btn-restart:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(192, 57, 43, 0.45);
+      }
+
+      @media (max-width: 640px) {
+        .creator-card {
+          flex-direction: column;
+          text-align: center;
+          padding: 28px 20px;
+        }
+        .exam-info-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+        .info-box .value {
+          font-size: 16px;
+        }
+        .section-tabs {
+          display: none;
+        }
+        .section-scores {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+        .strength-grid {
+          grid-template-columns: 1fr;
+        }
+        .exam-topbar-inner {
+          gap: 8px;
+        }
+        .exam-title-bar {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="page1" class="page active">
+      <div class="landing-container">
+        <div class="landing-header">
+          <div class="chinese-badge">
+            <span class="flag-icon">🇨🇳</span>
+            <span>Hanyu Shuiping Kaoshi</span>
+          </div>
+          <h1 class="main-title">
+            แบบทดสอบ HSK <span class="hsk-num">2</span>
+          </h1>
+          <p class="main-subtitle">
+            ข้อสอบวัดระดับภาษาจีนกลาง ชุดฝึกหัด H21333
+          </p>
+        </div>
+
+        <div class="card creator-card">
+          <div class="creator-img-wrap">
+            <img
+              src="image_16d5ba.jpg"
+              alt="อ.อดิเรก นวลศรี"
+              class="creator-img"
+              onerror="this.src='https://img1.pic.in.th/images/hsk2.jpg'"
+            />
+          </div>
+          <div class="creator-info">
+            <div class="c-role">ผู้จัดทำและออกแบบเว็บไซต์</div>
+            <div class="c-name">อ.อดิเรก นวลศรี</div>
+            <div class="c-desc">ผู้อำนวยการสถาบันอู่โหวกงฝาง(ฝ่ายไทย)</div>
+            <div class="c-badge">© สงวนลิขสิทธิ์ 2026</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ข้อมูลการสอบ</div>
+          <div class="exam-info-grid">
+            <div class="info-box">
+              <div class="icon">📝</div>
+              <div class="label">จำนวนข้อ</div>
+              <div class="value">50</div>
+              <div class="unit">ข้อ</div>
+            </div>
+            <div class="info-box">
+              <div class="icon">⏱️</div>
+              <div class="label">เวลารวม</div>
+              <div class="value">55</div>
+              <div class="unit">นาที</div>
+            </div>
+            <div class="info-box">
+              <div class="icon">🏆</div>
+              <div class="label">เกณฑ์ผ่าน</div>
+              <div class="value">60</div>
+              <div class="unit">%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ส่วนการสอบและเวลา</div>
+          <table class="section-table">
+            <thead>
+              <tr>
+                <th>ส่วนที่</th>
+                <th>ทักษะ</th>
+                <th>จำนวนข้อ</th>
+                <th>เวลา</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><span class="section-tag tag-listen">🎧 การฟัง</span></td>
+                <td>20 ข้อ</td>
+                <td>20 นาที</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><span class="section-tag tag-read">📖 การอ่าน</span></td>
+                <td>20 ข้อ</td>
+                <td>20 นาที</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><span class="section-tag tag-write">✍️ การเขียน</span></td>
+                <td>10 ข้อ</td>
+                <td>15 นาที</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="pass-info">
+            <div class="pass-icon">🎯</div>
+            <div class="pass-text">
+              <div class="title">เกณฑ์การผ่านการสอบ HSK 2</div>
+              <div class="detail">
+                ต้องได้คะแนนรวมอย่างน้อย <strong>60%</strong> (30 คะแนน จาก 50
+                คะแนน)<br />ฟัง ≥ 12/20 • อ่าน ≥ 12/20 • เขียน ≥ 6/10
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ข้อมูลผู้เข้าสอบ</div>
+          <div class="name-section">
+            <label class="name-label">ชื่อผู้เข้าสอบ *</label>
+            <input
+              type="text"
+              class="name-input"
+              id="nameInput"
+              placeholder="กรอกชื่อ-นามสกุลของคุณ"
+              oninput="checkName()"
+            />
+            <p class="name-hint">* กรอกชื่อเพื่อเปิดใช้งานปุ่มเริ่มสอบ</p>
+          </div>
+          <button
+            class="btn-start"
+            id="btnStart"
+            disabled
+            onclick="startExam()"
+          >
+            <span class="btn-icon">🚀</span> เริ่มสอบ
+          </button>
+        </div>
+      </div>
+
+      <footer class="global-footer">
+        <div class="f-left">
+          <div class="f-title">HSK 2 模拟考试</div>
+          <div>
+            เว็บฝึกสอบภาษาจีน HSK 2
+            ที่ออกแบบให้ใช้งานได้สะดวกทั้งมือถือและเดสก์ท็อป
+          </div>
+        </div>
+        <div class="f-right">
+          <div class="f-r-text">
+            <div class="f-copy">Copyright © 2026 อ.อดิเรก นวลศรี</div>
+            <div>
+              สร้างสรรค์และออกแบบโดย อ.อดิเรก นวลศรี<br />ผู้อำนวยการสถาบันอู่โหวกงฝาง(ฝ่ายไทย)
+            </div>
+          </div>
+          <img
+            src="image_16d5ba.jpg"
+            alt="อ.อดิเรก นวลศรี"
+            class="f-avatar"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </footer>
+    </div>
+
+    <div id="page2" class="page">
+      <div class="exam-topbar">
+        <div class="exam-topbar-inner">
+          <div class="exam-title-bar">HSK 2 考试</div>
+          <div class="section-tabs">
+            <div class="section-tab" id="tab0">🎧 听力</div>
+            <div class="section-tab" id="tab1">📖 阅读</div>
+            <div class="section-tab" id="tab2">✍️ 书写</div>
+          </div>
+          <div class="timer-box">
+            <span class="timer-icon">⏱</span>
+            <span class="timer-display" id="timerDisplay">20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exam-body" id="examBody"></div>
+
+      <footer class="global-footer">
+        <div class="f-left">
+          <div class="f-title">HSK 2 模拟考试</div>
+          <div>
+            เว็บฝึกสอบภาษาจีน HSK 2
+            ที่ออกแบบให้ใช้งานได้สะดวกทั้งมือถือและเดสก์ท็อป
+          </div>
+        </div>
+        <div class="f-right">
+          <div class="f-r-text">
+            <div class="f-copy">Copyright © 2026 อ.อดิเรก นวลศรี</div>
+            <div>
+              สร้างสรรค์และออกแบบโดย อ.อดิเรก นวลศรี<br />ผู้อำนวยการสถาบันอู่โหวกงฝาง(ฝ่ายไทย)
+            </div>
+          </div>
+          <img
+            src="image_16d5ba.jpg"
+            alt="อ.อดิเรก นวลศรี"
+            class="f-avatar"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </footer>
+
+      <div class="nav-bar">
+        <div class="nav-bar-inner">
+          <span class="q-counter" id="qCounter"></span>
+          <div style="display: flex; gap: 10px">
+            <button class="btn-nav btn-prev" id="btnPrev" onclick="prevQ()">
+              ← 前
+            </button>
+            <button class="btn-nav btn-next" id="btnNext" onclick="nextQ()">
+              下一题 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-transition hidden" id="sectionTransition">
+        <div class="transition-card">
+          <div class="tc-icon" id="transIcon">📖</div>
+          <div class="tc-title" id="transTitle">เตรียมพร้อมสำหรับส่วนถัดไป</div>
+          <div class="tc-sub" id="transSub"></div>
+          <button class="btn-continue" onclick="continueSection()">
+            เริ่มส่วนถัดไป →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="page3" class="page">
+      <div class="result-topbar">
+        <h1>📊 ผลการสอบ HSK 2</h1>
+      </div>
+
+      <div class="result-body" id="resultBody"></div>
+
+      <footer class="global-footer">
+        <div class="f-left">
+          <div class="f-title">HSK 2 模拟考试</div>
+          <div>
+            เว็บฝึกสอบภาษาจีน HSK 2
+            ที่ออกแบบให้ใช้งานได้สะดวกทั้งมือถือและเดสก์ท็อป
+          </div>
+        </div>
+        <div class="f-right">
+          <div class="f-r-text">
+            <div class="f-copy">Copyright © 2026 อ.อดิเรก นวลศรี</div>
+            <div>
+              สร้างสรรค์และออกแบบโดย อ.อดิเรก นวลศรี<br />ผู้อำนวยการสถาบันอู่โหวกงฝาง(ฝ่ายไทย)
+            </div>
+          </div>
+          <img
+            src="image_16d5ba.jpg"
+            alt="อ.อดิเรก นวลศรี"
+            class="f-avatar"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // =========================================================
+      // DATA: HSK 2 QUESTIONS (H21333 Format - 50 Questions)
+      // =========================================================
+      const SECTIONS = [
+        {
+          id: "listening",
+          name: "听力 (Tīnglì)",
+          nameThai: "การฟัง",
+          icon: "🎧",
+          iconClass: "icon-listen",
+          time: 20 * 60,
+          questions: [],
+        },
+        {
+          id: "reading",
+          name: "阅读 (Yuèdú)",
+          nameThai: "การอ่าน",
+          icon: "📖",
+          iconClass: "icon-read",
+          time: 20 * 60,
+          questions: [],
+        },
+        {
+          id: "writing",
+          name: "书写 (Shūxiě)",
+          nameThai: "การเขียน",
+          icon: "✍️",
+          iconClass: "icon-write",
+          time: 15 * 60,
+          questions: [],
+        },
+      ];
+
+      // LISTENING QUESTIONS (20 questions) - Based on HSK 2 H21333 standard format
+      const listeningQuestions = [
+        {
+          id: 1,
+          type: "mc",
+          audio: "今天天气很好，我们去公园吧。",
+          audioPy: "Jīntiān tiānqì hěn hǎo, wǒmen qù gōngyuán ba.",
+          question: "他们要去哪里？",
+          questionPy: "Tāmen yào qù nǎlǐ?",
+          choices: [
+            { label: "A", zh: "公园", py: "gōngyuán", meaning: "สวนสาธารณะ" },
+            { label: "B", zh: "学校", py: "xuéxiào", meaning: "โรงเรียน" },
+            { label: "C", zh: "医院", py: "yīyuàn", meaning: "โรงพยาบาล" },
+            { label: "D", zh: "商店", py: "shāngdiàn", meaning: "ร้านค้า" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 公园 (gōngyuán = สวนสาธารณะ) เพราะประโยคกล่าวว่า "我们去公园吧" (wǒmen qù gōngyuán ba) แปลว่า "ไปสวนสาธารณะกันเถอะ" • คำศัพท์ HSK2: 公园=สวน, 天气=อากาศ, 好=ดี',
+        },
+        {
+          id: 2,
+          type: "mc",
+          audio: "我每天早上六点起床，然后跑步三十分钟。",
+          audioPy:
+            "Wǒ měitiān zǎoshang liù diǎn qǐchuáng, ránhòu pǎobù sānshí fēnzhōng.",
+          question: "他每天几点起床？",
+          questionPy: "Tā měitiān jǐ diǎn qǐchuáng?",
+          choices: [
+            { label: "A", zh: "五点", py: "wǔ diǎn", meaning: "5 นาฬิกา" },
+            { label: "B", zh: "六点", py: "liù diǎn", meaning: "6 นาฬิกา" },
+            { label: "C", zh: "七点", py: "qī diǎn", meaning: "7 นาฬิกา" },
+            { label: "D", zh: "八点", py: "bā diǎn", meaning: "8 นาฬิกา" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 六点 (liù diǎn = 6 นาฬิกา) • ประโยคระบุชัดว่า "六点起床" (liù diǎn qǐchuáng) = "ตื่นนอนตี 6" • คำศัพท์ HSK2: 每天=ทุกวัน, 早上=ตอนเช้า, 起床=ตื่นนอน, 跑步=วิ่ง, 然后=จากนั้น',
+        },
+        {
+          id: 3,
+          type: "mc",
+          audio: "这件衣服多少钱？八十块。",
+          audioPy: "Zhè jiàn yīfu duōshao qián? Bāshí kuài.",
+          question: "这件衣服多少钱？",
+          questionPy: "Zhè jiàn yīfu duōshao qián?",
+          choices: [
+            { label: "A", zh: "十八块", py: "shíbā kuài", meaning: "18 หยวน" },
+            { label: "B", zh: "三十块", py: "sānshí kuài", meaning: "30 หยวน" },
+            { label: "C", zh: "八十块", py: "bāshí kuài", meaning: "80 หยวน" },
+            { label: "D", zh: "一百块", py: "yībǎi kuài", meaning: "100 หยวน" },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 八十块 (bāshí kuài = 80 หยวน) • ฟังคำตอบในบทสนทนา "八十块" • คำศัพท์ HSK2: 衣服=เสื้อผ้า, 多少钱=ราคาเท่าไร, 块=หยวน (ไม่เป็นทางการ)',
+        },
+        {
+          id: 4,
+          type: "mc",
+          audio: "妈妈在医院工作，她是一位医生。",
+          audioPy: "Māma zài yīyuàn gōngzuò, tā shì yī wèi yīshēng.",
+          question: "妈妈是做什么工作的？",
+          questionPy: "Māma shì zuò shénme gōngzuò de?",
+          choices: [
+            { label: "A", zh: "老师", py: "lǎoshī", meaning: "ครู" },
+            { label: "B", zh: "医生", py: "yīshēng", meaning: "หมอ" },
+            { label: "C", zh: "护士", py: "hùshi", meaning: "พยาบาล" },
+            { label: "D", zh: "司机", py: "sījī", meaning: "คนขับรถ" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 医生 (yīshēng = หมอ/แพทย์) • ประโยคกล่าวว่า "她是一位医生" (tā shì yī wèi yīshēng) = "เธอเป็นหมอ" • คำศัพท์ HSK2: 医院=โรงพยาบาล, 工作=ทำงาน, 位=คำลักษณนามสำหรับบุคคลที่เคารพ',
+        },
+        {
+          id: 5,
+          type: "mc",
+          audio: "我喜欢喝咖啡，但是我妻子不喜欢，她喜欢喝茶。",
+          audioPy:
+            "Wǒ xǐhuan hē kāfēi, dànshì wǒ qīzi bù xǐhuan, tā xǐhuan hē chá.",
+          question: "妻子喜欢喝什么？",
+          questionPy: "Qīzi xǐhuan hē shénme?",
+          choices: [
+            { label: "A", zh: "咖啡", py: "kāfēi", meaning: "กาแฟ" },
+            { label: "B", zh: "牛奶", py: "niúnǎi", meaning: "นม" },
+            { label: "C", zh: "茶", py: "chá", meaning: "ชา" },
+            { label: "D", zh: "水", py: "shuǐ", meaning: "น้ำ" },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 茶 (chá = ชา) • ประโยคกล่าวว่า "她喜欢喝茶" (tā xǐhuan hē chá) • คำศัพท์ HSK2: 但是=แต่, 喜欢=ชอบ, 妻子=ภรรยา • โครงสร้าง HSK2: แสดงความขัดแย้ง "但是"',
+        },
+        {
+          id: 6,
+          type: "mc",
+          audio: "现在是下午三点半，我们两点半来的，已经等了一个小时了。",
+          audioPy:
+            "Xiànzài shì xiàwǔ sān diǎn bàn, wǒmen liǎng diǎn bàn lái de, yǐjīng děng le yī gè xiǎoshí le.",
+          question: "他们等了多长时间？",
+          questionPy: "Tāmen děng le duō cháng shíjiān?",
+          choices: [
+            {
+              label: "A",
+              zh: "半小时",
+              py: "bàn xiǎoshí",
+              meaning: "ครึ่งชั่วโมง",
+            },
+            {
+              label: "B",
+              zh: "一个小时",
+              py: "yī gè xiǎoshí",
+              meaning: "1 ชั่วโมง",
+            },
+            {
+              label: "C",
+              zh: "两个小时",
+              py: "liǎng gè xiǎoshí",
+              meaning: "2 ชั่วโมง",
+            },
+            {
+              label: "D",
+              zh: "三个小时",
+              py: "sān gè xiǎoshí",
+              meaning: "3 ชั่วโมง",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 一个小时 (yī gè xiǎoshí = 1 ชั่วโมง) • คำนวณ: 3:30 − 2:30 = 1 ชั่วโมง • โครงสร้าง HSK2: "已经...了" (yǐjīng...le) = "แล้ว/ได้แล้ว" ใช้บอกการกระทำที่เสร็จสิ้น',
+        },
+        {
+          id: 7,
+          type: "mc",
+          audio: "明天是我女儿的生日，我要给她买一个蛋糕。",
+          audioPy:
+            "Míngtiān shì wǒ nǚér de shēngrì, wǒ yào gěi tā mǎi yī gè dàngāo.",
+          question: "他要买什么？",
+          questionPy: "Tā yào mǎi shénme?",
+          choices: [
+            { label: "A", zh: "衣服", py: "yīfu", meaning: "เสื้อผ้า" },
+            { label: "B", zh: "书", py: "shū", meaning: "หนังสือ" },
+            { label: "C", zh: "蛋糕", py: "dàngāo", meaning: "เค้ก" },
+            { label: "D", zh: "玩具", py: "wánjù", meaning: "ของเล่น" },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 蛋糕 (dàngāo = เค้ก) • ประโยคระบุว่า "买一个蛋糕" (mǎi yī gè dàngāo) • คำศัพท์ HSK2: 女儿=ลูกสาว, 生日=วันเกิด, 给=ให้, 买=ซื้อ • โครงสร้าง: 给+คน+V+สิ่งของ',
+        },
+        {
+          id: 8,
+          type: "mc",
+          audio: "我的中文老师是中国人，她很漂亮，说话也很快。",
+          audioPy:
+            "Wǒ de Zhōngwén lǎoshī shì Zhōngguó rén, tā hěn piàoliang, shuōhuà yě hěn kuài.",
+          question: "老师说话怎么样？",
+          questionPy: "Lǎoshī shuōhuà zěnmeyàng?",
+          choices: [
+            { label: "A", zh: "很慢", py: "hěn màn", meaning: "ช้ามาก" },
+            { label: "B", zh: "很快", py: "hěn kuài", meaning: "เร็วมาก" },
+            {
+              label: "C",
+              zh: "很大声",
+              py: "hěn dàshēng",
+              meaning: "เสียงดังมาก",
+            },
+            {
+              label: "D",
+              zh: "很小声",
+              py: "hěn xiǎoshēng",
+              meaning: "เสียงเบามาก",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 很快 (hěn kuài = เร็วมาก) • ประโยคกล่าวว่า "说话也很快" (shuōhuà yě hěn kuài) = "พูดก็เร็วด้วย" • คำศัพท์ HSK2: 漂亮=สวย, 说话=พูด, 快=เร็ว • การใช้ 也 = "ด้วย/เช่นกัน"',
+        },
+        {
+          id: 9,
+          type: "mc",
+          audio: "我想买一双鞋，但是太贵了，我没有那么多钱。",
+          audioPy:
+            "Wǒ xiǎng mǎi yī shuāng xié, dànshì tài guì le, wǒ méiyǒu nàme duō qián.",
+          question: "他为什么不买鞋？",
+          questionPy: "Tā wèishénme bù mǎi xié?",
+          choices: [
+            {
+              label: "A",
+              zh: "鞋太小",
+              py: "xié tài xiǎo",
+              meaning: "รองเท้าเล็กเกินไป",
+            },
+            {
+              label: "B",
+              zh: "鞋太贵",
+              py: "xié tài guì",
+              meaning: "รองเท้าแพงเกินไป",
+            },
+            {
+              label: "C",
+              zh: "鞋不好看",
+              py: "xié bù hǎokàn",
+              meaning: "รองเท้าไม่สวย",
+            },
+            {
+              label: "D",
+              zh: "鞋太大",
+              py: "xié tài dà",
+              meaning: "รองเท้าใหญ่เกินไป",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 鞋太贵 (xié tài guì = รองเท้าแพงเกินไป) • ประโยคกล่าวว่า "太贵了，我没有那么多钱" = "แพงเกินไป ฉันไม่มีเงินมากพอ" • คำศัพท์ HSK2: 想=อยาก, 双=คู่ (ลักษณนาม), 贵=แพง, 太...了=...เกินไป',
+        },
+        {
+          id: 10,
+          type: "mc",
+          audio: "请问，去火车站怎么走？向左走，然后向右走，大概五分钟就到了。",
+          audioPy:
+            "Qǐngwèn, qù huǒchē zhàn zěnme zǒu? Xiàng zuǒ zǒu, ránhòu xiàng yòu zǒu, dàgài wǔ fēnzhōng jiù dào le.",
+          question: "去火车站需要多长时间？",
+          questionPy: "Qù huǒchē zhàn xūyào duō cháng shíjiān?",
+          choices: [
+            {
+              label: "A",
+              zh: "两分钟",
+              py: "liǎng fēnzhōng",
+              meaning: "2 นาที",
+            },
+            { label: "B", zh: "五分钟", py: "wǔ fēnzhōng", meaning: "5 นาที" },
+            {
+              label: "C",
+              zh: "十分钟",
+              py: "shí fēnzhōng",
+              meaning: "10 นาที",
+            },
+            {
+              label: "D",
+              zh: "二十分钟",
+              py: "èrshí fēnzhōng",
+              meaning: "20 นาที",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 五分钟 (wǔ fēnzhōng = 5 นาที) • ประโยคกล่าวว่า "大概五分钟就到了" (dàgài wǔ fēnzhōng jiù dào le) = "ประมาณ 5 นาทีก็ถึงแล้ว" • คำศัพท์ HSK2: 火车站=สถานีรถไฟ, 向左=ไปทางซ้าย, 向右=ไปทางขวา, 大概=ประมาณ',
+        },
+        {
+          id: 11,
+          type: "mc",
+          audio: "我弟弟今年二十岁，在大学学习经济。",
+          audioPy: "Wǒ dìdi jīnnián èrshí suì, zài dàxué xuéxí jīngjì.",
+          question: "弟弟在学什么？",
+          questionPy: "Dìdi zài xué shénme?",
+          choices: [
+            { label: "A", zh: "医学", py: "yīxué", meaning: "แพทยศาสตร์" },
+            { label: "B", zh: "法律", py: "fǎlǜ", meaning: "กฎหมาย" },
+            { label: "C", zh: "经济", py: "jīngjì", meaning: "เศรษฐศาสตร์" },
+            { label: "D", zh: "音乐", py: "yīnyuè", meaning: "ดนตรี" },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 经济 (jīngjì = เศรษฐศาสตร์) • ประโยคกล่าวว่า "在大学学习经济" = "เรียนเศรษฐศาสตร์ที่มหาวิทยาลัย" • คำศัพท์ HSK2: 弟弟=น้องชาย, 今年=ปีนี้, 岁=อายุ, 大学=มหาวิทยาลัย',
+        },
+        {
+          id: 12,
+          type: "mc",
+          audio: "今天我不舒服，头疼，所以没去上班。",
+          audioPy: "Jīntiān wǒ bù shūfu, tóuténg, suǒyǐ méi qù shàngbān.",
+          question: "他今天为什么没去上班？",
+          questionPy: "Tā jīntiān wèishénme méi qù shàngbān?",
+          choices: [
+            {
+              label: "A",
+              zh: "太累了",
+              py: "tài lèi le",
+              meaning: "เหนื่อยมากเกินไป",
+            },
+            { label: "B", zh: "不舒服", py: "bù shūfu", meaning: "ไม่สบาย" },
+            { label: "C", zh: "下雨了", py: "xià yǔ le", meaning: "ฝนตก" },
+            {
+              label: "D",
+              zh: "没有钱",
+              py: "méiyǒu qián",
+              meaning: "ไม่มีเงิน",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 不舒服 (bù shūfu = ไม่สบาย) • ประโยคกล่าวว่า "我不舒服，头疼，所以没去上班" • คำศัพท์ HSK2: 舒服=สบาย, 头疼=ปวดหัว, 所以=ดังนั้น, 上班=ไปทำงาน • โครงสร้าง: 因为...所以... = เพราะ...ดังนั้น...',
+        },
+        {
+          id: 13,
+          type: "mc",
+          audio: "王老师，您的手机落在教室里了，我帮您拿来了。",
+          audioPy:
+            "Wáng lǎoshī, nín de shǒujī luò zài jiàoshì lǐ le, wǒ bāng nín ná lái le.",
+          question: "手机在哪里？",
+          questionPy: "Shǒujī zài nǎlǐ?",
+          choices: [
+            {
+              label: "A",
+              zh: "办公室",
+              py: "bàngōngshì",
+              meaning: "ห้องทำงาน",
+            },
+            { label: "B", zh: "教室", py: "jiàoshì", meaning: "ห้องเรียน" },
+            { label: "C", zh: "图书馆", py: "túshūguǎn", meaning: "ห้องสมุด" },
+            { label: "D", zh: "食堂", py: "shítáng", meaning: "โรงอาหาร" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 教室 (jiàoshì = ห้องเรียน) • ประโยคกล่าวว่า "手机落在教室里了" (shǒujī luò zài jiàoshì lǐ le) = "โทรศัพท์ตกอยู่ในห้องเรียน" • คำศัพท์ HSK2: 手机=โทรศัพท์มือถือ, 落=ลืม/ตก, 帮=ช่วย, 拿=หยิบ',
+        },
+        {
+          id: 14,
+          type: "mc",
+          audio: "你会游泳吗？会，但是游得不太好。",
+          audioPy: "Nǐ huì yóuyǒng ma? Huì, dànshì yóu de bù tài hǎo.",
+          question: "他游泳游得怎么样？",
+          questionPy: "Tā yóuyǒng yóu de zěnmeyàng?",
+          choices: [
+            {
+              label: "A",
+              zh: "不会游泳",
+              py: "bù huì yóuyǒng",
+              meaning: "ว่ายน้ำไม่เป็น",
+            },
+            {
+              label: "B",
+              zh: "游得很好",
+              py: "yóu de hěn hǎo",
+              meaning: "ว่ายน้ำได้ดีมาก",
+            },
+            {
+              label: "C",
+              zh: "游得不太好",
+              py: "yóu de bù tài hǎo",
+              meaning: "ว่ายน้ำได้ไม่ค่อยดี",
+            },
+            {
+              label: "D",
+              zh: "游得很快",
+              py: "yóu de hěn kuài",
+              meaning: "ว่ายน้ำได้เร็วมาก",
+            },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 游得不太好 (yóu de bù tài hǎo = ว่ายได้ไม่ค่อยดี) • ระบุในบทสนทนาชัดเจน • โครงสร้าง HSK2: "V+得+ผลลัพธ์" = กริยาเสริม บอกผลของการกระทำ เช่น 游得好=ว่ายดี, 写得快=เขียนเร็ว',
+        },
+        {
+          id: 15,
+          type: "mc",
+          audio: "这次考试你考了几分？我考了八十五分，比上次好多了。",
+          audioPy:
+            "Zhè cì kǎoshì nǐ kǎo le jǐ fēn? Wǒ kǎo le bāshíwǔ fēn, bǐ shàng cì hǎo duō le.",
+          question: "他这次考了多少分？",
+          questionPy: "Tā zhè cì kǎo le duōshao fēn?",
+          choices: [
+            {
+              label: "A",
+              zh: "七十五分",
+              py: "qīshíwǔ fēn",
+              meaning: "75 คะแนน",
+            },
+            { label: "B", zh: "八十分", py: "bāshí fēn", meaning: "80 คะแนน" },
+            {
+              label: "C",
+              zh: "八十五分",
+              py: "bāshíwǔ fēn",
+              meaning: "85 คะแนน",
+            },
+            { label: "D", zh: "九十分", py: "jiǔshí fēn", meaning: "90 คะแนน" },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 八十五分 (bāshíwǔ fēn = 85 คะแนน) • ประโยคระบุชัด "我考了八十五分" • โครงสร้าง HSK2: "比" = เปรียบเทียบ เช่น "比上次好多了" (bǐ shàng cì hǎo duō le) = "ดีกว่าครั้งที่แล้วมาก"',
+        },
+        {
+          id: 16,
+          type: "mc",
+          audio: "我家有四口人：爸爸、妈妈、哥哥和我。",
+          audioPy: "Wǒ jiā yǒu sì kǒu rén: bàba, māma, gēgē hé wǒ.",
+          question: "他家有几口人？",
+          questionPy: "Tā jiā yǒu jǐ kǒu rén?",
+          choices: [
+            { label: "A", zh: "三口人", py: "sān kǒu rén", meaning: "3 คน" },
+            { label: "B", zh: "四口人", py: "sì kǒu rén", meaning: "4 คน" },
+            { label: "C", zh: "五口人", py: "wǔ kǒu rén", meaning: "5 คน" },
+            { label: "D", zh: "六口人", py: "liù kǒu rén", meaning: "6 คน" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 四口人 (sì kǒu rén = 4 คน) • ประโยคกล่าวว่า "有四口人" โดยนับ: พ่อ+แม่+พี่ชาย+ตัวเอง = 4 คน • คำศัพท์ HSK2: 口=ลักษณนามสำหรับสมาชิกในครอบครัว, 哥哥=พี่ชาย',
+        },
+        {
+          id: 17,
+          type: "mc",
+          audio: "我最喜欢的运动是打篮球，每周末都去打。",
+          audioPy:
+            "Wǒ zuì xǐhuan de yùndòng shì dǎ lánqiú, měi zhōumò dōu qù dǎ.",
+          question: "他最喜欢什么运动？",
+          questionPy: "Tā zuì xǐhuan shénme yùndòng?",
+          choices: [
+            { label: "A", zh: "足球", py: "zúqiú", meaning: "ฟุตบอล" },
+            { label: "B", zh: "篮球", py: "lánqiú", meaning: "บาสเกตบอล" },
+            { label: "C", zh: "游泳", py: "yóuyǒng", meaning: "ว่ายน้ำ" },
+            { label: "D", zh: "乒乓球", py: "pīngpāngqiú", meaning: "ปิงปอง" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 篮球 (lánqiú = บาสเกตบอล) • ประโยคระบุว่า "打篮球" (dǎ lánqiú) • คำศัพท์ HSK2: 最=ที่สุด, 运动=กีฬา, 打=ตี/เล่น (ใช้กับกีฬาที่ใช้ลูกบอล), 每周末=ทุกสัปดาห์',
+        },
+        {
+          id: 18,
+          type: "mc",
+          audio: "我昨天买了一本书，花了五十块钱。",
+          audioPy: "Wǒ zuótiān mǎi le yī běn shū, huā le wǔshí kuài qián.",
+          question: "他花了多少钱？",
+          questionPy: "Tā huā le duōshao qián?",
+          choices: [
+            { label: "A", zh: "十五块", py: "shíwǔ kuài", meaning: "15 หยวน" },
+            { label: "B", zh: "三十块", py: "sānshí kuài", meaning: "30 หยวน" },
+            { label: "C", zh: "五十块", py: "wǔshí kuài", meaning: "50 หยวน" },
+            { label: "D", zh: "一百块", py: "yībǎi kuài", meaning: "100 หยวน" },
+          ],
+          answer: "C",
+          explain:
+            '✅ คำตอบคือ C 五十块 (wǔshí kuài = 50 หยวน) • ประโยคระบุว่า "花了五十块钱" (huā le wǔshí kuài qián) = "ใช้จ่ายไป 50 หยวน" • คำศัพท์ HSK2: 昨天=เมื่อวาน, 花=ใช้จ่าย, 本=ลักษณนามสำหรับหนังสือ',
+        },
+        {
+          id: 19,
+          type: "mc",
+          audio: "我的房间不太大，但是很干净，我每天都打扫。",
+          audioPy:
+            "Wǒ de fángjiān bù tài dà, dànshì hěn gānjìng, wǒ měitiān dōu dǎsǎo.",
+          question: "他的房间怎么样？",
+          questionPy: "Tā de fángjiān zěnmeyàng?",
+          choices: [
+            {
+              label: "A",
+              zh: "又大又干净",
+              py: "yòu dà yòu gānjìng",
+              meaning: "ทั้งใหญ่ทั้งสะอาด",
+            },
+            {
+              label: "B",
+              zh: "不大但是干净",
+              py: "bù dà dànshì gānjìng",
+              meaning: "ไม่ใหญ่แต่สะอาด",
+            },
+            {
+              label: "C",
+              zh: "大但是不干净",
+              py: "dà dànshì bù gānjìng",
+              meaning: "ใหญ่แต่ไม่สะอาด",
+            },
+            {
+              label: "D",
+              zh: "又小又脏",
+              py: "yòu xiǎo yòu zāng",
+              meaning: "ทั้งเล็กทั้งสกปรก",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 不大但是干净 (bù dà dànshì gānjìng) • ประโยคกล่าวว่า "不太大...但是很干净" = "ไม่ค่อยใหญ่...แต่สะอาดมาก" • คำศัพท์ HSK2: 房间=ห้อง, 干净=สะอาด, 每天=ทุกวัน, 打扫=กวาดทำความสะอาด',
+        },
+        {
+          id: 20,
+          type: "mc",
+          audio: "请问，这里可以拍照吗？对不起，这里不可以拍照。",
+          audioPy:
+            "Qǐngwèn, zhèlǐ kěyǐ pāizhào ma? Duìbuqǐ, zhèlǐ bù kěyǐ pāizhào.",
+          question: "这里可以拍照吗？",
+          questionPy: "Zhèlǐ kěyǐ pāizhào ma?",
+          choices: [
+            { label: "A", zh: "可以", py: "kěyǐ", meaning: "ได้" },
+            { label: "B", zh: "不可以", py: "bù kěyǐ", meaning: "ไม่ได้" },
+            {
+              label: "C",
+              zh: "要付钱",
+              py: "yào fù qián",
+              meaning: "ต้องเสียเงิน",
+            },
+            {
+              label: "D",
+              zh: "只能在外面",
+              py: "zhǐ néng zài wàimiàn",
+              meaning: "ถ่ายได้แค่ข้างนอก",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 不可以 (bù kěyǐ = ไม่ได้/ห้าม) • ตอบในบทสนทนาว่า "这里不可以拍照" (zhèlǐ bù kěyǐ pāizhào) = "ที่นี่ห้ามถ่ายรูป" • คำศัพท์ HSK2: 可以=ได้/อนุญาต, 拍照=ถ่ายรูป, 对不起=ขอโทษ',
+        },
+      ];
+
+      // READING QUESTIONS (20 questions) - HSK 2 standard format
+      const readingQuestions = [
+        {
+          id: 21,
+          type: "mc",
+          question: "她（    ）去中国，因为她想学习中文。",
+          questionPy: "Tā (    ) qù Zhōngguó, yīnwèi tā xiǎng xuéxí Zhōngwén.",
+          choices: [
+            { label: "A", zh: "想", py: "xiǎng", meaning: "อยากจะ/คิด" },
+            { label: "B", zh: "是", py: "shì", meaning: "เป็น/คือ" },
+            { label: "C", zh: "有", py: "yǒu", meaning: "มี" },
+            { label: "D", zh: "在", py: "zài", meaning: "อยู่ที่" },
+          ],
+          answer: "A",
+          explain:
+            "✅ คำตอบคือ A 想 (xiǎng = อยากจะ) • โครงสร้าง: 想+V = อยากจะ... • ประโยคนี้บอกเหตุผลที่เธออยากไปจีน = เรียนภาษาจีน • คำศัพท์ HSK2: 因为=เพราะ, 想=อยาก/คิด, 学习=เรียน",
+        },
+        {
+          id: 22,
+          type: "mc",
+          question: "他的汉语说（    ）很好。",
+          questionPy: "Tā de Hànyǔ shuō (    ) hěn hǎo.",
+          choices: [
+            {
+              label: "A",
+              zh: "了",
+              py: "le",
+              meaning: "อนุภาคบอกการเปลี่ยนแปลง/เสร็จสิ้น",
+            },
+            { label: "B", zh: "得", py: "de", meaning: "อนุภาคบอกระดับ/ผล" },
+            { label: "C", zh: "的", py: "de", meaning: "อนุภาคแสดงเจ้าของ" },
+            { label: "D", zh: "过", py: "guò", meaning: "อนุภาคบอกประสบการณ์" },
+          ],
+          answer: "B",
+          explain:
+            "✅ คำตอบคือ B 得 (de = อนุภาคบอกระดับผล) • โครงสร้างกริยาเสริม: V+得+ผลลัพธ์ เช่น 说得很好=พูดได้ดี, 写得很快=เขียนได้เร็ว • นี่คือโครงสร้างสำคัญใน HSK 2 ที่ต้องจำ!",
+        },
+        {
+          id: 23,
+          type: "mc",
+          question: "这个苹果（    ）那个苹果大。",
+          questionPy: "Zhège píngguǒ (    ) nàge píngguǒ dà.",
+          choices: [
+            { label: "A", zh: "很", py: "hěn", meaning: "มาก/ขณะ" },
+            {
+              label: "B",
+              zh: "比",
+              py: "bǐ",
+              meaning: "มากกว่า (เปรียบเทียบ)",
+            },
+            { label: "C", zh: "最", py: "zuì", meaning: "ที่สุด" },
+            { label: "D", zh: "也", py: "yě", meaning: "ก็/ด้วย" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 比 (bǐ = เปรียบเทียบ) • โครงสร้าง: A+比+B+คำคุณศัพท์ = A...กว่า B • "这个苹果比那个苹果大" = "แอปเปิ้ลนี้ใหญ่กว่าแอปเปิ้ลนั้น" • นี่คือโครงสร้างเปรียบเทียบ HSK2 ที่สำคัญ!',
+        },
+        {
+          id: 24,
+          type: "mc",
+          question: "他（    ）北京住了三年。",
+          questionPy: "Tā (    ) Běijīng zhù le sān nián.",
+          choices: [
+            { label: "A", zh: "在", py: "zài", meaning: "อยู่ที่/ใน" },
+            { label: "B", zh: "到", py: "dào", meaning: "ไปถึง" },
+            { label: "C", zh: "从", py: "cóng", meaning: "จาก" },
+            { label: "D", zh: "向", py: "xiàng", meaning: "ไปทาง" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 在 (zài = อยู่ที่) • โครงสร้าง: 在+สถานที่+V = ทำ...ที่... • "在北京住了三年" = "อาศัยอยู่ที่ปักกิ่งมา 3 ปีแล้ว" • คำศัพท์ HSK2: 住=อยู่อาศัย, 三年=3 ปี',
+        },
+        {
+          id: 25,
+          type: "mc",
+          question: "下面哪个句子是正确的？",
+          questionPy: "Xiàmiàn nǎge jùzi shì zhèngquè de?",
+          choices: [
+            {
+              label: "A",
+              zh: "我去了昨天超市。",
+              py: "Wǒ qù le zuótiān chāoshì.",
+              meaning: "",
+            },
+            {
+              label: "B",
+              zh: "昨天我去了超市。",
+              py: "Zuótiān wǒ qù le chāoshì.",
+              meaning: "",
+            },
+            {
+              label: "C",
+              zh: "超市我昨天去了。",
+              py: "Chāoshì wǒ zuótiān qù le.",
+              meaning: "",
+            },
+            {
+              label: "D",
+              zh: "我昨天超市去了。",
+              py: "Wǒ zuótiān chāoshì qù le.",
+              meaning: "",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B "昨天我去了超市" (Zuótiān wǒ qù le chāoshì) • ลำดับประโยคภาษาจีนมาตรฐาน: เวลา+ประธาน+กริยา+กรรม • คำศัพท์ HSK2: 昨天=เมื่อวาน, 超市=ซูเปอร์มาร์เก็ต',
+        },
+        {
+          id: 26,
+          type: "mc",
+          question: "你（    ）没吃饭吧？我给你做饭。",
+          questionPy: "Nǐ (    ) méi chīfàn ba? Wǒ gěi nǐ zuòfàn.",
+          choices: [
+            { label: "A", zh: "应该", py: "yīnggāi", meaning: "ควรจะ" },
+            { label: "B", zh: "还", py: "hái", meaning: "ยังคง/ยัง" },
+            { label: "C", zh: "已经", py: "yǐjīng", meaning: "แล้ว" },
+            { label: "D", zh: "一起", py: "yīqǐ", meaning: "ด้วยกัน" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 还 (hái = ยัง) • "你还没吃饭吧？" = "คุณยังไม่ได้กินข้าวใช่ไหม?" • โครงสร้าง: 还没+V = ยังไม่ได้... • คำศัพท์ HSK2: 吃饭=กินข้าว, 给=ให้, 做饭=ทำอาหาร',
+        },
+        {
+          id: 27,
+          type: "mc",
+          question: "她学中文学了（    ）三年了。",
+          questionPy: "Tā xué Zhōngwén xué le (    ) sān nián le.",
+          choices: [
+            { label: "A", zh: "已经", py: "yǐjīng", meaning: "ได้/แล้ว" },
+            { label: "B", zh: "刚", py: "gāng", meaning: "เพิ่งจะ" },
+            { label: "C", zh: "正在", py: "zhèngzài", meaning: "กำลัง" },
+            { label: "D", zh: "要", py: "yào", meaning: "จะ/ต้องการ" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 已经 (yǐjīng = ได้แล้ว/เป็นเวลา) • โครงสร้าง: 已经+V+时间段+了 = ทำ...มาแล้วเป็นเวลา... • "学了已经三年了" = "เรียนมาแล้ว 3 ปี" • สังเกต: มี 了 สองตัว ตัวแรกหลังกริยา ตัวสองท้ายประโยค',
+        },
+        {
+          id: 28,
+          type: "mc",
+          question: "天气越来越（    ）了，快穿外套吧。",
+          questionPy: "Tiānqì yuèlái yuè (    ) le, kuài chuān wàitào ba.",
+          choices: [
+            { label: "A", zh: "热", py: "rè", meaning: "ร้อน" },
+            { label: "B", zh: "冷", py: "lěng", meaning: "หนาว" },
+            { label: "C", zh: "好", py: "hǎo", meaning: "ดี" },
+            { label: "D", zh: "大", py: "dà", meaning: "ใหญ่" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 冷 (lěng = หนาว) • บริบท: "快穿外套吧" (kuài chuān wàitào ba) = "รีบใส่เสื้อโค้ทซะ" บ่งชี้ว่าอากาศหนาว • โครงสร้าง HSK2: 越来越+คุณศัพท์ = ยิ่ง...ยิ่ง... (บอกการเปลี่ยนแปลงที่เพิ่มขึ้น)',
+        },
+        {
+          id: 29,
+          type: "mc",
+          question: "请（    ）门关上，外面太吵了。",
+          questionPy: "Qǐng (    ) mén guānshàng, wàimiàn tài chǎo le.",
+          choices: [
+            { label: "A", zh: "让", py: "ràng", meaning: "ให้ (สั่ง/ขอ)" },
+            { label: "B", zh: "把", py: "bǎ", meaning: "เอา... (ประโยค把)" },
+            { label: "C", zh: "被", py: "bèi", meaning: "ถูก (passive)" },
+            { label: "D", zh: "对", py: "duì", meaning: "ต่อ/กับ/ถูกต้อง" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 把 (bǎ) • โครงสร้างประโยค "把": 请把+สิ่งของ+V+ผล = ขอให้เอา...ไป... • "请把门关上" = "กรุณาปิดประตูด้วย" • โครงสร้าง 把 HSK2: ใช้เมื่อต้องการเน้นว่าทำอะไรกับสิ่งของนั้น',
+        },
+        {
+          id: 30,
+          type: "mc",
+          question: "他（    ）回到家，就开始做作业了。",
+          questionPy: "Tā (    ) huí dào jiā, jiù kāishǐ zuò zuòyè le.",
+          choices: [
+            { label: "A", zh: "一", py: "yī", meaning: "พอ.../ทันที..." },
+            { label: "B", zh: "又", py: "yòu", meaning: "อีก" },
+            { label: "C", zh: "才", py: "cái", meaning: "เพิ่ง/แค่" },
+            { label: "D", zh: "就", py: "jiù", meaning: "ก็" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 一 (yī) • โครงสร้าง HSK2: 一+V1+就+V2 = พอ...ก็... (ทำสิ่งแรกเสร็จก็ทำสิ่งที่สองทันที) • "一回到家，就开始做作业" = "พอกลับถึงบ้านก็เริ่มทำการบ้านทันที"',
+        },
+        {
+          id: 31,
+          type: "mc",
+          question: "这道题太难了，我（    ）不会做。",
+          questionPy: "Zhè dào tí tài nán le, wǒ (    ) bù huì zuò.",
+          choices: [
+            { label: "A", zh: "都", py: "dōu", meaning: "ทั้งหมด/ล้วน" },
+            { label: "B", zh: "也", py: "yě", meaning: "ก็/ด้วย" },
+            { label: "C", zh: "还", py: "hái", meaning: "ยังคง" },
+            { label: "D", zh: "就", py: "jiù", meaning: "ก็" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 都 (dōu = เลย/ทั้งหมด) • "我都不会做" = "ฉันเลยทำไม่ได้เลย" • ในที่นี้ 都 ใช้เพื่อเน้นความหมาย "แม้กระทั่ง..." บ่งบอกว่าโจทย์ยากมาก • คำศัพท์ HSK2: 道=ลักษณนามสำหรับโจทย์/เส้น, 题=โจทย์, 难=ยาก',
+        },
+        {
+          id: 32,
+          type: "mc",
+          question: "我们（    ）一起去看电影，怎么样？",
+          questionPy: "Wǒmen (    ) yīqǐ qù kàn diànyǐng, zěnmeyàng?",
+          choices: [
+            { label: "A", zh: "要", py: "yào", meaning: "ต้องการ/จะ" },
+            { label: "B", zh: "可以", py: "kěyǐ", meaning: "ได้/อนุญาต" },
+            { label: "C", zh: "能", py: "néng", meaning: "สามารถ" },
+            { label: "D", zh: "应该", py: "yīnggāi", meaning: "ควร" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 要 (yào = จะ/อยากจะ) • ในที่นี้ 要 ใช้เชิญชวน "我们要一起去...怎么样？" = "เราไปด้วยกันดีไหม?" • ความแตกต่าง HSK2: 要=จะ/ต้องการ, 可以=ได้รับอนุญาต, 能=ความสามารถ, 应该=ควรทำ',
+        },
+        {
+          id: 33,
+          type: "mc",
+          question: "他问我（    ）会说中文。",
+          questionPy: "Tā wèn wǒ (    ) huì shuō Zhōngwén.",
+          choices: [
+            {
+              label: "A",
+              zh: "是不是",
+              py: "shì bu shì",
+              meaning: "ใช่หรือไม่ใช่",
+            },
+            { label: "B", zh: "什么", py: "shénme", meaning: "อะไร" },
+            { label: "C", zh: "为什么", py: "wèishénme", meaning: "ทำไม" },
+            { label: "D", zh: "哪里", py: "nǎlǐ", meaning: "ที่ไหน" },
+          ],
+          answer: "A",
+          explain:
+            '✅ คำตอบคือ A 是不是 (shì bu shì = ใช่หรือไม่) • ประโยคอ้อม: "他问我是不是会说中文" = "เขาถามฉันว่าพูดจีนได้หรือเปล่า" • โครงสร้าง HSK2: ประโยคคำถามอ้อม V+不+V = ถามว่า...หรือเปล่า',
+        },
+        {
+          id: 34,
+          type: "mc",
+          question: "请（    ）慢一点儿说，我没听懂。",
+          questionPy: "Qǐng (    ) màn yīdiǎnr shuō, wǒ méi tīng dǒng.",
+          choices: [
+            { label: "A", zh: "你", py: "nǐ", meaning: "คุณ" },
+            { label: "B", zh: "您", py: "nín", meaning: "ท่าน (สุภาพ)" },
+            { label: "C", zh: "他", py: "tā", meaning: "เขา" },
+            { label: "D", zh: "我", py: "wǒ", meaning: "ฉัน" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 您 (nín = ท่าน คำสุภาพ) • ประโยคเริ่มด้วย "请" (qǐng = กรุณา) ซึ่งเป็นประโยคสุภาพ จึงเหมาะที่จะใช้ 您 แทน 你 • คำศัพท์ HSK2: 慢=ช้า, 一点儿=นิดหน่อย, 听懂=ฟังเข้าใจ',
+        },
+        {
+          id: 35,
+          type: "mc",
+          question: "这本书写得很有意思，我（    ）了两遍。",
+          questionPy:
+            "Zhè běn shū xiě de hěn yǒuyìsi, wǒ (    ) le liǎng biàn.",
+          choices: [
+            { label: "A", zh: "写", py: "xiě", meaning: "เขียน" },
+            { label: "B", zh: "看", py: "kàn", meaning: "อ่าน/ดู" },
+            { label: "C", zh: "买", py: "mǎi", meaning: "ซื้อ" },
+            { label: "D", zh: "说", py: "shuō", meaning: "พูด" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 看 (kàn = อ่าน/ดู) • บริบท: หนังสือ → 看书 = อ่านหนังสือ • "看了两遍" (kàn le liǎng biàn) = "อ่านแล้ว 2 รอบ" • คำศัพท์ HSK2: 有意思=น่าสนใจ, 遍=ครั้ง/รอบ (ลักษณนามบอกจำนวนครั้ง)',
+        },
+        {
+          id: 36,
+          type: "mc",
+          question: "我妹妹比我（    ）三岁。",
+          questionPy: "Wǒ mèimei bǐ wǒ (    ) sān suì.",
+          choices: [
+            { label: "A", zh: "大", py: "dà", meaning: "โต/ใหญ่" },
+            { label: "B", zh: "小", py: "xiǎo", meaning: "เล็ก/น้อง" },
+            { label: "C", zh: "高", py: "gāo", meaning: "สูง" },
+            { label: "D", zh: "矮", py: "ǎi", meaning: "เตี้ย" },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 小 (xiǎo = เล็ก/อายุน้อยกว่า) • 妹妹 (mèimei) = น้องสาว แสดงว่าอายุน้อยกว่า → "比我小三岁" = "น้อยกว่าฉัน 3 ปี" • โครงสร้าง HSK2: A比B+คุณศัพท์+差距 = A...กว่า B ...หน่วย',
+        },
+        {
+          id: 37,
+          type: "mc",
+          question: "他今天没来上课，（    ）他病了。",
+          questionPy: "Tā jīntiān méi lái shàngkè, (    ) tā bìng le.",
+          choices: [
+            { label: "A", zh: "因为", py: "yīnwèi", meaning: "เพราะว่า" },
+            { label: "B", zh: "所以", py: "suǒyǐ", meaning: "ดังนั้น" },
+            { label: "C", zh: "但是", py: "dànshì", meaning: "แต่" },
+            { label: "D", zh: "如果", py: "rúguǒ", meaning: "ถ้า" },
+          ],
+          answer: "A",
+          explain:
+            "✅ คำตอบคือ A 因为 (yīnwèi = เพราะว่า) • ประโยคแรกบอกผล (ไม่มาเรียน) ประโยคที่สองบอกสาเหตุ (ป่วย) → ต้องใช้ 因为 • โครงสร้าง HSK2: 因为...所以... (เพราะ...ดังนั้น...) • ที่นี่มี 因为 คนเดียว บางครั้งใช้ครึ่งเดียวได้",
+        },
+        {
+          id: 38,
+          type: "mc",
+          question: "这个问题很简单，小学生（    ）会做。",
+          questionPy: "Zhège wèntí hěn jiǎndān, xiǎoxuéshēng (    ) huì zuò.",
+          choices: [
+            { label: "A", zh: "就", py: "jiù", meaning: "ก็/แค่" },
+            { label: "B", zh: "才", py: "cái", meaning: "เพิ่ง/เท่านั้น" },
+            { label: "C", zh: "也", py: "yě", meaning: "ก็/ด้วย" },
+            { label: "D", zh: "都", py: "dōu", meaning: "ล้วน/ทั้งหมด" },
+          ],
+          answer: "D",
+          explain:
+            '✅ คำตอบคือ D 都 (dōu = ล้วน/แม้แต่) • "小学生都会做" = "แม้แต่นักเรียนประถมก็ทำได้" • 都 ใช้เพื่อเน้นว่าง่ายมากจนทุกคนทำได้ • คำศัพท์ HSK2: 问题=คำถาม/ปัญหา, 简单=ง่าย, 小学生=นักเรียนประถม',
+        },
+        {
+          id: 39,
+          type: "mc",
+          question: "你（    ）去过北京吗？",
+          questionPy: "Nǐ (    ) qù guò Běijīng ma?",
+          choices: [
+            { label: "A", zh: "曾经", py: "céngjīng", meaning: "เคย (ในอดีต)" },
+            { label: "B", zh: "正在", py: "zhèngzài", meaning: "กำลัง" },
+            { label: "C", zh: "已经", py: "yǐjīng", meaning: "ได้แล้ว" },
+            { label: "D", zh: "刚才", py: "gāngcái", meaning: "เมื่อกี้" },
+          ],
+          answer: "A",
+          explain:
+            "✅ คำตอบคือ A 曾经 (céngjīng = เคย) • คำถามนี้ถามเกี่ยวกับประสบการณ์ที่ผ่านมา → 曾经 + V + 过 = เคย...มาแล้ว • โครงสร้าง HSK2: V+过 = มีประสบการณ์ เช่น 去过=เคยไป, 吃过=เคยกิน",
+        },
+        {
+          id: 40,
+          type: "mc",
+          question:
+            '读以下短文，回答问题：\n"小明每天骑自行车上学，路上需要二十分钟。他觉得骑车比坐公共汽车快，而且对身体也好。"\n\n小明觉得骑自行车有什么好处？',
+          questionPy: "Xiǎo Míng měitiān qí zìxíngchē shàngxué...",
+          choices: [
+            {
+              label: "A",
+              zh: "比较便宜",
+              py: "bǐjiào piányí",
+              meaning: "ถูกกว่า",
+            },
+            {
+              label: "B",
+              zh: "又快又健康",
+              py: "yòu kuài yòu jiànkāng",
+              meaning: "ทั้งเร็วทั้งสุขภาพดี",
+            },
+            {
+              label: "C",
+              zh: "不需要钱",
+              py: "bù xūyào qián",
+              meaning: "ไม่ต้องใช้เงิน",
+            },
+            {
+              label: "D",
+              zh: "可以看风景",
+              py: "kěyǐ kàn fēngjǐng",
+              meaning: "ดูวิวได้",
+            },
+          ],
+          answer: "B",
+          explain:
+            '✅ คำตอบคือ B 又快又健康 (yòu kuài yòu jiànkāng = ทั้งเร็วทั้งดีต่อสุขภาพ) • จากข้อความ: "比坐公共汽车快" (เร็วกว่ารถเมล์) + "对身体也好" (ดีต่อร่างกาย) • โครงสร้าง HSK2: 又...又... = ทั้ง...ทั้ง...',
+        },
+      ];
+
+      // WRITING QUESTIONS (10 questions) - Type answer in Chinese
+      const writingQuestions = [
+        {
+          id: 41,
+          type: "write",
+          question: "请用汉字填写：我每天早上喝一杯（    ）。（nǎi = 牛?）",
+          questionPy:
+            "Qǐng yòng hànzì tiánxiě: Wǒ měitiān zǎoshang hē yī bēi (    ). (nǎi = niú?)",
+          instruction: '请完成这个词：牛___（niú___）意思是"นม"',
+          answer: "牛奶",
+          answerPy: "niúnǎi",
+          explain:
+            "✅ คำตอบคือ 牛奶 (niúnǎi = นม) • 牛 (niú) = วัว + 奶 (nǎi) = นม → 牛奶 = นมวัว • คำศัพท์ HSK2 ที่ใช้บ่อย: 喝牛奶=ดื่มนม, 一杯=หนึ่งแก้ว",
+        },
+        {
+          id: 42,
+          type: "write",
+          question: "请写出反义词：热的反义词是（    ）。",
+          questionPy: "Qǐng xiě chū fǎnyìcí: rè de fǎnyìcí shì (    ).",
+          instruction: "เขียนคำตรงข้ามของ 热 (rè = ร้อน)",
+          answer: "冷",
+          answerPy: "lěng",
+          explain:
+            "✅ คำตอบคือ 冷 (lěng = หนาว/เย็น) • คู่คำตรงข้าม HSK2: 热/冷 (ร้อน/หนาว), 大/小 (ใหญ่/เล็ก), 多/少 (มาก/น้อย), 快/慢 (เร็ว/ช้า), 高/矮 (สูง/เตี้ย)",
+        },
+        {
+          id: 43,
+          type: "write",
+          question: "请完成句子：他___（yóuyǒng）得很好。",
+          questionPy: "Qǐng wánchéng jùzi: Tā ___ (yóuyǒng) de hěn hǎo.",
+          instruction: 'เขียนคำว่า "ว่ายน้ำ" เป็นภาษาจีน (yóuyǒng)',
+          answer: "游泳",
+          answerPy: "yóuyǒng",
+          explain:
+            "✅ คำตอบคือ 游泳 (yóuyǒng = ว่ายน้ำ) • 游 (yóu) = ว่าย + 泳 (yǒng) = ว่ายน้ำ • กีฬา HSK2: 游泳=ว่ายน้ำ, 跑步=วิ่ง, 打篮球=เล่นบาส, 踢足球=เตะฟุตบอล",
+        },
+        {
+          id: 44,
+          type: "write",
+          question: '请写汉字："今天___（qìwēn）是二十五度。"',
+          questionPy: 'Qǐng xiě hànzì: "Jīntiān ___ (qìwēn) shì èrshíwǔ dù."',
+          instruction: 'เขียนคำว่า "อุณหภูมิ" เป็นภาษาจีน (qìwēn)',
+          answer: "气温",
+          answerPy: "qìwēn",
+          explain:
+            "✅ คำตอบคือ 气温 (qìwēn = อุณหภูมิ) • 气 (qì) = ลม/อากาศ + 温 (wēn) = อุ่น → 气温 = อุณหภูมิอากาศ • คำศัพท์ HSK2 เกี่ยวกับอากาศ: 天气=อากาศ, 下雨=ฝนตก, 下雪=หิมะตก",
+        },
+        {
+          id: 45,
+          type: "write",
+          question: '完成句子："我___（xǐhuan）吃中国菜。"',
+          questionPy: 'Wánchéng jùzi: "Wǒ ___ (xǐhuan) chī Zhōngguó cài."',
+          instruction: 'เขียนกริยา "ชอบ" เป็นภาษาจีน (xǐhuan)',
+          answer: "喜欢",
+          answerPy: "xǐhuan",
+          explain:
+            "✅ คำตอบคือ 喜欢 (xǐhuan = ชอบ) • โครงสร้าง: 喜欢+V/N = ชอบ... • ตัวอย่าง: 我喜欢学中文=ฉันชอบเรียนภาษาจีน, 我喜欢吃饺子=ฉันชอบกินเกี๊ยว • HSK2 emotion: 喜欢=ชอบ, 爱=รัก",
+        },
+        {
+          id: 46,
+          type: "write",
+          question: '用汉字写："请___（jìnlái）！" 意思是"กรุณาเข้ามา"',
+          questionPy: 'Yòng hànzì xiě: "Qǐng ___ (jìnlái)!" yìsi shì "เข้ามา"',
+          instruction: 'เขียนคำว่า "เข้ามา" เป็นภาษาจีน (jìnlái)',
+          answer: "进来",
+          answerPy: "jìnlái",
+          explain:
+            "✅ คำตอบคือ 进来 (jìnlái = เข้ามา) • 进 (jìn) = เข้า + 来 (lái) = มา → 进来 = เข้ามา • คำตรงข้าม: 出去 (chūqù) = ออกไป • ทิศทาง HSK2: 进来=เข้ามา, 出去=ออกไป, 上来=ขึ้นมา, 下去=ลงไป",
+        },
+        {
+          id: 47,
+          type: "write",
+          question: '"我的中文___（shuǐpíng）不高。" 请写汉字。',
+          questionPy: '"Wǒ de Zhōngwén ___ (shuǐpíng) bù gāo." Qǐng xiě hànzì.',
+          instruction: 'เขียนคำว่า "ระดับ" เป็นภาษาจีน (shuǐpíng)',
+          answer: "水平",
+          answerPy: "shuǐpíng",
+          explain:
+            "✅ คำตอบคือ 水平 (shuǐpíng = ระดับ/มาตรฐาน) • 水 (shuǐ) = น้ำ + 平 (píng) = เรียบ → 水平 = ระดับ (คิดภาพน้ำที่ระดับเท่ากัน) • HSK สาม: HSK水平=ระดับ HSK",
+        },
+        {
+          id: 48,
+          type: "write",
+          question:
+            '请写汉字："他是一个很___（rènzhēn）的学生。"（ = ขยัน/ตั้งใจ）',
+          questionPy:
+            'Qǐng xiě hànzì: "Tā shì yī gè hěn ___ (rènzhēn) de xuésheng."',
+          instruction: 'เขียนคำว่า "ตั้งใจ/จริงจัง" เป็นภาษาจีน (rènzhēn)',
+          answer: "认真",
+          answerPy: "rènzhēn",
+          explain:
+            "✅ คำตอบคือ 认真 (rènzhēn = ตั้งใจ/จริงจัง) • 认 (rèn) = รู้จัก + 真 (zhēn) = จริง → 认真 = ตั้งใจทำอย่างจริงจัง • คุณศัพท์ HSK2: 认真=ตั้งใจ, 努力=พยายาม, 聪明=ฉลาด",
+        },
+        {
+          id: 49,
+          type: "write",
+          question: '"我们班一共有三十___（míng）同学。" 请写汉字。',
+          questionPy:
+            '"Wǒmen bān yīgòng yǒu sānshí ___ (míng) tóngxué." Qǐng xiě hànzì.',
+          instruction: 'เขียนลักษณนามสำหรับบุคคล "名" (míng)',
+          answer: "名",
+          answerPy: "míng",
+          explain:
+            "✅ คำตอบคือ 名 (míng = ลักษณนามสำหรับคน เชิงทางการ) • 名 ใช้นับคนในเชิงทางการ เช่น 三十名学生=นักเรียน 30 คน • เปรียบเทียบ HSK2: 个=ทั่วไป, 位=สุภาพ, 名=ทางการ",
+        },
+        {
+          id: 50,
+          type: "write",
+          question:
+            '请写汉字："这___（dào）菜很好吃！"（ = ลักษณนามสำหรับอาหาร）',
+          questionPy: 'Qǐng xiě hànzì: "Zhè ___ (dào) cài hěn hǎochī!"',
+          instruction: 'เขียนลักษณนามสำหรับอาหาร "道" (dào)',
+          answer: "道",
+          answerPy: "dào",
+          explain:
+            "✅ คำตอบคือ 道 (dào = ลักษณนามสำหรับอาหารจาน/เมนู) • 这道菜=อาหารจานนี้ • ลักษณนาม HSK2: 道=อาหาร, 杯=แก้ว, 碗=ชาม, 瓶=ขวด, 本=หนังสือ, 张=กระดาษ",
+        },
+      ];
+
+      SECTIONS[0].questions = listeningQuestions;
+      SECTIONS[1].questions = readingQuestions;
+      SECTIONS[2].questions = writingQuestions;
+
+      // =========================================================
+      // STATE
+      // =========================================================
+      let state = {
+        userName: "",
+        currentSection: 0,
+        currentQ: 0,
+        answers: {},
+        timers: {},
+        timerInterval: null,
+        timeLeft: 0,
+        sectionDone: [false, false, false],
+        speaking: false,
+      };
+
+      // =========================================================
+      // UTILITIES
+      // =========================================================
+      function showPage(n) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById("page" + n).classList.add("active");
+        window.scrollTo(0, 0);
+      }
+
+      function checkName() {
+        const val = document.getElementById("nameInput").value.trim();
+        state.userName = val;
+        document.getElementById("btnStart").disabled = val.length === 0;
+      }
+
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+      function fmtTime(s) {
+        return pad(Math.floor(s / 60)) + ":" + pad(s % 60);
+      }
+
+      // =========================================================
+      // EXAM START
+      // =========================================================
+      function startExam() {
+        if (!state.userName) return;
+        showPage(2);
+        state.currentSection = 0;
+        state.currentQ = 0;
+        state.answers = {};
+        loadSection(0);
+      }
+
+      function loadSection(si) {
+        state.currentSection = si;
+        state.currentQ = 0;
+        clearInterval(state.timerInterval);
+        state.timeLeft = SECTIONS[si].time;
+
+        // update tabs
+        for (let i = 0; i < 3; i++) {
+          const tab = document.getElementById("tab" + i);
+          tab.className = "section-tab";
+          if (i === si) tab.classList.add("active");
+          else if (state.sectionDone[i]) tab.classList.add("done");
+        }
+
+        startTimer();
+        renderQuestion();
+      }
+
+      function startTimer() {
+        updateTimerDisplay();
+        state.timerInterval = setInterval(() => {
+          state.timeLeft--;
+          updateTimerDisplay();
+          if (state.timeLeft <= 0) {
+            clearInterval(state.timerInterval);
+            autoAdvance();
+          }
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const el = document.getElementById("timerDisplay");
+        el.textContent = fmtTime(state.timeLeft);
+        el.className = "timer-display";
+        if (state.timeLeft <= 60) el.classList.add("danger");
+        else if (state.timeLeft <= 180) el.classList.add("warning");
+      }
+
+      function autoAdvance() {
+        state.sectionDone[state.currentSection] = true;
+        if (state.currentSection < 2) {
+          showTransition(state.currentSection + 1);
+        } else {
+          submitExam();
+        }
+      }
+
+      function showTransition(nextSi) {
+        const icons = ["📖", "✍️"];
+        const titles = ["ส่วนที่ 2: การอ่าน 阅读", "ส่วนที่ 3: การเขียน 书写"];
+        const subs = [
+          "เตรียมตัวสำหรับส่วนการอ่าน\n20 ข้อ • 20 นาที\nอ่านข้อความและเลือกคำตอบที่ถูกต้อง",
+          "เตรียมตัวสำหรับส่วนการเขียน\n10 ข้อ • 15 นาที\nพิมพ์ตอบเป็นภาษาจีน (ต้องการ IME จีน)",
+        ];
+        document.getElementById("transIcon").textContent = icons[nextSi - 1];
+        document.getElementById("transTitle").textContent = titles[nextSi - 1];
+        document.getElementById("transSub").textContent = subs[nextSi - 1];
+        document.getElementById("sectionTransition").classList.remove("hidden");
+        document.getElementById("sectionTransition").dataset.next = nextSi;
+      }
+
+      function continueSection() {
+        const nextSi = parseInt(
+          document.getElementById("sectionTransition").dataset.next
+        );
+        document.getElementById("sectionTransition").classList.add("hidden");
+        loadSection(nextSi);
+      }
+
+      // =========================================================
+      // RENDER QUESTION
+      // =========================================================
+      function renderQuestion() {
+        const sec = SECTIONS[state.currentSection];
+        const qi = state.currentQ;
+        const q = sec.questions[qi];
+        const total = sec.questions.length;
+        const body = document.getElementById("examBody");
+
+        // Section header
+        const pct = Math.round(((qi + 1) / total) * 100);
+
+        let qHtml = "";
+
+        if (q.type === "mc") {
+          // Choices
+          const choiceHtml = q.choices
+            .map((c) => {
+              const ans = state.answers[q.id];
+              const sel = ans === c.label ? " selected" : "";
+              return `<button class="choice-btn${sel}" onclick="selectAnswer(${
+                q.id
+              },'${c.label}')">
+        <span class="choice-label">${c.label}</span>
+        <span class="choice-text">
+          <span class="py">${c.py}</span>
+          ${c.zh}${
+                c.meaning
+                  ? ` <small style="color:#9ca3af;font-size:12px;"></small>`
+                  : ""
+              }
+        </span>
+      </button>`;
+            })
+            .join("");
+
+          // Audio for listening
+          let audioHtml = "";
+          let wenHtml = "";
+
+          if (state.currentSection === 0) {
+            // นำประโยคสนทนา คำว่า "问" (wèn) และคำถาม มารวมกัน
+            const fullTextToSpeak = `${q.audio} 问 ${q.question}`.replace(
+              /'/g,
+              "\\'"
+            );
+
+            audioHtml = `<div class="q-audio-row">
+        <button class="btn-play" id="playBtn${q.id}" onclick="speakText('${fullTextToSpeak}', ${q.id})">
+          ▶ 播放
+        </button>
+        <span class="audio-text-preview">
+          <div style="font-size: 11px; color: var(--gray-400); font-family: 'Sarabun', sans-serif;">${q.audioPy}</div>
+          <div style="font-size: 15px;">${q.audio}</div>
+        </span>
+      </div>`;
+            // Add WEN separator
+            wenHtml = `<div class="wen-separator">问 <span class="py">wèn</span></div>`;
+          }
+
+          qHtml = `
+      <div class="q-num">${q.id}</div>
+      ${audioHtml}
+      ${wenHtml}
+      <div class="q-text">
+        <span class="pinyin">${q.questionPy}</span>
+        <span class="hanzi">${q.question}</span>
+      </div>
+      <div class="choices">${choiceHtml}</div>
+    `;
+        } else {
+          // Writing question
+          const val = state.answers[q.id] || "";
+          qHtml = `
+      <div class="q-num">${q.id}</div>
+      <div class="q-text">
+        <span class="pinyin">${q.questionPy}</span>
+        <span class="hanzi" style="font-size:16px;">${q.question}</span>
+      </div>
+      <div style="background:#fef3c7;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#92400e;">
+        💡 ${q.instruction}
+      </div>
+      <div class="write-input-wrap">
+        <input type="text" class="write-input" 
+          placeholder="请用汉字作答..." 
+          value="${val}"
+          oninput="saveWriteAnswer(${q.id}, this.value)"
+          id="writeInput${q.id}">
+        <p class="write-hint">💬 พิมพ์คำตอบเป็นภาษาจีน (ต้องการ IME จีน) หรือพิมพ์พินอิน</p>
+      </div>
+    `;
+        }
+
+        body.innerHTML = `
+    <div class="section-header">
+      <div class="section-icon ${sec.iconClass}">${sec.icon}</div>
+      <div class="section-header-text">
+        <div class="sh-title">${sec.nameThai} – ${sec.name}</div>
+        <div class="sh-sub">ข้อที่ ${qi + 1} จาก ${total} ข้อ</div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:${pct}%"></div>
+      </div>
+    </div>
+    <div class="question-card">${qHtml}</div>
+  `;
+
+        // Counter
+        const globalQ = getGlobalQNum();
+        document.getElementById("qCounter").textContent = `ข้อ ${globalQ} / 50`;
+
+        // Prev/Next buttons
+        const btnPrev = document.getElementById("btnPrev");
+        const btnNext = document.getElementById("btnNext");
+        btnPrev.style.display =
+          qi === 0 && state.currentSection === 0 ? "none" : "block";
+
+        const isLast =
+          state.currentSection === 2 && qi === sec.questions.length - 1;
+        if (isLast) {
+          btnNext.textContent = "✅ ส่งข้อสอบ";
+          btnNext.className = "btn-nav btn-submit";
+          btnNext.onclick = submitExam;
+        } else {
+          btnNext.textContent = "下一题 →";
+          btnNext.className = "btn-nav btn-next";
+          btnNext.onclick = nextQ;
+        }
+      }
+
+      function getGlobalQNum() {
+        let base = 0;
+        for (let i = 0; i < state.currentSection; i++)
+          base += SECTIONS[i].questions.length;
+        return base + state.currentQ + 1;
+      }
+
+      function selectAnswer(qid, label) {
+        state.answers[qid] = label;
+        renderQuestion();
+      }
+
+      function saveWriteAnswer(qid, val) {
+        state.answers[qid] = val;
+      }
+
+      function prevQ() {
+        if (state.currentQ > 0) {
+          state.currentQ--;
+          renderQuestion();
+        } else if (state.currentSection > 0) {
+          state.currentSection--;
+          state.currentQ = SECTIONS[state.currentSection].questions.length - 1;
+          clearInterval(state.timerInterval);
+          // Update tabs
+          for (let i = 0; i < 3; i++) {
+            const tab = document.getElementById("tab" + i);
+            tab.className = "section-tab";
+            if (i === state.currentSection) tab.classList.add("active");
+            else if (state.sectionDone[i]) tab.classList.add("done");
+          }
+          state.timeLeft = SECTIONS[state.currentSection].time;
+          startTimer();
+          renderQuestion();
+        }
+      }
+
+      function nextQ() {
+        const sec = SECTIONS[state.currentSection];
+        if (state.currentQ < sec.questions.length - 1) {
+          state.currentQ++;
+          renderQuestion();
+        } else if (state.currentSection < 2) {
+          state.sectionDone[state.currentSection] = true;
+          showTransition(state.currentSection + 1);
+        }
+      }
+
+      // =========================================================
+      // TEXT TO SPEECH
+      // =========================================================
+      function speakText(text, qid) {
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+          document.querySelectorAll(".btn-play").forEach((b) => {
+            b.textContent = "▶ 播放";
+            b.classList.remove("playing");
+          });
+          return;
+        }
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = "zh-CN";
+        utter.rate = 0.85;
+        utter.pitch = 1;
+
+        const btn = document.getElementById("playBtn" + qid);
+        if (btn) {
+          btn.textContent = "⏹ 停止";
+          btn.classList.add("playing");
+        }
+
+        utter.onend = () => {
+          if (btn) {
+            btn.textContent = "▶ 播放";
+            btn.classList.remove("playing");
+          }
+        };
+        window.speechSynthesis.speak(utter);
+      }
+
+      // =========================================================
+      // SUBMIT & RESULTS
+      // =========================================================
+      function submitExam() {
+        clearInterval(state.timerInterval);
+        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+        buildResults();
+        showPage(3);
+      }
+
+      function buildResults() {
+        // Calculate scores
+        let scores = [0, 0, 0];
+        const allQ = [
+          ...listeningQuestions,
+          ...readingQuestions,
+          ...writingQuestions,
+        ];
+
+        allQ.forEach((q, i) => {
+          const si = i < 20 ? 0 : i < 40 ? 1 : 2;
+          const userAns = (state.answers[q.id] || "").trim();
+          const correct = q.answer.trim();
+          if (q.type === "write") {
+            if (
+              userAns === correct ||
+              userAns.toLowerCase() === correct.toLowerCase()
+            )
+              scores[si]++;
+          } else {
+            if (userAns === correct) scores[si]++;
+          }
+        });
+
+        const total = scores[0] + scores[1] + scores[2];
+        const pct = Math.round((total / 50) * 100);
+        const passed = pct >= 60;
+
+        const secNames = ["การฟัง", "การอ่าน", "การเขียน"];
+        const secMax = [20, 20, 10];
+        const secIcons = ["🎧", "📖", "✍️"];
+
+        // Section scores HTML
+        const secScoreHtml = scores
+          .map(
+            (s, i) => `
+    <div class="sscore-box">
+      <div class="ss-icon">${secIcons[i]}</div>
+      <div class="ss-label">${secNames[i]}</div>
+      <div class="ss-score">${s}</div>
+      <div class="ss-max">/ ${secMax[i]}</div>
+    </div>
+  `
+          )
+          .join("");
+
+        // Question analysis
+        let analysisHtml = "";
+        const secTitles = [
+          "ส่วนที่ 1: การฟัง (听力)",
+          "ส่วนที่ 2: การอ่าน (阅读)",
+          "ส่วนที่ 3: การเขียน (书写)",
+        ];
+        [listeningQuestions, readingQuestions, writingQuestions].forEach(
+          (qs, si) => {
+            analysisHtml += `<div class="analysis-title">${secIcons[si]} ${secTitles[si]}</div>`;
+            qs.forEach((q) => {
+              const userAns = (state.answers[q.id] || "").trim() || "—";
+              const correct = q.answer;
+              const isCorrect =
+                q.type === "write"
+                  ? userAns.toLowerCase() === correct.toLowerCase()
+                  : userAns === correct;
+
+              let userDisplay = userAns;
+              let correctDisplay = correct;
+              if (q.type === "mc") {
+                const uc = q.choices.find((c) => c.label === userAns);
+                const cc = q.choices.find((c) => c.label === correct);
+                if (uc) userDisplay = `${userAns}: ${uc.zh} (${uc.py})`;
+                if (cc) correctDisplay = `${correct}: ${cc.zh} (${cc.py})`;
+              } else {
+                correctDisplay = `${correct} (${q.answerPy})`;
+              }
+
+              analysisHtml += `
+        <div class="q-result-card ${isCorrect ? "correct" : "wrong"}">
+          <div class="qr-head">
+            <span class="qr-num">ข้อ ${q.id}</span>
+            <span class="qr-badge ${isCorrect ? "correct" : "wrong"}">${
+                isCorrect ? "✓ ถูก" : "✗ ผิด"
+              }</span>
+          </div>
+          <div class="qr-question">${
+            q.question.length > 100
+              ? q.question.substring(0, 100) + "…"
+              : q.question
+          }</div>
+          <div class="qr-answers">
+            <span class="qr-user-ans"><span class="ans-label">คำตอบของคุณ: </span>${userDisplay}</span>
+            ${
+              !isCorrect
+                ? `<span class="qr-correct-ans"><span class="ans-label">เฉลย: </span>${correctDisplay}</span>`
+                : ""
+            }
+          </div>
+          <div class="qr-explain">${q.explain}</div>
+        </div>
+      `;
+            });
+          }
+        );
+
+        // Strengths & Improvements
+        const listenPct = Math.round((scores[0] / 20) * 100);
+        const readPct = Math.round((scores[1] / 20) * 100);
+        const writePct = Math.round((scores[2] / 10) * 100);
+
+        let strengths = [];
+        let improvements = [];
+
+        if (listenPct >= 70)
+          strengths.push(
+            "ทักษะการฟัง: คุณสามารถฟังและเข้าใจบทสนทนาภาษาจีนระดับ HSK 2 ได้ดี"
+          );
+        else
+          improvements.push(
+            "ทักษะการฟัง: ควรฝึกฟังบทสนทนาภาษาจีนทุกวัน โดยเน้นการจับใจความสำคัญ"
+          );
+
+        if (readPct >= 70)
+          strengths.push(
+            "ทักษะการอ่าน: คุณมีความเข้าใจโครงสร้างไวยากรณ์ HSK 2 เป็นอย่างดี"
+          );
+        else
+          improvements.push(
+            "ทักษะการอ่าน: ควรทบทวนโครงสร้างไวยากรณ์ เช่น 比较, 把字句, 得字句"
+          );
+
+        if (writePct >= 70)
+          strengths.push(
+            "ทักษะการเขียน: คุณจำอักษรจีน HSK 2 และการสะกดได้ถูกต้อง"
+          );
+        else
+          improvements.push(
+            "ทักษะการเขียน: ควรฝึกเขียนอักษรจีนทุกวัน โดยใช้แบบฝึกหัดตัวอักษร HSK 2"
+          );
+
+        if (pct >= 80)
+          strengths.push(
+            "คะแนนรวมสูงกว่าเกณฑ์ผ่านอย่างชัดเจน แสดงถึงความเข้าใจภาษาจีนในระดับ HSK 2 ที่มั่นคง"
+          );
+        if (total >= 45)
+          strengths.push(
+            "คุณพร้อมสำหรับการสอบ HSK 3! ลองเรียนต่อในระดับที่สูงขึ้น"
+          );
+
+        if (improvements.length === 0)
+          improvements.push(
+            "ยังคงรักษาระดับและฝึกฝนต่อเนื่อง โดยเริ่มเรียน HSK 3 เพื่อพัฒนาต่อไป"
+          );
+
+        const strengthHtml = strengths
+          .map((s) => `<div class="sb-item">${s}</div>`)
+          .join("");
+        const improveHtml = improvements
+          .map((s) => `<div class="sb-item">${s}</div>`)
+          .join("");
+
+        document.getElementById("resultBody").innerHTML = `
+    <div class="score-hero">
+      <div class="greet">🎉 ยินดีด้วย คุณ${state.userName}!</div>
+      <div class="score-circle">
+        <span class="score-num">${total}</span>
+        <span class="score-denom">/ 50</span>
+      </div>
+      <div class="score-pct">คะแนน ${pct}%</div>
+      <div class="pass-badge ${passed ? "passed" : "failed"}">${
+          passed ? "🏆 ผ่านการสอบ!" : "📚 ยังไม่ผ่าน - สู้ต่อไป!"
+        }</div>
+    </div>
+
+    <div class="section-scores">${secScoreHtml}</div>
+
+    <div class="strength-grid">
+      <div class="strength-box good">
+        <div class="sb-title good">✨ จุดเด่น (Strengths)</div>
+        ${strengthHtml || '<div class="sb-item">ยังคงพัฒนาต่อไปเรื่อยๆ!</div>'}
+      </div>
+      <div class="strength-box improve">
+        <div class="sb-title improve">📈 จุดควรพัฒนา</div>
+        ${improveHtml}
+      </div>
+    </div>
+
+    <div class="analysis-section">
+      <div class="analysis-title">📋 วิเคราะห์ทุกข้อ</div>
+      ${analysisHtml}
+    </div>
+
+    <button class="btn-restart" onclick="restartExam()">🔄 สอบใหม่อีกครั้ง</button>
+    <div style="height:20px"></div>
+  `;
+      }
+
+      function restartExam() {
+        state = {
+          userName: "",
+          currentSection: 0,
+          currentQ: 0,
+          answers: {},
+          timers: {},
+          timerInterval: null,
+          timeLeft: 0,
+          sectionDone: [false, false, false],
+          speaking: false,
+        };
+        document.getElementById("nameInput").value = "";
+        document.getElementById("btnStart").disabled = true;
+        showPage(1);
+      }
+    </script>
+  </body>
+</html>

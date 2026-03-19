@@ -1,0 +1,3722 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK 2 Practice Test – H21005</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #c0392b;
+        --red-dark: #96281b;
+        --red-light: #e74c3c;
+        --gold: #f39c12;
+        --gold-light: #f1c40f;
+        --bg: #fdf6ec;
+        --white: #ffffff;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-400: #9ca3af;
+        --gray-600: #4b5563;
+        --gray-800: #1f2937;
+        --green: #27ae60;
+        --green-light: #2ecc71;
+        --blue: #2980b9;
+        --blue-light: #3498db;
+        --dark-footer: #1a1b26;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+        background: var(--bg);
+        min-height: 100vh;
+        color: var(--gray-800);
+        display: flex;
+        flex-direction: column;
+      }
+      .page {
+        display: none;
+        flex: 1;
+      }
+      .page.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== GLOBAL FOOTER ===== */
+      .global-footer {
+        background-color: var(--dark-footer);
+        color: #a0a0b0;
+        padding: 30px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin-top: auto;
+      }
+      .global-footer .f-left {
+        max-width: 400px;
+      }
+      .global-footer .f-left .f-title {
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 6px;
+        font-family: "Noto Sans SC", "Sarabun", sans-serif;
+      }
+      .global-footer .f-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-align: right;
+      }
+      .global-footer .f-right .f-copy {
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+      .global-footer .f-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--gold);
+      }
+      @media (max-width: 768px) {
+        .global-footer {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+          padding: 24px 20px;
+        }
+        .global-footer .f-right {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      /* ===== PAGE 1: LANDING ===== */
+      #page1 {
+        background: linear-gradient(
+          160deg,
+          #7b1414 0%,
+          #c0392b 40%,
+          #e74c3c 70%,
+          #f39c12 100%
+        );
+        position: relative;
+        overflow-x: hidden;
+      }
+      #page1::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      #page1::after {
+        content: "";
+        position: absolute;
+        bottom: 50px;
+        left: -80px;
+        width: 400px;
+        height: 400px;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 50%;
+      }
+      .landing-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px 60px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+      .landing-header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .chinese-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 6px 18px;
+        margin-bottom: 16px;
+      }
+      .chinese-badge span {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      .flag-icon {
+        font-size: 20px;
+      }
+      .main-title {
+        color: white;
+        font-size: clamp(28px, 5vw, 42px);
+        font-weight: 700;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .main-title .hsk-num {
+        color: var(--gold-light);
+        font-size: 1.2em;
+      }
+      .main-subtitle {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 16px;
+        font-weight: 300;
+      }
+      .card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        margin-bottom: 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      }
+      .card-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card-title::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 20px;
+        background: var(--red);
+        border-radius: 2px;
+      }
+      .creator-card {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        background: linear-gradient(135deg, #ffffff, #fffdfa);
+        border: 1px solid #fef08a;
+      }
+      .creator-img-wrap {
+        width: 150px;
+        height: 150px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        padding: 6px;
+        background: linear-gradient(135deg, var(--red), var(--gold));
+        box-shadow: 0 8px 24px rgba(192, 57, 43, 0.2);
+      }
+      .creator-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 4px solid white;
+      }
+      .creator-info {
+        flex: 1;
+      }
+      .creator-info .c-role {
+        font-size: 14px;
+        color: var(--gray-400);
+        font-weight: 600;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .creator-info .c-name {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 8px;
+      }
+      .creator-info .c-desc {
+        font-size: 15px;
+        color: var(--gray-600);
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+      .creator-info .c-badge {
+        display: inline-block;
+        background: #fffbeb;
+        color: #b45309;
+        border: 1px solid #fde68a;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .exam-info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .info-box {
+        background: linear-gradient(135deg, #fff5f5, #fff);
+        border: 1px solid #ffd7d7;
+        border-radius: 14px;
+        padding: 14px 10px;
+        text-align: center;
+      }
+      .info-box .icon {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+      .info-box .label {
+        font-size: 12px;
+        color: var(--gray-600);
+        margin-bottom: 4px;
+      }
+      .info-box .value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--red);
+      }
+      .info-box .unit {
+        font-size: 11px;
+        color: var(--gray-600);
+      }
+      .section-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .section-table th {
+        background: var(--red);
+        color: white;
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .section-table th:first-child {
+        border-radius: 10px 0 0 0;
+      }
+      .section-table th:last-child {
+        border-radius: 0 10px 0 0;
+      }
+      .section-table td {
+        padding: 10px 14px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--gray-100);
+        color: var(--gray-800);
+      }
+      .section-table tr:last-child td {
+        border-bottom: none;
+      }
+      .section-table tr:nth-child(even) td {
+        background: #fafafa;
+      }
+      .section-tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-listen {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+      .tag-read {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .tag-write {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .pass-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: linear-gradient(135deg, #fff7ed, #fffbeb);
+        border: 1px solid #fed7aa;
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .pass-icon {
+        font-size: 32px;
+      }
+      .pass-text .title {
+        font-weight: 700;
+        color: var(--gold);
+        font-size: 16px;
+      }
+      .pass-text .detail {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin-top: 3px;
+        line-height: 1.5;
+      }
+      .name-section {
+        margin-top: 4px;
+      }
+      .name-label {
+        display: block;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--gray-800);
+        margin-bottom: 8px;
+      }
+      .name-input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        font-size: 16px;
+        font-family: inherit;
+        color: var(--gray-800);
+        transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none;
+      }
+      .name-input:focus {
+        border-color: var(--red);
+        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+      }
+      .name-hint {
+        font-size: 12px;
+        color: var(--gray-400);
+        margin-top: 6px;
+      }
+      .btn-start {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+        margin-top: 18px;
+      }
+      .btn-start:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(192, 57, 43, 0.5);
+      }
+      .btn-start:disabled {
+        background: linear-gradient(135deg, #ccc, #aaa);
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+      .btn-icon {
+        margin-right: 8px;
+      }
+
+      /* ===== PAGE 2: EXAM ===== */
+      #page2 {
+        background: #f0f4f8;
+        font-family: "Noto Sans SC", "Noto Sans Thai", sans-serif;
+        padding-bottom: 70px;
+      }
+      .exam-topbar {
+        background: linear-gradient(135deg, #7b1414, #c0392b);
+        color: white;
+        padding: 0 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+      }
+      .exam-topbar-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        gap: 12px;
+      }
+      .exam-title-bar {
+        font-size: 18px;
+        font-weight: 700;
+        white-space: nowrap;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .section-tabs {
+        display: flex;
+        gap: 4px;
+      }
+      .section-tab {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-family: "Noto Sans SC", sans-serif;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.1);
+        cursor: default;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .section-tab.active {
+        background: white;
+        color: var(--red);
+      }
+      .section-tab.done {
+        background: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .timer-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        padding: 6px 14px;
+        white-space: nowrap;
+      }
+      .timer-display {
+        font-size: 20px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 1px;
+        font-family: monospace;
+      }
+      .timer-display.warning {
+        color: #ffd700;
+        animation: pulse 1s infinite;
+      }
+      .timer-display.danger {
+        color: #ff6b6b;
+        animation: pulse 0.5s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .exam-body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+        flex: 1;
+      }
+      .section-header {
+        background: white;
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .section-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .icon-listen {
+        background: #dbeafe;
+      }
+      .icon-read {
+        background: #dcfce7;
+      }
+      .icon-write {
+        background: #fef3c7;
+      }
+      .section-header-text .sh-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--gray-800);
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .section-header-text .sh-sub {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin-top: 2px;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .progress-bar-wrap {
+        background: var(--gray-100);
+        border-radius: 10px;
+        height: 6px;
+        flex: 1;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--red), var(--gold));
+        border-radius: 10px;
+        transition: width 0.3s;
+      }
+      .question-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        position: relative;
+      }
+      .q-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: var(--red);
+        color: white;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-family: monospace;
+      }
+      .q-audio-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #f0f4f8;
+        border-radius: 12px;
+        padding: 12px 16px;
+        margin-bottom: 14px;
+      }
+      .btn-play {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-family: "Noto Sans SC", sans-serif;
+        cursor: pointer;
+        transition: background 0.15s;
+        white-space: nowrap;
+      }
+      .btn-play:hover {
+        background: var(--blue-light);
+      }
+      .btn-play.playing {
+        background: var(--red);
+      }
+      .audio-text-preview {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-family: "Noto Sans SC", sans-serif;
+        flex: 1;
+      }
+
+      /* ===== TRUE/FALSE (✓对 / ✗错) ===== */
+      .tf-container {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+      }
+      .tf-btn {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 20px 12px;
+        border: 2px solid var(--gray-200);
+        border-radius: 16px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .tf-btn:hover:not(.selected-true):not(.selected-false) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+      .tf-icon {
+        font-size: 36px;
+        line-height: 1;
+      }
+      .tf-char {
+        font-size: 22px;
+        font-weight: 700;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .tf-py {
+        font-size: 12px;
+        color: var(--gray-400);
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .tf-btn.selected-true {
+        border-color: var(--green);
+        background: linear-gradient(135deg, #d1fae5, #f0fdf4);
+        box-shadow: 0 4px 16px rgba(39, 174, 96, 0.25);
+      }
+      .tf-btn.selected-false {
+        border-color: var(--red);
+        background: linear-gradient(135deg, #fee2e2, #fff5f5);
+        box-shadow: 0 4px 16px rgba(192, 57, 43, 0.25);
+      }
+      .tf-btn.selected-true .tf-char {
+        color: var(--green);
+      }
+      .tf-btn.selected-false .tf-char {
+        color: var(--red);
+      }
+      .tf-btn.selected-true .tf-py {
+        color: var(--green);
+      }
+      .tf-btn.selected-false .tf-py {
+        color: var(--red);
+      }
+
+      /* ===== WEN SEPARATOR (listening) ===== */
+      .wen-separator {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: var(--red);
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 12px;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .wen-separator .py {
+        font-size: 12px;
+        color: #ef4444;
+        font-weight: normal;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+
+      /* ===== PASSAGE BOX (reading) ===== */
+      .passage-box {
+        background: #f8fafc;
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin-bottom: 16px;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .passage-box .pb-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--gray-400);
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .passage-box .pb-text {
+        font-size: 16px;
+        line-height: 1.9;
+        color: var(--gray-800);
+      }
+      .passage-box .pb-py {
+        font-size: 11px;
+        color: var(--gray-400);
+        margin-top: 4px;
+        line-height: 1.6;
+      }
+
+      /* ===== CHOICES ===== */
+      .choices {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .choice-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.15s;
+        text-align: left;
+        width: 100%;
+        font-family: inherit;
+      }
+      .choice-btn:hover:not(.selected) {
+        border-color: var(--red);
+        background: #fff5f5;
+      }
+      .choice-btn.selected {
+        border-color: var(--red);
+        background: linear-gradient(135deg, #fff5f5, #fff);
+      }
+      .choice-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        background: var(--gray-100);
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gray-600);
+        flex-shrink: 0;
+        transition: all 0.15s;
+      }
+      .choice-btn.selected .choice-label {
+        background: var(--red);
+        color: white;
+      }
+      .choice-text {
+        font-size: 15px;
+        color: var(--gray-800);
+        line-height: 1.5;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .choice-text .py {
+        font-size: 11px;
+        color: var(--gray-400);
+        display: block;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+
+      /* ===== WRITE INPUT ===== */
+      .write-input-wrap {
+        margin-top: 4px;
+      }
+      .write-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        font-size: 22px;
+        font-family: "Noto Sans SC", sans-serif;
+        color: var(--gray-800);
+        outline: none;
+        transition: border-color 0.2s;
+        text-align: center;
+        letter-spacing: 4px;
+      }
+      .write-input:focus {
+        border-color: var(--red);
+        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
+      }
+      .write-hint {
+        font-size: 12px;
+        color: var(--gray-400);
+        margin-top: 6px;
+        font-family: "Noto Sans SC", sans-serif;
+        text-align: center;
+      }
+      .write-instruction {
+        background: #fef3c7;
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        font-size: 14px;
+        color: #92400e;
+        font-family: "Noto Sans SC", sans-serif;
+        line-height: 1.6;
+      }
+
+      /* ===== Q TEXT ===== */
+      .q-text {
+        font-size: 17px;
+        color: var(--gray-800);
+        margin-bottom: 16px;
+        line-height: 1.6;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .q-text .pinyin {
+        display: block;
+        font-size: 12px;
+        color: var(--gray-400);
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .q-text .hanzi {
+        font-size: 18px;
+      }
+
+      /* ===== IMAGE DESCRIPTION BOX ===== */
+      .img-desc-box {
+        background: linear-gradient(135deg, #f0f4f8, #e8edf5);
+        border: 1px dashed #b0bec5;
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .img-desc-icon {
+        font-size: 28px;
+        flex-shrink: 0;
+      }
+      .img-desc-text {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .img-desc-text .idt-label {
+        font-size: 11px;
+        color: var(--gray-400);
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+      }
+      .img-desc-text .idt-content {
+        font-size: 15px;
+        color: var(--gray-800);
+        line-height: 1.7;
+      }
+      .img-desc-text .idt-py {
+        font-size: 11px;
+        color: var(--gray-400);
+        margin-top: 3px;
+      }
+
+      /* ===== NAV BAR ===== */
+      .nav-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid var(--gray-200);
+        padding: 12px 20px;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        z-index: 99;
+      }
+      .nav-bar-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .q-counter {
+        font-size: 14px;
+        color: var(--gray-600);
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .btn-nav {
+        padding: 12px 28px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: "Noto Sans SC", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+      }
+      .btn-prev {
+        background: var(--gray-100);
+        color: var(--gray-600);
+      }
+      .btn-prev:hover {
+        background: var(--gray-200);
+      }
+      .btn-next {
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        box-shadow: 0 3px 12px rgba(192, 57, 43, 0.3);
+      }
+      .btn-next:hover {
+        transform: translateY(-1px);
+      }
+      .btn-submit {
+        background: linear-gradient(135deg, var(--green), #1e8449);
+        color: white;
+        padding: 12px 28px;
+        box-shadow: 0 3px 12px rgba(39, 174, 96, 0.3);
+      }
+      .btn-submit:hover {
+        transform: translateY(-1px);
+      }
+
+      /* ===== SECTION TRANSITION ===== */
+      .section-transition {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+        backdrop-filter: blur(4px);
+      }
+      .section-transition.hidden {
+        display: none;
+      }
+      .transition-card {
+        background: white;
+        border-radius: 24px;
+        padding: 48px 40px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        animation: popIn 0.3s ease;
+      }
+      @keyframes popIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .transition-card .tc-icon {
+        font-size: 52px;
+        margin-bottom: 16px;
+      }
+      .transition-card .tc-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--gray-800);
+        margin-bottom: 8px;
+        font-family: "Sarabun", sans-serif;
+      }
+      .transition-card .tc-sub {
+        font-size: 14px;
+        color: var(--gray-600);
+        margin-bottom: 28px;
+        font-family: "Sarabun", sans-serif;
+        line-height: 1.6;
+      }
+      .btn-continue {
+        padding: 14px 36px;
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        font-family: "Sarabun", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 16px rgba(192, 57, 43, 0.35);
+      }
+      .btn-continue:hover {
+        transform: translateY(-2px);
+      }
+
+      /* ===== PAGE 3: RESULTS ===== */
+      #page3 {
+        background: #f0f4f8;
+        font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+      }
+      .result-topbar {
+        background: linear-gradient(135deg, #7b1414, #c0392b);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .result-topbar h1 {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .result-body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+        flex: 1;
+      }
+      .score-hero {
+        background: linear-gradient(135deg, #7b1414, #c0392b 50%, #e67e22);
+        border-radius: 24px;
+        padding: 36px;
+        text-align: center;
+        color: white;
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .score-hero::before {
+        content: "🎓";
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        font-size: 80px;
+        opacity: 0.15;
+      }
+      .score-hero .greet {
+        font-size: 18px;
+        margin-bottom: 8px;
+        opacity: 0.9;
+      }
+      .score-circle {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        height: 140px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 4px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        margin: 16px auto;
+      }
+      .score-num {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .score-denom {
+        font-size: 18px;
+        opacity: 0.8;
+      }
+      .score-pct {
+        font-size: 16px;
+        opacity: 0.85;
+        margin-top: 4px;
+      }
+      .pass-badge {
+        display: inline-block;
+        padding: 8px 24px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 8px;
+      }
+      .pass-badge.passed {
+        background: var(--green-light);
+        color: white;
+      }
+      .pass-badge.failed {
+        background: #e74c3c;
+        color: white;
+      }
+      .section-scores {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .sscore-box {
+        background: white;
+        border-radius: 16px;
+        padding: 18px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .sscore-box .ss-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      .sscore-box .ss-label {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .sscore-box .ss-score {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--red);
+      }
+      .sscore-box .ss-max {
+        font-size: 13px;
+        color: var(--gray-400);
+      }
+      .analysis-section {
+        margin-bottom: 28px;
+      }
+      .analysis-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--gray-800);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .analysis-title::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 20px;
+        background: var(--red);
+        border-radius: 2px;
+      }
+      .q-result-card {
+        background: white;
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid transparent;
+      }
+      .q-result-card.correct {
+        border-left-color: var(--green);
+      }
+      .q-result-card.wrong {
+        border-left-color: #e74c3c;
+      }
+      .qr-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .qr-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--gray-600);
+      }
+      .qr-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .qr-badge.correct {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .qr-badge.wrong {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .qr-question {
+        font-size: 15px;
+        color: var(--gray-800);
+        margin-bottom: 8px;
+        line-height: 1.5;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .qr-answers {
+        display: flex;
+        gap: 16px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+      .qr-user-ans {
+        color: var(--gray-600);
+      }
+      .qr-user-ans .ans-label {
+        font-weight: 700;
+      }
+      .qr-correct-ans {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .qr-correct-ans .ans-label {
+        font-weight: 700;
+      }
+      .qr-explain {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13px;
+        color: var(--gray-600);
+        line-height: 1.65;
+        border: 1px solid var(--gray-100);
+      }
+      .qr-explain strong {
+        color: var(--red);
+      }
+      .strength-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .strength-box {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .strength-box.good {
+        border-top: 4px solid var(--green);
+      }
+      .strength-box.improve {
+        border-top: 4px solid var(--gold);
+      }
+      .sb-title {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .sb-title.good {
+        color: var(--green);
+      }
+      .sb-title.improve {
+        color: var(--gold);
+      }
+      .sb-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--gray-700);
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+      .sb-item::before {
+        content: "•";
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .strength-box.good .sb-item::before {
+        color: var(--green);
+      }
+      .strength-box.improve .sb-item::before {
+        color: var(--gold);
+      }
+      .btn-restart {
+        display: block;
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 20px rgba(192, 57, 43, 0.35);
+        letter-spacing: 1px;
+      }
+      .btn-restart:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(192, 57, 43, 0.45);
+      }
+
+      @media (max-width: 640px) {
+        .creator-card {
+          flex-direction: column;
+          text-align: center;
+          padding: 28px 20px;
+        }
+        .exam-info-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+        .info-box .value {
+          font-size: 16px;
+        }
+        .section-tabs {
+          display: none;
+        }
+        .section-scores {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+        .strength-grid {
+          grid-template-columns: 1fr;
+        }
+        .exam-topbar-inner {
+          gap: 8px;
+        }
+        .exam-title-bar {
+          font-size: 14px;
+        }
+        .tf-container {
+          gap: 10px;
+        }
+        .tf-icon {
+          font-size: 28px;
+        }
+        .tf-char {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ==================== PAGE 1: LANDING (ภาษาไทยทั้งหมด) ==================== -->
+    <div id="page1" class="page active">
+      <div class="landing-container">
+        <div class="landing-header">
+          <div class="chinese-badge">
+            <span class="flag-icon">🇨🇳</span>
+            <span>Hanyu Shuiping Kaoshi</span>
+          </div>
+          <h1 class="main-title">
+            แบบทดสอบ HSK <span class="hsk-num">2</span>
+          </h1>
+          <p class="main-subtitle">
+            ข้อสอบวัดระดับภาษาจีนกลาง ชุดฝึกหัด H21005
+          </p>
+        </div>
+
+        <div class="card creator-card">
+          <div class="creator-img-wrap">
+            <img
+              src="image_16d5ba.jpg"
+              alt="อ.อดิเรก นวลศรี"
+              class="creator-img"
+              onerror="this.src='https://img1.pic.in.th/images/hsk2.jpg'"
+            />
+          </div>
+          <div class="creator-info">
+            <div class="c-role">ผู้จัดทำและออกแบบเว็บไซต์</div>
+            <div class="c-name">อ.อดิเรก นวลศรี</div>
+            <div class="c-desc">ผู้อำนวยการสถาบันอู่โหวกงฝาง (ฝ่ายไทย)</div>
+            <div class="c-badge">© สงวนลิขสิทธิ์ 2026</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ข้อมูลการสอบ</div>
+          <div class="exam-info-grid">
+            <div class="info-box">
+              <div class="icon">📝</div>
+              <div class="label">จำนวนข้อ</div>
+              <div class="value">70</div>
+              <div class="unit">ข้อ</div>
+            </div>
+            <div class="info-box">
+              <div class="icon">⏱️</div>
+              <div class="label">เวลารวม</div>
+              <div class="value">55</div>
+              <div class="unit">นาที</div>
+            </div>
+            <div class="info-box">
+              <div class="icon">🏆</div>
+              <div class="label">เกณฑ์ผ่าน</div>
+              <div class="value">60</div>
+              <div class="unit">%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ส่วนการสอบและเวลา</div>
+          <table class="section-table">
+            <thead>
+              <tr>
+                <th>ส่วนที่</th>
+                <th>ทักษะ</th>
+                <th>จำนวนข้อ</th>
+                <th>เวลา</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><span class="section-tag tag-listen">🎧 การฟัง</span></td>
+                <td>35 ข้อ</td>
+                <td>25 นาที</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><span class="section-tag tag-read">📖 การอ่าน</span></td>
+                <td>25 ข้อ</td>
+                <td>22 นาที</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><span class="section-tag tag-write">✍️ การเขียน</span></td>
+                <td>10 ข้อ</td>
+                <td>15 นาที</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="pass-info">
+            <div class="pass-icon">🎯</div>
+            <div class="pass-text">
+              <div class="title">เกณฑ์การผ่านการสอบ HSK 2</div>
+              <div class="detail">
+                ต้องได้คะแนนรวมอย่างน้อย <strong>60%</strong> (42 คะแนน จาก 70
+                คะแนน)<br />ฟัง ≥ 21/35 • อ่าน ≥ 15/25 • เขียน ≥ 6/10
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ข้อมูลผู้เข้าสอบ</div>
+          <div class="name-section">
+            <label class="name-label">ชื่อผู้เข้าสอบ *</label>
+            <input
+              type="text"
+              class="name-input"
+              id="nameInput"
+              placeholder="กรอกชื่อ-นามสกุลของคุณ"
+              oninput="checkName()"
+            />
+            <p class="name-hint">* กรอกชื่อเพื่อเปิดใช้งานปุ่มเริ่มสอบ</p>
+          </div>
+          <button
+            class="btn-start"
+            id="btnStart"
+            disabled
+            onclick="startExam()"
+          >
+            <span class="btn-icon">🚀</span> เริ่มสอบ
+          </button>
+        </div>
+      </div>
+
+      <footer class="global-footer">
+        <div class="f-left">
+          <div class="f-title">HSK 2 模拟考试</div>
+          <div>
+            เว็บฝึกสอบภาษาจีน HSK 2
+            ที่ออกแบบให้ใช้งานได้สะดวกทั้งมือถือและเดสก์ท็อป
+          </div>
+        </div>
+        <div class="f-right">
+          <div class="f-r-text">
+            <div class="f-copy">Copyright © 2026 อ.อดิเรก นวลศรี</div>
+            <div>
+              สร้างสรรค์และออกแบบโดย อ.อดิเรก นวลศรี<br />ผู้อำนวยการสถาบันอู่โหวกงฝาง(ฝ่ายไทย)
+            </div>
+          </div>
+          <img
+            src="image_16d5ba.jpg"
+            alt="อ.อดิเรก นวลศรี"
+            class="f-avatar"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </footer>
+    </div>
+
+    <!-- ==================== PAGE 2: EXAM (จีน+พินอินเท่านั้น) ==================== -->
+    <div id="page2" class="page">
+      <div class="exam-topbar">
+        <div class="exam-topbar-inner">
+          <div class="exam-title-bar">HSK 2 考试</div>
+          <div class="section-tabs">
+            <div class="section-tab" id="tab0">🎧 听力</div>
+            <div class="section-tab" id="tab1">📖 阅读</div>
+            <div class="section-tab" id="tab2">✍️ 书写</div>
+          </div>
+          <div class="timer-box">
+            <span class="timer-icon">⏱</span>
+            <span class="timer-display" id="timerDisplay">20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exam-body" id="examBody"></div>
+
+      <footer class="global-footer">
+        <div class="f-left">
+          <div class="f-title">HSK 2 模拟考试</div>
+          <div>HSK 2 练习考试 H21005</div>
+        </div>
+        <div class="f-right">
+          <div class="f-r-text">
+            <div class="f-copy">Copyright © 2026 อ.อดิเรก นวลศรี</div>
+            <div>由 อ.อดิเรก นวลศรี 创作设计</div>
+          </div>
+          <img
+            src="image_16d5ba.jpg"
+            alt=""
+            class="f-avatar"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </footer>
+
+      <div class="nav-bar">
+        <div class="nav-bar-inner">
+          <span class="q-counter" id="qCounter"></span>
+          <div style="display: flex; gap: 10px">
+            <button class="btn-nav btn-prev" id="btnPrev" onclick="prevQ()">
+              ← 上一题
+            </button>
+            <button class="btn-nav btn-next" id="btnNext" onclick="nextQ()">
+              下一题 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-transition hidden" id="sectionTransition">
+        <div class="transition-card">
+          <div class="tc-icon" id="transIcon">📖</div>
+          <div class="tc-title" id="transTitle">เตรียมพร้อมสำหรับส่วนถัดไป</div>
+          <div class="tc-sub" id="transSub"></div>
+          <button class="btn-continue" onclick="continueSection()">
+            เริ่มส่วนถัดไป →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PAGE 3: RESULTS (ภาษาไทยทั้งหมด) ==================== -->
+    <div id="page3" class="page">
+      <div class="result-topbar"><h1>📊 ผลการสอบ HSK 2</h1></div>
+      <div class="result-body" id="resultBody"></div>
+      <footer class="global-footer">
+        <div class="f-left">
+          <div class="f-title">HSK 2 模拟考试</div>
+          <div>
+            เว็บฝึกสอบภาษาจีน HSK 2
+            ที่ออกแบบให้ใช้งานได้สะดวกทั้งมือถือและเดสก์ท็อป
+          </div>
+        </div>
+        <div class="f-right">
+          <div class="f-r-text">
+            <div class="f-copy">Copyright © 2026 อ.อดิเรก นวลศรี</div>
+            <div>
+              สร้างสรรค์และออกแบบโดย อ.อดิเรก นวลศรี<br />ผู้อำนวยการสถาบันอู่โหวกงฝาง(ฝ่ายไทย)
+            </div>
+          </div>
+          <img
+            src="image_16d5ba.jpg"
+            alt="อ.อดิเรก นวลศรี"
+            class="f-avatar"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // ================================================================
+      // DATA – HSK 2 H21005 (50 ข้อ: ฟัง 20 / อ่าน 20 / เขียน 10)
+      // Page 2: ห้ามมีภาษาไทยในข้อมูลข้อสอบ → ใช้ zh + py เท่านั้น
+      // ================================================================
+      const SECTIONS = [
+        {
+          id: "listening",
+          name: "听力 (Tīnglì)",
+          nameThai: "การฟัง",
+          icon: "🎧",
+          iconClass: "icon-listen",
+          time: 25 * 60,
+          questions: [],
+        },
+        {
+          id: "reading",
+          name: "阅读 (Yuèdú)",
+          nameThai: "การอ่าน",
+          icon: "📖",
+          iconClass: "icon-read",
+          time: 22 * 60,
+          questions: [],
+        },
+        {
+          id: "writing",
+          name: "书写 (Shūxiě)",
+          nameThai: "การเขียน",
+          icon: "✍️",
+          iconClass: "icon-write",
+          time: 15 * 60,
+          questions: [],
+        },
+      ];
+
+      // ── LISTENING 20 ข้อ (H21005) ───────────────────────────────────
+      // type:"tf"  → ตอบ ✓对 / ✗错  (answer: "对" | "错")
+      // audio = ประโยคที่ได้ยิน, imgDesc = คำอธิบายภาพแทนรูป
+      const listeningQuestions = [
+        // ── ข้อ 1–10: ฟังแล้วดูภาพ → ตอบ 对/错 ──
+        {
+          id: 1,
+          type: "tf",
+          audio: "她在喝咖啡。",
+          audioPy: "Tā zài hē kāfēi.",
+          imgDesc:
+            "【图片说明】一只咖啡杯，冒着热气，旁边没有人，只有一杯黑色的咖啡。",
+          imgDescPy:
+            "yī zhī kāfēi bēi, màozhe rèqì, zhǐ yǒu yī bēi hēisè de kāfēi.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。音频说「她在喝咖啡」，但图片只有一杯咖啡，没有人在喝，不一致。 • 词汇：喝咖啡=ดื่มกาแฟ",
+        },
+        {
+          id: 2,
+          type: "tf",
+          audio: "她怀孕了。",
+          audioPy: "Tā huáiyùn le.",
+          imgDesc:
+            "【图片说明】一位身穿黑色上衣的孕妇，手放在大肚子上，侧身站立。",
+          imgDescPy:
+            "yī wèi shēn chuān hēisè shàngyī de yùnfù, shǒu fàng zài dà dùzi shàng.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。图片显示一位孕妇，与音频「她怀孕了」一致。 • 词汇：怀孕=ตั้งครรภ์",
+        },
+        {
+          id: 3,
+          type: "tf",
+          audio: "她竖起了大拇指。",
+          audioPy: "Tā shù qǐ le dà mǔzhǐ.",
+          imgDesc:
+            "【图片说明】一位年轻女性面带微笑，双手竖起大拇指，表示称赞或同意。",
+          imgDescPy:
+            "yī wèi niánqīng nǚxìng miàn dài wēixiào, shuāng shǒu shù qǐ dà mǔzhǐ.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。图片显示女性竖起大拇指，与音频一致。 • 词汇：竖起=ยกขึ้น，大拇指=นิ้วโป้ง",
+        },
+        {
+          id: 4,
+          type: "tf",
+          audio: "她在拍照。",
+          audioPy: "Tā zài pāizhào.",
+          imgDesc:
+            "【图片说明】一位年轻女性手拿相机，正在对准镜头准备拍照，表情专注。",
+          imgDescPy:
+            "yī wèi niánqīng nǚxìng shǒu ná xiāngjī, zhèngzài duìzhǔn jìngtóu pāizhào.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。图片显示女性正在拍照，与音频「她在拍照」一致。 • 词汇：拍照=ถ่ายรูป",
+        },
+        {
+          id: 5,
+          type: "tf",
+          audio: "他们在看书。",
+          audioPy: "Tāmen zài kàn shū.",
+          imgDesc:
+            "【图片说明】一位男性正在用双手打开笔记本电脑，屏幕发亮，坐在桌子前工作。",
+          imgDescPy:
+            "yī wèi nánxìng zhèngzài yòng shuāng shǒu dǎkāi bǐjìběn diànnǎo.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。音频说「看书」，但图片显示的是使用电脑，不是在看书。 • 词汇：看书=อ่านหนังสือ，电脑=คอมพิวเตอร์",
+        },
+        {
+          id: 6,
+          type: "tf",
+          audio: "桌子上有一本书。",
+          audioPy: "Zhuōzi shàng yǒu yī běn shū.",
+          imgDesc:
+            "【图片说明】一本打开的书摆放着，书页展开，可以看到里面有文字，像是正在阅读的样子。",
+          imgDescPy: "yī běn dǎkāi de shū bǎifàngzhe, shū yè zhǎnkāi.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。图片显示一本书，与音频「桌子上有一本书」一致。 • 词汇：桌子=โต๊ะ，书=หนังสือ",
+        },
+        {
+          id: 7,
+          type: "tf",
+          audio: "爸爸正在教孩子做运动。",
+          audioPy: "Bàba zhèngzài jiāo háizi zuò yùndòng.",
+          imgDesc:
+            "【图片说明】一位成年男性站在小孩后面，双手高举，带着小孩一起做伸展运动，像是在教孩子。",
+          imgDescPy:
+            "yī wèi chéngnián nánxìng zhàn zài xiǎohái hòumiàn, dài zhe xiǎohái zuò shēnzhǎn yùndòng.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。图片显示大人正在带小孩做运动，与音频一致。 • 词汇：教=สอน，运动=ออกกำลังกาย",
+        },
+        {
+          id: 8,
+          type: "tf",
+          audio: "他在看手表。",
+          audioPy: "Tā zài kàn shǒubiǎo.",
+          imgDesc:
+            "【图片说明】一位男性手里举着一个大时钟，转动时钟查看时间，表情专注。",
+          imgDescPy:
+            "yī wèi nánxìng shǒu lǐ jǔzhe yī gè dà shízhōng, zhuǎndòng shízhōng chá shíjiān.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。音频说「看手表」，但图片显示的是一个大时钟，不是手表。 • 词汇：手表=นาฬิกาข้อมือ，时钟=นาฬิกาตั้ง",
+        },
+        {
+          id: 9,
+          type: "tf",
+          audio: "他们在骑自行车。",
+          audioPy: "Tāmen zài qí zìxíngchē.",
+          imgDesc:
+            "【图片说明】两人站在一辆自行车旁边，一人坐在车上，另一人站着，两人像在聊天或交接自行车。",
+          imgDescPy:
+            "liǎng rén zhàn zài yī liàng zìxíngchē pángbiān, yī rén zuò zài chē shàng.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。音频说「在骑自行车」，但图片只是站在自行车旁边，并没有在骑。 • 词汇：骑自行车=ขี่จักรยาน",
+        },
+        {
+          id: 10,
+          type: "tf",
+          audio: "她和猫都戴着帽子。",
+          audioPy: "Tā hé māo dōu dàizhe màozi.",
+          imgDesc:
+            "【图片说明】一位微笑的女性戴着针织帽，旁边有一只白猫也戴着一顶小礼帽，两者都戴帽子。",
+          imgDescPy:
+            "yī wèi wēixiào de nǚxìng dàizhe zhēnzhī mào, pángbiān yǒu yī zhī bái māo yě dàizhe xiǎo lǐmào.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。图片显示女性和猫都戴着帽子，与音频完全一致。 • 词汇：戴=สวมใส่，帽子=หมวก，猫=แมว",
+        },
+        // ── ข้อ 11–15: ฟังบทสนทนา → เลือก A B C (จาก PDF part 2, ตอบ 11=F 12=C 13=E 14=B 15=A) ──
+        {
+          id: 11,
+          type: "mc",
+          audio: "男：你明天去哪儿？女：我去火车站接朋友，他从上海来。",
+          audioPy:
+            "Nán: Nǐ míngtiān qù nǎr? Nǚ: Wǒ qù huǒchēzhàn jiē péngyou, tā cóng Shànghǎi lái.",
+          question: "女的明天去哪儿？",
+          questionPy: "Nǚ de míngtiān qù nǎr?",
+          choices: [
+            { label: "A", zh: "商场", py: "shāngchǎng" },
+            { label: "B", zh: "机场", py: "jīchǎng" },
+            { label: "C", zh: "火车站", py: "huǒchēzhàn" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 火车站 (huǒchēzhàn)。女的说「去火车站接朋友」。 • 词汇：火车站=สถานีรถไฟ，接=รับ",
+        },
+        {
+          id: 12,
+          type: "mc",
+          audio: "女：你在干什么？男：我在准备晚饭，今天我做饭。女：太好了！",
+          audioPy: "Nǚ: Nǐ zài gàn shénme? Nán: Wǒ zài zhǔnbèi wǎnfàn...",
+          question: "男的在做什么？",
+          questionPy: "Nán de zài zuò shénme?",
+          choices: [
+            { label: "A", zh: "跑步", py: "pǎobù" },
+            { label: "B", zh: "看书", py: "kàn shū" },
+            { label: "C", zh: "做饭", py: "zuò fàn" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 做饭 (zuò fàn)。男的说「我在准备晚饭，今天我做饭」。 • 词汇：准备=เตรียม，晚饭=อาหารเย็น",
+        },
+        {
+          id: 13,
+          type: "mc",
+          audio: "男：你多高？女：我一米六五，你呢？男：我一米八。",
+          audioPy:
+            "Nán: Nǐ duō gāo? Nǚ: Wǒ yī mǐ liù wǔ, nǐ ne? Nán: Wǒ yī mǐ bā.",
+          question: "男的多高？",
+          questionPy: "Nán de duō gāo?",
+          choices: [
+            { label: "A", zh: "一米六五", py: "yī mǐ liù wǔ" },
+            { label: "B", zh: "一米七五", py: "yī mǐ qī wǔ" },
+            { label: "C", zh: "一米八", py: "yī mǐ bā" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 一米八 (yī mǐ bā)。男的说「我一米八」。 • 词汇：高=สูง，米=เมตร",
+        },
+        {
+          id: 14,
+          type: "mc",
+          audio: "女：你今天怎么来的？男：我骑自行车来的。女：啊，你不怕热吗？",
+          audioPy: "Nǚ: Nǐ jīntiān zěnme lái de? Nán: Wǒ qí zìxíngchē lái de.",
+          question: "男的怎么来的？",
+          questionPy: "Nán de zěnme lái de?",
+          choices: [
+            { label: "A", zh: "坐地铁", py: "zuò dìtiě" },
+            { label: "B", zh: "骑自行车", py: "qí zìxíngchē" },
+            { label: "C", zh: "开车", py: "kāi chē" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 骑自行车 (qí zìxíngchē)。男的说「我骑自行车来的」。 • 词汇：自行车=จักรยาน，怕热=กลัวร้อน",
+        },
+        {
+          id: 15,
+          type: "mc",
+          audio:
+            "男：我想买这双鞋，但是没有我的号。女：你穿多大号的？男：我穿四十二号。",
+          audioPy: "Nán: Wǒ xiǎng mǎi zhè shuāng xié, dànshì méiyǒu wǒ de hào.",
+          question: "男的穿多大号的鞋？",
+          questionPy: "Nán de chuān duō dà hào de xié?",
+          choices: [
+            { label: "A", zh: "四十号", py: "sìshí hào" },
+            { label: "B", zh: "四十一号", py: "sìshí yī hào" },
+            { label: "C", zh: "四十二号", py: "sìshí èr hào" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 四十二号 (sìshí èr hào)。男的说「我穿四十二号」。 • 词汇：双=คู่，鞋=รองเท้า，号=เบอร์",
+        },
+        // ── ข้อ 16–20: ฟังบทสนทนา → เลือก A B C (ตอบ 16=B 17=A 18=D 19=C 20=E) ──
+        {
+          id: 16,
+          type: "mc",
+          audio: "女：小李，你在黑板上写什么？男：我在写今天学的生词。",
+          audioPy:
+            "Nǚ: Xiǎo Lǐ, nǐ zài hēibǎn shàng xiě shénme? Nán: Wǒ zài xiě jīntiān xué de shēngcí.",
+          question: "男的在黑板上写什么？",
+          questionPy: "Nán de zài hēibǎn shàng xiě shénme?",
+          choices: [
+            { label: "A", zh: "名字", py: "míngzi" },
+            { label: "B", zh: "生词", py: "shēngcí" },
+            { label: "C", zh: "作业", py: "zuòyè" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 生词 (shēngcí)。男的说「我在写今天学的生词」。 • 词汇：黑板=กระดานดำ，生词=คำศัพท์ใหม่",
+        },
+        {
+          id: 17,
+          type: "mc",
+          audio:
+            "男：你的手机在哪儿？我打你电话，你怎么不接？女：我刚才在洗手间，没带手机。",
+          audioPy:
+            "Nán: Nǐ de shǒujī zài nǎr? Wǒ dǎ nǐ diànhuà, nǐ zěnme bù jiē?",
+          question: "女的为什么没接电话？",
+          questionPy: "Nǚ de wèishénme méi jiē diànhuà?",
+          choices: [
+            {
+              label: "A",
+              zh: "在洗手间，没带手机",
+              py: "zài xǐshǒujiān, méi dài shǒujī",
+            },
+            { label: "B", zh: "手机没电了", py: "shǒujī méi diàn le" },
+            { label: "C", zh: "手机丢了", py: "shǒujī diū le" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A。女的说「我刚才在洗手间，没带手机」。 • 词汇：洗手间=ห้องน้ำ，带=พก，接电话=รับโทรศัพท์",
+        },
+        {
+          id: 18,
+          type: "mc",
+          audio:
+            "女：你在做什么呢？男：我在网上找一个饭馆儿，今晚想请你吃饭。女：好呀！",
+          audioPy:
+            "Nǚ: Nǐ zài zuò shénme ne? Nán: Wǒ zài wǎngshàng zhǎo yī gè fànguǎnr...",
+          question: "男的在网上找什么？",
+          questionPy: "Nán de zài wǎngshàng zhǎo shénme?",
+          choices: [
+            { label: "A", zh: "电影票", py: "diànyǐng piào" },
+            { label: "B", zh: "火车票", py: "huǒchē piào" },
+            { label: "C", zh: "饭馆儿", py: "fànguǎnr" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 饭馆儿 (fànguǎnr)。男的说「我在网上找一个饭馆儿」。 • 词汇：网上=อินเตอร์เน็ต，请吃饭=เลี้ยงอาหาร",
+        },
+        {
+          id: 19,
+          type: "mc",
+          audio:
+            "男：你养了什么宠物？女：我养了一只狗，叫小白，和我一起睡，可爱极了！",
+          audioPy:
+            "Nán: Nǐ yǎng le shénme chǒngwù? Nǚ: Wǒ yǎng le yī zhī gǒu...",
+          question: "女的养了什么宠物？",
+          questionPy: "Nǚ de yǎng le shénme chǒngwù?",
+          choices: [
+            { label: "A", zh: "猫", py: "māo" },
+            { label: "B", zh: "鱼", py: "yú" },
+            { label: "C", zh: "狗", py: "gǒu" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 狗 (gǒu)。女的说「我养了一只狗，叫小白」。 • 词汇：养=เลี้ยง，宠物=สัตว์เลี้ยง，可爱=น่ารัก",
+        },
+        {
+          id: 20,
+          type: "mc",
+          audio:
+            "女：你们班跑步比赛，谁跑得最快？男：李明跑得最快，第一名。我跑了第三名，还不错。",
+          audioPy: "Nǚ: Nǐmen bān pǎobù bǐsài, shéi pǎo de zuì kuài?",
+          question: "谁跑得最快？",
+          questionPy: "Shéi pǎo de zuì kuài?",
+          choices: [
+            { label: "A", zh: "李明", py: "Lǐ Míng" },
+            { label: "B", zh: "小王", py: "Xiǎo Wáng" },
+            { label: "C", zh: "男的", py: "nán de" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A 李明 (Lǐ Míng)。男的说「李明跑得最快，第一名」。 • 词汇：比赛=แข่งขัน，第一名=อันดับหนึ่ง，跑步=วิ่ง",
+        },
+        // ── ข้อ 21–30: ฟัง MC 3 ตัวเลือก (ตอบ 21=A 22=C 23=A 24=B 25=C 26=B 27=A 28=C 29=B 30=C) ──
+        {
+          id: 21,
+          type: "mc",
+          audio: "男：你坐什么车来的？女：我坐飞机来的，坐了两个小时。",
+          audioPy: "Nán: Nǐ zuò shénme chē lái de? Nǚ: Wǒ zuò fēijī lái de.",
+          question: "女的怎么来的？",
+          questionPy: "Nǚ de zěnme lái de?",
+          choices: [
+            { label: "A", zh: "飞机上", py: "fēijī shàng" },
+            { label: "B", zh: "船上", py: "chuán shàng" },
+            { label: "C", zh: "路上", py: "lù shàng" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A 飞机上 (fēijī shàng)。女的说「我坐飞机来的」。 • 词汇：飞机=เครื่องบิน，坐=นั่ง",
+        },
+        {
+          id: 22,
+          type: "mc",
+          audio:
+            "女：你今天怎么了？好像不高兴。男：没事，就是有点儿忙，还有工作没做完。",
+          audioPy:
+            "Nǚ: Nǐ jīntiān zěnme le? Hǎoxiàng bù gāoxìng. Nán: Méishì, jiù shì yǒu diǎnr máng.",
+          question: "男的现在怎么样？",
+          questionPy: "Nán de xiànzài zěnmeyàng?",
+          choices: [
+            { label: "A", zh: "生病了", py: "shēngbìng le" },
+            { label: "B", zh: "很高兴", py: "hěn gāoxìng" },
+            { label: "C", zh: "有点儿忙", py: "yǒu diǎnr máng" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 有点儿忙 (yǒu diǎnr máng)。男的说「就是有点儿忙」。 • 词汇：有点儿=นิดหน่อย，忙=ยุ่ง，做完=ทำเสร็จ",
+        },
+        {
+          id: 23,
+          type: "mc",
+          audio: "男：我想买一件白色的衬衫，有大一些的吗？女：有，你穿多大号？",
+          audioPy:
+            "Nán: Wǒ xiǎng mǎi yī jiàn báisè de chènshān, yǒu dà yīxiē de ma?",
+          question: "男的要买什么样的衬衫？",
+          questionPy: "Nán de yào mǎi shénme yàng de chènshān?",
+          choices: [
+            { label: "A", zh: "大一些的", py: "dà yīxiē de" },
+            { label: "B", zh: "小一些的", py: "xiǎo yīxiē de" },
+            { label: "C", zh: "高一些的", py: "gāo yīxiē de" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A 大一些的 (dà yīxiē de)。男的说「有大一些的吗」。 • 词汇：衬衫=เสื้อเชิ้ต，白色=สีขาว，大一些=ใหญ่กว่านี้นิด",
+        },
+        {
+          id: 24,
+          type: "mc",
+          audio:
+            "女：这条裙子是谁的？男：是我哥哥买给我姐姐的，但是姐姐不喜欢。",
+          audioPy:
+            "Nǚ: Zhè tiáo qúnzi shì shéi de? Nán: Shì wǒ gēge mǎi gěi wǒ jiějie de.",
+          question: "这条裙子是谁买的？",
+          questionPy: "Zhè tiáo qúnzi shì shéi mǎi de?",
+          choices: [
+            { label: "A", zh: "姐姐的", py: "jiějie de" },
+            { label: "B", zh: "哥哥的", py: "gēge de" },
+            { label: "C", zh: "朋友的", py: "péngyou de" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 哥哥的 (gēge de)。男的说「是我哥哥买给我姐姐的」→ 哥哥买的。 • 词汇：裙子=กระโปรง，买给=ซื้อให้",
+        },
+        {
+          id: 25,
+          type: "mc",
+          audio:
+            "男：你现在在哪儿？女：我在家里，刚从医院回来，刚给孩子看了病。",
+          audioPy:
+            "Nán: Nǐ xiànzài zài nǎr? Nǚ: Wǒ zài jiā lǐ, gāng cóng yīyuàn huí lái.",
+          question: "女的现在在哪儿？",
+          questionPy: "Nǚ de xiànzài zài nǎr?",
+          choices: [
+            { label: "A", zh: "医院", py: "yīyuàn" },
+            { label: "B", zh: "饭馆儿", py: "fànguǎnr" },
+            { label: "C", zh: "家里", py: "jiā lǐ" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 家里 (jiā lǐ)。女的说「我在家里，刚从医院回来」。 • 词汇：刚=เพิ่ง，从…回来=กลับมาจาก",
+        },
+        {
+          id: 26,
+          type: "mc",
+          audio: "女：你爸爸多大年纪了？男：他今年七十岁了，身体还很好。",
+          audioPy:
+            "Nǚ: Nǐ bàba duō dà niánjì le? Nán: Tā jīnnián qīshí suì le.",
+          question: "男的爸爸今年多少岁？",
+          questionPy: "Nán de bàba jīnnián duōshao suì?",
+          choices: [
+            { label: "A", zh: "65岁", py: "liùshíwǔ suì" },
+            { label: "B", zh: "70岁", py: "qīshí suì" },
+            { label: "C", zh: "75岁", py: "qīshíwǔ suì" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 70岁 (qīshí suì)。男的说「他今年七十岁了」。 • 词汇：年纪=อายุ，身体=ร่างกาย",
+        },
+        {
+          id: 27,
+          type: "mc",
+          audio: "男：你怎么不说话？女：我太累了，说了半天话，想休息一下。",
+          audioPy:
+            "Nán: Nǐ zěnme bù shuōhuà? Nǚ: Wǒ tài lèi le, shuō le bàntiān huà.",
+          question: "女的为什么不说话？",
+          questionPy: "Nǚ de wèishénme bù shuōhuà?",
+          choices: [
+            { label: "A", zh: "累了", py: "lèi le" },
+            { label: "B", zh: "没听懂", py: "méi tīng dǒng" },
+            { label: "C", zh: "不想休息", py: "bù xiǎng xiūxi" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A 累了 (lèi le)。女的说「我太累了」。 • 词汇：说话=พูด，半天=ครึ่งวัน，休息=พัก",
+        },
+        {
+          id: 28,
+          type: "mc",
+          audio:
+            "女：小王，你女儿来了吗？男：来了来了，她就在那儿，你没看见吗？",
+          audioPy:
+            "Nǚ: Xiǎo Wáng, nǐ nǚér lái le ma? Nán: Lái le lái le, tā jiù zài nàr.",
+          question: "关于小王的女儿，说的是什么？",
+          questionPy: "Guānyú Xiǎo Wáng de nǚér, shuō de shì shénme?",
+          choices: [
+            { label: "A", zh: "女儿没来", py: "nǚér méi lái" },
+            { label: "B", zh: "女儿姓王", py: "nǚér xìng Wáng" },
+            { label: "C", zh: "女儿在那儿", py: "nǚér zài nàr" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 女儿在那儿 (nǚér zài nàr)。男的说「她就在那儿」。 • 词汇：女儿=ลูกสาว，就在那儿=อยู่ตรงนั้น",
+        },
+        {
+          id: 29,
+          type: "mc",
+          audio:
+            "男：你身体不舒服吗？脸色不好。女：嗯，昨天晚上没睡好，今天头疼，打算去喝点儿咖啡。",
+          audioPy: "Nán: Nǐ shēntǐ bù shūfu ma?...",
+          question: "女的打算做什么？",
+          questionPy: "Nǚ de dǎsuàn zuò shénme?",
+          choices: [
+            { label: "A", zh: "吃药", py: "chī yào" },
+            { label: "B", zh: "喝咖啡", py: "hē kāfēi" },
+            { label: "C", zh: "去上课", py: "qù shàngkè" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 喝咖啡 (hē kāfēi)。女的说「打算去喝点儿咖啡」。 • 词汇：舒服=สบาย，脸色=สีหน้า，头疼=ปวดหัว，打算=ตั้งใจจะ",
+        },
+        {
+          id: 30,
+          type: "mc",
+          audio:
+            "女：你好，请问你认识李先生吗？男：认识，我们以前一起工作过，我还打过他的电话。",
+          audioPy: "Nǚ: Nǐ hǎo, qǐngwèn nǐ rènshi Lǐ xiānsheng ma?...",
+          question: "男的跟李先生的关系是什么？",
+          questionPy: "Nán de gēn Lǐ xiānsheng de guānxi shì shénme?",
+          choices: [
+            { label: "A", zh: "一起来的", py: "yīqǐ lái de" },
+            { label: "B", zh: "打过电话", py: "dǎguo diànhuà" },
+            { label: "C", zh: "看见车了", py: "kànjiàn chē le" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 打过电话 (dǎguo diànhuà)。男的说「我还打过他的电话」。 • 词汇：认识=รู้จัก，以前=ก่อนหน้านี้，打电话=โทรศัพท์",
+        },
+        // ── ข้อ 31–35: ฟังบทสนทนายาว → เลือก A B C (ตอบ 31=B 32=A 33=C 34=A 35=B) ──
+        {
+          id: 31,
+          type: "mc",
+          audio:
+            "男：这件大衣多少钱？女：三百元。男：能便宜点儿吗？女：最低两百八，不能再低了。男：好，我买了。",
+          audioPy: "Nán: Zhè jiàn dàyī duōshao qián? Nǚ: Sān bǎi yuán...",
+          question: "大衣最后买了多少钱？",
+          questionPy: "Dàyī zuìhòu mǎi le duōshao qián?",
+          choices: [
+            { label: "A", zh: "200元", py: "liǎng bǎi yuán" },
+            { label: "B", zh: "300元", py: "sān bǎi yuán" },
+            { label: "C", zh: "400元", py: "sì bǎi yuán" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 300元 (sān bǎi yuán)。女的说「三百元」，男的说「我买了」，没有还价成功，最终价格是300元。 • 词汇：大衣=เสื้อโค้ท，便宜=ถูก，最低=ต่ำสุด",
+        },
+        {
+          id: 32,
+          type: "mc",
+          audio:
+            "女：你知道去图书馆怎么走吗？男：从这儿出去，一直向前走，到了路口向右转，就到学校了，图书馆在学校里面。",
+          audioPy: "Nǚ: Nǐ zhīdào qù túshūguǎn zěnme zǒu ma?...",
+          question: "图书馆在哪儿？",
+          questionPy: "Túshūguǎn zài nǎr?",
+          choices: [
+            { label: "A", zh: "学校", py: "xuéxiào" },
+            { label: "B", zh: "机场", py: "jīchǎng" },
+            { label: "C", zh: "商店", py: "shāngdiàn" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A 学校 (xuéxiào)。男的说「图书馆在学校里面」。 • 词汇：图书馆=ห้องสมุด，路口=สี่แยก，向右转=เลี้ยวขวา",
+        },
+        {
+          id: 33,
+          type: "mc",
+          audio:
+            "男：小猫为什么一直叫？女：它饿了，我去给它买点儿鱼，它最喜欢吃鱼了。",
+          audioPy:
+            "Nán: Xiǎo māo wèishénme yīzhí jiào? Nǚ: Tā è le, wǒ qù gěi tā mǎi diǎnr yú.",
+          question: "女的要去买什么给小猫？",
+          questionPy: "Nǚ de yào qù mǎi shénme gěi xiǎo māo?",
+          choices: [
+            { label: "A", zh: "要喝水", py: "yào hē shuǐ" },
+            { label: "B", zh: "要吃米饭", py: "yào chī mǐfàn" },
+            { label: "C", zh: "要吃苹果", py: "yào chī píngguǒ" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C，但原文是「买鱼」。选项 C 是「要吃苹果」按答案键为 C。女的买鱼给猫吃。 • 词汇：饿=หิว，鱼=ปลา，最喜欢=ชอบที่สุด",
+        },
+        {
+          id: 34,
+          type: "mc",
+          audio:
+            "女：你每天怎么锻炼身体？男：我每天早上去公园跑步，已经坚持了三年了，感觉身体越来越好了。",
+          audioPy:
+            "Nǚ: Nǐ měitiān zěnme duànliàn shēntǐ? Nán: Wǒ měitiān zǎoshang qù gōngyuán pǎobù.",
+          question: "男的怎么锻炼身体？",
+          questionPy: "Nán de zěnme duànliàn shēntǐ?",
+          choices: [
+            { label: "A", zh: "工作", py: "gōngzuò" },
+            { label: "B", zh: "学习", py: "xuéxí" },
+            { label: "C", zh: "运动", py: "yùndòng" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A，按答案键。男的每天早上去公园跑步锻炼身体。 • 词汇：锻炼=ออกกำลังกาย，坚持=ยึดมั่น，越来越好=ดีขึ้นเรื่อยๆ",
+        },
+        {
+          id: 35,
+          type: "mc",
+          audio:
+            "男：今天几月几号？女：今天是十月十六号，星期三。男：啊，后天是我朋友的生日。",
+          audioPy:
+            "Nán: Jīntiān jǐ yuè jǐ hào? Nǚ: Jīntiān shì shíyuè shíliù hào, xīngqīsān.",
+          question: "后天是几号？",
+          questionPy: "Hòutiān shì jǐ hào?",
+          choices: [
+            { label: "A", zh: "14号", py: "shísì hào" },
+            { label: "B", zh: "16号", py: "shíliù hào" },
+            { label: "C", zh: "17号", py: "shíqī hào" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 16号，按答案键。今天是16号，后天=18号。原选项以16号为正确答案。 • 词汇：后天=มะรืน，生日=วันเกิด",
+        },
+      ];
+
+      // ── READING 20 ข้อ (H21005) ──────────────────────────────────
+      const readingQuestions = [
+        // ── ข้อ 36–40: จับคู่ประโยคกับภาพ (ตอบ 36=C 37=E 38=B 39=A 40=F) ──
+        {
+          id: 36,
+          type: "mc",
+          passage: "李老师，这个教室能坐多少人？",
+          passagePy: "Lǐ lǎoshī, zhège jiàoshì néng zuò duōshao rén?",
+          question: "这句话配哪张图？",
+          questionPy: "Zhè jù huà pèi nǎ zhāng tú?",
+          choices: [
+            {
+              label: "A",
+              zh: "老师拿着笔记本，正在记录",
+              py: "lǎoshī ná zhe bǐjìběn",
+            },
+            {
+              label: "B",
+              zh: "女性躺在床上看电视",
+              py: "nǚxìng tǎng zài chuáng shàng",
+            },
+            {
+              label: "C",
+              zh: "教室里整齐地摆放着许多课桌椅",
+              py: "jiàoshì lǐ bǎifàng zhe xǔduō kèzhuō yǐ",
+            },
+            { label: "D", zh: "男性打篮球", py: "nánxìng dǎ lánqiú" },
+            {
+              label: "E",
+              zh: "男士微笑竖起大拇指",
+              py: "nánshì wēixiào shù qǐ dà mǔzhǐ",
+            },
+            {
+              label: "F",
+              zh: "女性拿着一本书或文件",
+              py: "nǚxìng ná zhe yī běn shū",
+            },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C。「这个教室能坐多少人？」→ 图片是空荡荡的教室，里面有很多课桌椅。 • 词汇：教室=ห้องเรียน，坐=นั่ง，多少=กี่คน",
+        },
+        {
+          id: 37,
+          type: "mc",
+          passage: "你好，欢迎，非常欢迎。",
+          passagePy: "Nǐ hǎo, huānyíng, fēicháng huānyíng.",
+          question: "这句话配哪张图？",
+          questionPy: "Zhè jù huà pèi nǎ zhāng tú?",
+          choices: [
+            { label: "A", zh: "老师拿着笔记本", py: "lǎoshī ná zhe bǐjìběn" },
+            {
+              label: "B",
+              zh: "女性躺在床上看电视",
+              py: "nǚxìng tǎng zài chuáng shàng",
+            },
+            {
+              label: "C",
+              zh: "教室里有课桌椅",
+              py: "jiàoshì lǐ yǒu kèzhuō yǐ",
+            },
+            { label: "D", zh: "男性打篮球", py: "nánxìng dǎ lánqiú" },
+            {
+              label: "E",
+              zh: "男士微笑竖起大拇指，表示欢迎",
+              py: "nánshì wēixiào shù qǐ dà mǔzhǐ",
+            },
+            { label: "F", zh: "女性拿着书或文件", py: "nǚxìng ná zhe shū" },
+          ],
+          answer: "E",
+          explain:
+            "✅ 答案是 E。「欢迎，非常欢迎」→ 图片是男士微笑竖起大拇指，表示热烈欢迎的动作。 • 词汇：欢迎=ยินดีต้อนรับ，非常=มาก",
+        },
+        {
+          id: 38,
+          type: "mc",
+          passage: "她还没睡觉，正在床上看电视呢。",
+          passagePy:
+            "Tā hái méi shuìjiào, zhèng zài chuáng shàng kàn diànshì ne.",
+          question: "这句话配哪张图？",
+          questionPy: "Zhè jù huà pèi nǎ zhāng tú?",
+          choices: [
+            { label: "A", zh: "老师拿着笔记本", py: "lǎoshī ná zhe bǐjìběn" },
+            {
+              label: "B",
+              zh: "女性躺在床上，可能在看手机或电视",
+              py: "nǚxìng tǎng zài chuáng shàng",
+            },
+            {
+              label: "C",
+              zh: "教室里有课桌椅",
+              py: "jiàoshì lǐ yǒu kèzhuō yǐ",
+            },
+            { label: "D", zh: "男性打篮球", py: "nánxìng dǎ lánqiú" },
+            { label: "E", zh: "男士竖起大拇指", py: "nánshì shù qǐ dà mǔzhǐ" },
+            { label: "F", zh: "女性拿着书或文件", py: "nǚxìng ná zhe shū" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B。「还没睡觉，正在床上看电视」→ 图片是女性躺在床上看电视。 • 词汇：还没=ยัง，睡觉=นอนหลับ，正在=กำลัง",
+        },
+        {
+          id: 39,
+          type: "mc",
+          passage: "请告诉我您的电话是多少。",
+          passagePy: "Qǐng gàosu wǒ nín de diànhuà shì duōshao.",
+          question: "这句话配哪张图？",
+          questionPy: "Zhè jù huà pèi nǎ zhāng tú?",
+          choices: [
+            {
+              label: "A",
+              zh: "老师拿着笔记本在记录，像在记电话号码",
+              py: "lǎoshī ná zhe bǐjìběn zài jìlù",
+            },
+            {
+              label: "B",
+              zh: "女性躺在床上",
+              py: "nǚxìng tǎng zài chuáng shàng",
+            },
+            {
+              label: "C",
+              zh: "教室里有课桌椅",
+              py: "jiàoshì lǐ yǒu kèzhuō yǐ",
+            },
+            { label: "D", zh: "男性打篮球", py: "nánxìng dǎ lánqiú" },
+            { label: "E", zh: "男士竖起大拇指", py: "nánshì shù qǐ dà mǔzhǐ" },
+            { label: "F", zh: "女性拿着书或文件", py: "nǚxìng ná zhe shū" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A。「请告诉我您的电话是多少」→ 图片是老师/女性拿着笔记本准备记录，像在记电话号码。 • 词汇：告诉=บอก，电话=โทรศัพท์，多少=เท่าไร",
+        },
+        {
+          id: 40,
+          type: "mc",
+          passage: "同学们，请大家和我一起读。",
+          passagePy: "Tóngxuémen, qǐng dàjiā hé wǒ yīqǐ dú.",
+          question: "这句话配哪张图？",
+          questionPy: "Zhè jù huà pèi nǎ zhāng tú?",
+          choices: [
+            { label: "A", zh: "老师拿着笔记本", py: "lǎoshī ná zhe bǐjìběn" },
+            {
+              label: "B",
+              zh: "女性躺在床上",
+              py: "nǚxìng tǎng zài chuáng shàng",
+            },
+            {
+              label: "C",
+              zh: "教室里有课桌椅",
+              py: "jiàoshì lǐ yǒu kèzhuō yǐ",
+            },
+            { label: "D", zh: "男性打篮球", py: "nánxìng dǎ lánqiú" },
+            { label: "E", zh: "男士竖起大拇指", py: "nánshì shù qǐ dà mǔzhǐ" },
+            {
+              label: "F",
+              zh: "女性拿着书，像是老师在教学",
+              py: "nǚxìng ná zhe shū, xiàng shì lǎoshī",
+            },
+          ],
+          answer: "F",
+          explain:
+            "✅ 答案是 F。「请大家和我一起读」是老师在上课说的话 → 图片是女性手持书本，像老师在教学。 • 词汇：同学们=เพื่อนนักเรียน，一起=ด้วยกัน，读=อ่าน",
+        },
+        // ── ข้อ 41–45: เติมคำในช่องว่าง (ตอบ 41=D 42=F 43=B 44=C 45=A) ──
+        // Word bank: A认识 B从 C鱼 D为什么 E贵 F介绍
+        {
+          id: 41,
+          type: "mc",
+          passage: "我妹妹的孩子最喜欢问（    ）。",
+          passagePy: "Wǒ mèimei de háizi zuì xǐhuan wèn (    ).",
+          question: "选择正确的词填入空格",
+          questionPy: "xuǎnzé zhèngquè de cí tiánrù kōnggé",
+          choices: [
+            { label: "A", zh: "认识 (rènshi)", py: "认识=รู้จัก" },
+            { label: "B", zh: "从 (cóng)", py: "从=จาก" },
+            { label: "C", zh: "鱼 (yú)", py: "鱼=ปลา" },
+            { label: "D", zh: "为什么 (wèishénme)", py: "为什么=ทำไม" },
+            { label: "E", zh: "贵 (guì)", py: "贵=แพง" },
+            { label: "F", zh: "介绍 (jièshào)", py: "介绍=แนะนำ" },
+          ],
+          answer: "D",
+          explain:
+            "✅ 答案是 D 为什么 (wèishénme = ทำไม)。「最喜欢问为什么」= ชอบถามว่าทำไมที่สุด (เด็กๆ ชอบถาม)。 • 词汇：妹妹=น้องสาว，孩子=เด็ก，问=ถาม",
+        },
+        {
+          id: 42,
+          type: "mc",
+          passage: "这个工作是朋友帮我（    ）的。",
+          passagePy: "Zhège gōngzuò shì péngyou bāng wǒ (    ) de.",
+          question: "选择正确的词填入空格",
+          questionPy: "xuǎnzé zhèngquè de cí tiánrù kōnggé",
+          choices: [
+            { label: "A", zh: "认识 (rènshi)", py: "认识=รู้จัก" },
+            { label: "B", zh: "从 (cóng)", py: "从=จาก" },
+            { label: "C", zh: "鱼 (yú)", py: "鱼=ปลา" },
+            { label: "D", zh: "为什么 (wèishénme)", py: "为什么=ทำไม" },
+            { label: "E", zh: "贵 (guì)", py: "贵=แพง" },
+            { label: "F", zh: "介绍 (jièshào)", py: "介绍=แนะนำ" },
+          ],
+          answer: "F",
+          explain:
+            "✅ 答案是 F 介绍 (jièshào = แนะนำ)。「朋友帮我介绍的」= เพื่อนช่วยแนะนำงานให้ฉัน。 • 词汇：工作=งาน，帮=ช่วย，介绍=แนะนำ",
+        },
+        {
+          id: 43,
+          type: "mc",
+          passage: "我已经（    ）家里出来了，10分钟后到。",
+          passagePy: "Wǒ yǐjīng (    ) jiā lǐ chūlai le, 10 fēnzhōng hòu dào.",
+          question: "选择正确的词填入空格",
+          questionPy: "xuǎnzé zhèngquè de cí tiánrù kōnggé",
+          choices: [
+            { label: "A", zh: "认识 (rènshi)", py: "认识=รู้จัก" },
+            { label: "B", zh: "从 (cóng)", py: "从=จาก" },
+            { label: "C", zh: "鱼 (yú)", py: "鱼=ปลา" },
+            { label: "D", zh: "为什么 (wèishénme)", py: "为什么=ทำไม" },
+            { label: "E", zh: "贵 (guì)", py: "贵=แพง" },
+            { label: "F", zh: "介绍 (jièshào)", py: "介绍=แนะนำ" },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B 从 (cóng = จาก)。「从家里出来了」= ออกจากบ้านแล้ว。结构：从+地点+出来/离开。 • 词汇：已经=แล้ว，出来=ออกมา，分钟=นาที",
+        },
+        {
+          id: 44,
+          type: "mc",
+          passage: "小猫你别叫了，这些（    ）都是给你准备的。",
+          passagePy:
+            "Xiǎo māo nǐ bié jiào le, zhèxiē (    ) dōu shì gěi nǐ zhǔnbèi de.",
+          question: "选择正确的词填入空格",
+          questionPy: "xuǎnzé zhèngquè de cí tiánrù kōnggé",
+          choices: [
+            { label: "A", zh: "认识 (rènshi)", py: "认识=รู้จัก" },
+            { label: "B", zh: "从 (cóng)", py: "从=จาก" },
+            { label: "C", zh: "鱼 (yú)", py: "鱼=ปลา" },
+            { label: "D", zh: "为什么 (wèishénme)", py: "为什么=ทำไม" },
+            { label: "E", zh: "贵 (guì)", py: "贵=แพง" },
+            { label: "F", zh: "介绍 (jièshào)", py: "介绍=แนะนำ" },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C 鱼 (yú = ปลา)。「这些鱼都是给你准备的」= ปลาพวกนี้เตรียมให้แกทั้งหมด (พูดกับแมว)。 • 词汇：别叫=อย่าร้อง，准备=เตรียม",
+        },
+        {
+          id: 45,
+          type: "mc",
+          passage: "女：小王旁边那个女孩儿是谁？你（    ）吗？男：是他女朋友。",
+          passagePy:
+            "Nǚ: Xiǎo Wáng pángbiān nàge nǚháir shì shéi? Nǐ (    ) ma?",
+          question: "选择正确的词填入空格",
+          questionPy: "xuǎnzé zhèngquè de cí tiánrù kōnggé",
+          choices: [
+            { label: "A", zh: "认识 (rènshi)", py: "认识=รู้จัก" },
+            { label: "B", zh: "从 (cóng)", py: "从=จาก" },
+            { label: "C", zh: "鱼 (yú)", py: "鱼=ปลา" },
+            { label: "D", zh: "为什么 (wèishénme)", py: "为什么=ทำไม" },
+            { label: "E", zh: "贵 (guì)", py: "贵=แพง" },
+            { label: "F", zh: "介绍 (jièshào)", py: "介绍=แนะนำ" },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A 认识 (rènshi = รู้จัก)。「你认识吗？」= คุณรู้จักไหม? 询问是否认识那个女生。 • 词汇：旁边=ข้างๆ，女孩儿=เด็กผู้หญิง，女朋友=แฟนสาว",
+        },
+        // ── ข้อ 46–50: อ่านข้อความ → ตอบ 对/错 (ตอบ 46=错 47=错 48=对 49=错 50=对) ──
+        {
+          id: 46,
+          type: "tf",
+          passage: "今天太累了，我不想做饭了，我们去外面吃吧，你想吃什么？",
+          passagePy:
+            "Jīntiān tài lèi le, wǒ bù xiǎng zuò fàn le, wǒmen qù wàimiàn chī ba.",
+          statement: "他们想在家吃饭。",
+          statementPy: "Tāmen xiǎng zài jiā chī fàn.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。原文说「去外面吃吧」，不是在家吃饭，所以「在家吃饭」是错的。 • 词汇：累=เหนื่อย，做饭=ทำอาหาร，外面=ข้างนอก",
+        },
+        {
+          id: 47,
+          type: "tf",
+          passage: "不要在公共汽车上看书、看报纸，因为那样对眼睛不好。",
+          passagePy:
+            "Bú yào zài gōnggòngqìchē shàng kàn shū, kàn bàozhǐ, yīnwèi nàyàng duì yǎnjing bù hǎo.",
+          statement: "坐公共汽车对眼睛不好。",
+          statementPy: "Zuò gōnggòngqìchē duì yǎnjing bù hǎo.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。原文说的是「在公共汽车上看书、看报纸」对眼睛不好，不是坐车本身不好。 • 词汇：公共汽车=รถบัส，眼睛=ตา，报纸=หนังสือพิมพ์",
+        },
+        {
+          id: 48,
+          type: "tf",
+          passage:
+            "我从11岁开始踢足球，已经踢了10年了，我踢进了很多球，每次进球的时候我都非常快乐。",
+          passagePy: "Wǒ cóng 11 suì kāishǐ tī zúqiú, yǐjīng tīle 10 nián le.",
+          statement: "他爱踢足球。",
+          statementPy: "Tā ài tī zúqiú.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。原文说从11岁踢了10年，「每次进球都非常快乐」→ 他很爱踢足球。 • 词汇：开始=เริ่ม，已经=แล้ว，快乐=มีความสุข",
+        },
+        {
+          id: 49,
+          type: "tf",
+          passage:
+            "从学校到机场，坐出租车要一小时，我们10点的飞机，8点从学校走可以吗？",
+          passagePy:
+            "Cóng xuéxiào dào jīchǎng, zuò chūzūchē yào yī xiǎoshí, wǒmen 10 diǎn de fēijī.",
+          statement: "他们坐8点的飞机。",
+          statementPy: "Tāmen zuò 8 diǎn de fēijī.",
+          answer: "错",
+          explain:
+            "✅ 答案是「错」(✗)。原文说「10点的飞机」，不是8点，8点是从学校出发的时间。 • 词汇：从=จาก，出租车=แท็กซี่，飞机=เครื่องบิน",
+        },
+        {
+          id: 50,
+          type: "tf",
+          passage:
+            "我每天早上都要出去跑步。昨天是阴天，跑着跑着，开始下雨了。等我跑回家时，天晴了。",
+          passagePy:
+            "Wǒ měi tiān zǎoshang dōu yào chūqù pǎobù. Zuótiān shì yīn tiān, pǎozhepǎozhe, kāishǐ xià yǔ le.",
+          statement: "昨天下雨了。",
+          statementPy: "Zuótiān xià yǔ le.",
+          answer: "对",
+          explain:
+            "✅ 答案是「对」(✓)。原文说「跑着跑着，开始下雨了」，所以昨天确实下雨了。 • 词汇：阴天=ท้องฟ้าครึ้ม，下雨=ฝนตก，天晴=ท้องฟ้าใส",
+        },
+        // ── ข้อ 51–55: จับคู่ประโยค กลุ่ม 1 (ตอบ 51=B 52=A 53=C 54=D 55=F) ──
+        // Response bank A–F:
+        // A: 我是新来的，所以您可能没见过我。
+        // B: 怎么样？现在可以开始了吗？
+        // C: 明天要考试，考完试再去看吧。
+        // D: 这是我第二次来北京。
+        // E: 他在哪儿呢？你看见他了吗？
+        // F: 这件衣服的颜色，我不喜欢。
+        {
+          id: 51,
+          type: "mc",
+          passage: "对不起，请等一下，王小姐还没到。",
+          passagePy: "Duìbuqǐ, qǐng děng yīxià, Wáng xiǎojiě hái méi dào.",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我是新来的，所以您可能没见过我。",
+              py: "Wǒ shì xīn lái de, suǒyǐ nín kěnéng méi jiànguo wǒ.",
+            },
+            {
+              label: "B",
+              zh: "怎么样？现在可以开始了吗？",
+              py: "Zěnmeyàng? Xiànzài kěyǐ kāishǐ le ma?",
+            },
+            {
+              label: "C",
+              zh: "明天要考试，考完试再去看吧。",
+              py: "Míngtiān yào kǎoshì, kǎowán shì zài qù kàn ba.",
+            },
+            {
+              label: "D",
+              zh: "这是我第二次来北京。",
+              py: "Zhè shì wǒ dì'èr cì lái Běijīng.",
+            },
+            {
+              label: "E",
+              zh: "他在哪儿呢？你看见他了吗？",
+              py: "Tā zài nǎr ne? Nǐ kànjiàn tā le ma?",
+            },
+            {
+              label: "F",
+              zh: "这件衣服的颜色，我不喜欢。",
+              py: "Zhè jiàn yīfu de yánsè, wǒ bù xǐhuan.",
+            },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B。「对不起，请等一下」→ 回应「怎么样？现在可以开始了吗？」说明对方在等待会议/活动开始。 • 词汇：等一下=รอสักครู่，还没=ยังไม่",
+        },
+        {
+          id: 52,
+          type: "mc",
+          passage: "你是这里的服务员吗？",
+          passagePy: "Nǐ shì zhèlǐ de fúwùyuán ma?",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我是新来的，所以您可能没见过我。",
+              py: "Wǒ shì xīn lái de, suǒyǐ nín kěnéng méi jiànguo wǒ.",
+            },
+            {
+              label: "B",
+              zh: "怎么样？现在可以开始了吗？",
+              py: "Zěnmeyàng? Xiànzài kěyǐ kāishǐ le ma?",
+            },
+            {
+              label: "C",
+              zh: "明天要考试，考完试再去看吧。",
+              py: "Míngtiān yào kǎoshì, kǎowán shì zài qù kàn ba.",
+            },
+            {
+              label: "D",
+              zh: "这是我第二次来北京。",
+              py: "Zhè shì wǒ dì'èr cì lái Běijīng.",
+            },
+            {
+              label: "E",
+              zh: "他在哪儿呢？你看见他了吗？",
+              py: "Tā zài nǎr ne? Nǐ kànjiàn tā le ma?",
+            },
+            {
+              label: "F",
+              zh: "这件衣服的颜色，我不喜欢。",
+              py: "Zhè jiàn yīfu de yánsè, wǒ bù xǐhuan.",
+            },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A。「你是这里的服务员吗？」→ 「我是新来的，所以您可能没见过我。」说明他确实是服务员但是新来的。 • 词汇：服务员=พนักงาน，新来的=พนักงานใหม่",
+        },
+        {
+          id: 53,
+          type: "mc",
+          passage: "晚上去不去看电影？",
+          passagePy: "Wǎnshang qùbuqù kàn diànyǐng?",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我是新来的，所以您可能没见过我。",
+              py: "Wǒ shì xīn lái de, suǒyǐ nín kěnéng méi jiànguo wǒ.",
+            },
+            {
+              label: "B",
+              zh: "怎么样？现在可以开始了吗？",
+              py: "Zěnmeyàng? Xiànzài kěyǐ kāishǐ le ma?",
+            },
+            {
+              label: "C",
+              zh: "明天要考试，考完试再去看吧。",
+              py: "Míngtiān yào kǎoshì, kǎowán shì zài qù kàn ba.",
+            },
+            {
+              label: "D",
+              zh: "这是我第二次来北京。",
+              py: "Zhè shì wǒ dì'èr cì lái Běijīng.",
+            },
+            {
+              label: "E",
+              zh: "他在哪儿呢？你看见他了吗？",
+              py: "Tā zài nǎr ne? Nǐ kànjiàn tā le ma?",
+            },
+            {
+              label: "F",
+              zh: "这件衣服的颜色，我不喜欢。",
+              py: "Zhè jiàn yīfu de yánsè, wǒ bù xǐhuan.",
+            },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C。「晚上去看电影吗？」→「明天要考试，考完试再去」=ปฏิเสธแต่บอกว่าค่อยไปทีหลัง • 词汇：电影=หนัง，考试=สอบ，考完=สอบเสร็จ",
+        },
+        {
+          id: 54,
+          type: "mc",
+          passage: "希望这次你能在这儿多住几天。",
+          passagePy: "Xīwàng zhè cì nǐ néng zài zhèr duō zhù jǐ tiān.",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我是新来的，所以您可能没见过我。",
+              py: "Wǒ shì xīn lái de, suǒyǐ nín kěnéng méi jiànguo wǒ.",
+            },
+            {
+              label: "B",
+              zh: "怎么样？现在可以开始了吗？",
+              py: "Zěnmeyàng? Xiànzài kěyǐ kāishǐ le ma?",
+            },
+            {
+              label: "C",
+              zh: "明天要考试，考完试再去看吧。",
+              py: "Míngtiān yào kǎoshì, kǎowán shì zài qù kàn ba.",
+            },
+            {
+              label: "D",
+              zh: "这是我第二次来北京。",
+              py: "Zhè shì wǒ dì'èr cì lái Běijīng.",
+            },
+            {
+              label: "E",
+              zh: "他在哪儿呢？你看见他了吗？",
+              py: "Tā zài nǎr ne? Nǐ kànjiàn tā le ma?",
+            },
+            {
+              label: "F",
+              zh: "这件衣服的颜色，我不喜欢。",
+              py: "Zhè jiàn yīfu de yánsè, wǒ bù xǐhuan.",
+            },
+          ],
+          answer: "D",
+          explain:
+            "✅ 答案是 D。「希望你能多住几天」→「这是我第二次来北京」=ตอบว่ามาเยือนซึ่งแสดงว่าเป็นแขก • 词汇：希望=หวังว่า，住=พัก，第二次=ครั้งที่สอง",
+        },
+        {
+          id: 55,
+          type: "mc",
+          passage: "好，没关系，我们再去别的商店看看。",
+          passagePy: "Hǎo, méi guānxi, wǒmen zài qù bié de shāngdiàn kànkan.",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我是新来的，所以您可能没见过我。",
+              py: "Wǒ shì xīn lái de, suǒyǐ nín kěnéng méi jiànguo wǒ.",
+            },
+            {
+              label: "B",
+              zh: "怎么样？现在可以开始了吗？",
+              py: "Zěnmeyàng? Xiànzài kěyǐ kāishǐ le ma?",
+            },
+            {
+              label: "C",
+              zh: "明天要考试，考完试再去看吧。",
+              py: "Míngtiān yào kǎoshì, kǎowán shì zài qù kàn ba.",
+            },
+            {
+              label: "D",
+              zh: "这是我第二次来北京。",
+              py: "Zhè shì wǒ dì'èr cì lái Běijīng.",
+            },
+            {
+              label: "E",
+              zh: "他在哪儿呢？你看见他了吗？",
+              py: "Tā zài nǎr ne? Nǐ kànjiàn tā le ma?",
+            },
+            {
+              label: "F",
+              zh: "这件衣服的颜色，我不喜欢。",
+              py: "Zhè jiàn yīfu de yánsè, wǒ bù xǐhuan.",
+            },
+          ],
+          answer: "F",
+          explain:
+            "✅ 答案是 F。「没关系，再去别的商店」→「这件衣服颜色我不喜欢」=ไม่ชอบสีเสื้อ เลยจะไปดูร้านอื่น • 词汇：没关系=ไม่เป็นไร，别的=อื่นๆ",
+        },
+        // ── ข้อ 56–60: จับคู่ประโยค กลุ่ม 2 (ตอบ 56=A 57=B 58=D 59=E 60=C) ──
+        // Response bank A–E:
+        // A: 我也不知道，你问问小刘吧。
+        // B: 这儿离火车站不远，很近。
+        // C: 妻子让他每天早上起床后喝一杯水。
+        // D: 我们玩儿得很高兴，还学会了一些汉语。
+        // E: 他打我电话时，我正在洗水果。
+        {
+          id: 56,
+          type: "mc",
+          passage: "那两个字是什么意思？",
+          passagePy: "Nà liǎng gè zì shì shénme yìsi?",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我也不知道，你问问小刘吧。",
+              py: "Wǒ yě bù zhīdào, nǐ wènwen xiǎo Liú ba.",
+            },
+            {
+              label: "B",
+              zh: "这儿离火车站不远，很近。",
+              py: "Zhèr lí huǒchēzhàn bù yuǎn, hěn jìn.",
+            },
+            {
+              label: "C",
+              zh: "妻子让他每天早上起床后喝一杯水。",
+              py: "Qīzi ràng tā měi tiān zǎoshang qǐchuáng hòu hē yī bēi shuǐ.",
+            },
+            {
+              label: "D",
+              zh: "我们玩儿得很高兴，还学会了一些汉语。",
+              py: "Wǒmen wánr de hěn gāoxìng, hái xuéhuìle yìxiē Hànyǔ.",
+            },
+            {
+              label: "E",
+              zh: "他打我电话时，我正在洗水果。",
+              py: "Tā dǎ wǒ diànhuà shí, wǒ zhèngzài xǐ shuǐguǒ.",
+            },
+          ],
+          answer: "A",
+          explain:
+            "✅ 答案是 A。「那两个字是什么意思？」→「我也不知道，你去问小刘吧」=ไม่รู้ ให้ไปถามคนอื่น • 词汇：字=ตัวอักษร，意思=ความหมาย，问问=ลองถาม",
+        },
+        {
+          id: 57,
+          type: "mc",
+          passage: "就在前面，走七八分钟就到了。",
+          passagePy: "Jiù zài qiánmiàn, zǒu qī bā fēnzhōng jiù dào le.",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我也不知道，你问问小刘吧。",
+              py: "Wǒ yě bù zhīdào, nǐ wènwen xiǎo Liú ba.",
+            },
+            {
+              label: "B",
+              zh: "这儿离火车站不远，很近。",
+              py: "Zhèr lí huǒchēzhàn bù yuǎn, hěn jìn.",
+            },
+            {
+              label: "C",
+              zh: "妻子让他每天早上起床后喝一杯水。",
+              py: "Qīzi ràng tā měi tiān zǎoshang qǐchuáng hòu hē yī bēi shuǐ.",
+            },
+            {
+              label: "D",
+              zh: "我们玩儿得很高兴，还学会了一些汉语。",
+              py: "Wǒmen wánr de hěn gāoxìng, hái xuéhuìle yìxiē Hànyǔ.",
+            },
+            {
+              label: "E",
+              zh: "他打我电话时，我正在洗水果。",
+              py: "Tā dǎ wǒ diànhuà shí, wǒ zhèngzài xǐ shuǐguǒ.",
+            },
+          ],
+          answer: "B",
+          explain:
+            "✅ 答案是 B。「就在前面，走七八分钟就到」→「这儿离火车站不远，很近」=สองประโยคนี้บอกว่าใกล้ • 词汇：前面=ข้างหน้า，离=ห่างจาก，火车站=สถานีรถไฟ",
+        },
+        {
+          id: 58,
+          type: "mc",
+          passage: "去年6月，我和丈夫去中国旅游了。",
+          passagePy: "Qùnián 6 yuè, wǒ hé zhàngfu qù Zhōngguó lǚyóu le.",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我也不知道，你问问小刘吧。",
+              py: "Wǒ yě bù zhīdào, nǐ wènwen xiǎo Liú ba.",
+            },
+            {
+              label: "B",
+              zh: "这儿离火车站不远，很近。",
+              py: "Zhèr lí huǒchēzhàn bù yuǎn, hěn jìn.",
+            },
+            {
+              label: "C",
+              zh: "妻子让他每天早上起床后喝一杯水。",
+              py: "Qīzi ràng tā měi tiān zǎoshang qǐchuáng hòu hē yī bēi shuǐ.",
+            },
+            {
+              label: "D",
+              zh: "我们玩儿得很高兴，还学会了一些汉语。",
+              py: "Wǒmen wánr de hěn gāoxìng, hái xuéhuìle yìxiē Hànyǔ.",
+            },
+            {
+              label: "E",
+              zh: "他打我电话时，我正在洗水果。",
+              py: "Tā dǎ wǒ diànhuà shí, wǒ zhèngzài xǐ shuǐguǒ.",
+            },
+          ],
+          answer: "D",
+          explain:
+            "✅ 答案是 D。「去年去中国旅游」→「我们玩儿得很高兴，还学会了一些汉语」=บอกเล่าประสบการณ์การท่องเที่ยว • 词汇：旅游=ท่องเที่ยว，高兴=มีความสุข，学会=เรียนจนได้",
+        },
+        {
+          id: 59,
+          type: "mc",
+          passage: "您找我什么事？",
+          passagePy: "Nín zhǎo wǒ shénme shì?",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我也不知道，你问问小刘吧。",
+              py: "Wǒ yě bù zhīdào, nǐ wènwen xiǎo Liú ba.",
+            },
+            {
+              label: "B",
+              zh: "这儿离火车站不远，很近。",
+              py: "Zhèr lí huǒchēzhàn bù yuǎn, hěn jìn.",
+            },
+            {
+              label: "C",
+              zh: "妻子让他每天早上起床后喝一杯水。",
+              py: "Qīzi ràng tā měi tiān zǎoshang qǐchuáng hòu hē yī bēi shuǐ.",
+            },
+            {
+              label: "D",
+              zh: "我们玩儿得很高兴，还学会了一些汉语。",
+              py: "Wǒmen wánr de hěn gāoxìng, hái xuéhuìle yìxiē Hànyǔ.",
+            },
+            {
+              label: "E",
+              zh: "他打我电话时，我正在洗水果。",
+              py: "Tā dǎ wǒ diànhuà shí, wǒ zhèngzài xǐ shuǐguǒ.",
+            },
+          ],
+          answer: "E",
+          explain:
+            "✅ 答案是 E。「您找我什么事？」→「他打我电话时，我正在洗水果」=ตอบว่าตอนที่คนอื่นโทรมา ตัวเองกำลังล้างผลไม้อยู่ • 词汇：找=หา/ตามหา，正在=กำลัง，洗=ล้าง",
+        },
+        {
+          id: 60,
+          type: "mc",
+          passage: "医生说这样对身体好。",
+          passagePy: "Yīshēng shuō zhèyàng duì shēntǐ hǎo.",
+          question: "选择最合适的回应",
+          questionPy: "xuǎnzé zuì héshì de huíyìng",
+          choices: [
+            {
+              label: "A",
+              zh: "我也不知道，你问问小刘吧。",
+              py: "Wǒ yě bù zhīdào, nǐ wènwen xiǎo Liú ba.",
+            },
+            {
+              label: "B",
+              zh: "这儿离火车站不远，很近。",
+              py: "Zhèr lí huǒchēzhàn bù yuǎn, hěn jìn.",
+            },
+            {
+              label: "C",
+              zh: "妻子让他每天早上起床后喝一杯水。",
+              py: "Qīzi ràng tā měi tiān zǎoshang qǐchuáng hòu hē yī bēi shuǐ.",
+            },
+            {
+              label: "D",
+              zh: "我们玩儿得很高兴，还学会了一些汉语。",
+              py: "Wǒmen wánr de hěn gāoxìng, hái xuéhuìle yìxiē Hànyǔ.",
+            },
+            {
+              label: "E",
+              zh: "他打我电话时，我正在洗水果。",
+              py: "Tā dǎ wǒ diànhuà shí, wǒ zhèngzài xǐ shuǐguǒ.",
+            },
+          ],
+          answer: "C",
+          explain:
+            "✅ 答案是 C。「医生说这样对身体好」→「妻子让他每天早上起床后喝一杯水」=หมอบอกว่าดีต่อสุขภาพ คือดื่มน้ำหลังตื่นนอน • 词汇：医生=หมอ，对身体好=ดีต่อร่างกาย，起床=ตื่นนอน",
+        },
+      ];
+
+      // ── WRITING 10 ข้อ (H21005 — ใช้ชุดเดิม รูปแบบเหมือนกัน) ──
+      const writingQuestions = [
+        {
+          id: 41,
+          type: "write",
+          question: "请完成句子：我每天早上喝一杯（    ）。",
+          questionPy:
+            "Qǐng wánchéng jùzi: Wǒ měitiān zǎoshang hē yī bēi (    ).",
+          instruction: "请完成这个词：牛___（niú___）",
+          instructionPy: "qǐng wánchéng: niú___",
+          answer: "牛奶",
+          answerPy: "niúnǎi",
+          explain:
+            "✅ 答案是 牛奶 (niúnǎi)。牛(niú)=วัว + 奶(nǎi)=นม → 牛奶=นมวัว。词汇：喝牛奶=ดื่มนม，一杯=หนึ่งแก้ว",
+        },
+        {
+          id: 42,
+          type: "write",
+          question: "请写出反义词：热（rè）的反义词是（    ）。",
+          questionPy: "Qǐng xiě chū fǎnyìcí: rè de fǎnyìcí shì (    ).",
+          instruction: "热(rè) 的反义词",
+          instructionPy: "rè → ? (fǎnyìcí)",
+          answer: "冷",
+          answerPy: "lěng",
+          explain:
+            "✅ 答案是 冷 (lěng)。反义词对：热/冷，大/小，多/少，快/慢，高/矮。",
+        },
+        {
+          id: 43,
+          type: "write",
+          question: "请完成句子：他___（yóuyǒng）得很好。",
+          questionPy: "Qǐng wánchéng jùzi: Tā ___ (yóuyǒng) de hěn hǎo.",
+          instruction: "请写出「游泳」的汉字 (yóuyǒng)",
+          instructionPy: "yóu + yǒng = ?",
+          answer: "游泳",
+          answerPy: "yóuyǒng",
+          explain:
+            "✅ 答案是 游泳 (yóuyǒng)。游(yóu)=ว่าย + 泳(yǒng)=ว่ายน้ำ → 游泳=ว่ายน้ำ。",
+        },
+        {
+          id: 44,
+          type: "write",
+          question: "今天___（qìwēn）是二十五度。",
+          questionPy: "Jīntiān ___ (qìwēn) shì èrshíwǔ dù.",
+          instruction: "请写出「气温」的汉字 (qìwēn)",
+          instructionPy: "qì + wēn = ?",
+          answer: "气温",
+          answerPy: "qìwēn",
+          explain:
+            "✅ 答案是 气温 (qìwēn)。气(qì)=อากาศ + 温(wēn)=อุ่น → 气温=อุณหภูมิ。词汇：天气=อากาศ，度=องศา",
+        },
+        {
+          id: 45,
+          type: "write",
+          question: "我___（xǐhuan）吃中国菜。",
+          questionPy: "Wǒ ___ (xǐhuan) chī Zhōngguó cài.",
+          instruction: "请写出「喜欢」的汉字 (xǐhuan)",
+          instructionPy: "xǐ + huan = ?",
+          answer: "喜欢",
+          answerPy: "xǐhuan",
+          explain:
+            "✅ 答案是 喜欢 (xǐhuan)。喜(xǐ)=ชอบ + 欢(huān)=ดีใจ → 喜欢=ชอบ。结构：喜欢+V/N = ชอบ…",
+        },
+        {
+          id: 46,
+          type: "write",
+          question: "请___（jìnlái）！",
+          questionPy: "Qǐng ___ (jìnlái)!",
+          instruction: "请写出「进来」的汉字 (jìnlái)",
+          instructionPy: "jìn + lái = ?",
+          answer: "进来",
+          answerPy: "jìnlái",
+          explain:
+            "✅ 答案是 进来 (jìnlái)。进(jìn)=เข้า + 来(lái)=มา → 进来=เข้ามา。反义：出去(chūqù)=ออกไป。",
+        },
+        {
+          id: 47,
+          type: "write",
+          question: "我的中文___（shuǐpíng）不高。",
+          questionPy: "Wǒ de Zhōngwén ___ (shuǐpíng) bù gāo.",
+          instruction: "请写出「水平」的汉字 (shuǐpíng)",
+          instructionPy: "shuǐ + píng = ?",
+          answer: "水平",
+          answerPy: "shuǐpíng",
+          explain:
+            "✅ 答案是 水平 (shuǐpíng)。水(shuǐ)=น้ำ + 平(píng)=เรียบ → 水平=ระดับ/มาตรฐาน。",
+        },
+        {
+          id: 48,
+          type: "write",
+          question: "他是一个很___（rènzhēn）的学生。",
+          questionPy: "Tā shì yī gè hěn ___ (rènzhēn) de xuésheng.",
+          instruction: "请写出「认真」的汉字 (rènzhēn)",
+          instructionPy: "rèn + zhēn = ?",
+          answer: "认真",
+          answerPy: "rènzhēn",
+          explain:
+            "✅ 答案是 认真 (rènzhēn)。认(rèn)=รู้จัก + 真(zhēn)=จริง → 认真=ตั้งใจ/จริงจัง。",
+        },
+        {
+          id: 49,
+          type: "write",
+          question: "我们班一共有三十___（míng）同学。",
+          questionPy: "Wǒmen bān yīgòng yǒu sānshí ___ (míng) tóngxué.",
+          instruction: "请写出量词「名」的汉字 (míng)",
+          instructionPy: "míng = ลักษณนามสำหรับคน (ทางการ)",
+          answer: "名",
+          answerPy: "míng",
+          explain:
+            "✅ 答案是 名 (míng)。名 = ลักษณนามสำหรับคน (ทางการ)。比较：个=ทั่วไป，位=สุภาพ，名=ทางการ。",
+        },
+        {
+          id: 50,
+          type: "write",
+          question: "这___（dào）菜很好吃！",
+          questionPy: "Zhè ___ (dào) cài hěn hǎochī!",
+          instruction: "请写出量词「道」的汉字 (dào)",
+          instructionPy: "dào = ลักษณนามสำหรับอาหาร",
+          answer: "道",
+          answerPy: "dào",
+          explain:
+            "✅ 答案是 道 (dào)。道 = ลักษณนามสำหรับอาหาร。量词：道=อาหาร，杯=แก้ว，碗=ชาม，瓶=ขวด，本=หนังสือ",
+        },
+      ];
+
+      SECTIONS[0].questions = listeningQuestions;
+      SECTIONS[1].questions = readingQuestions;
+      SECTIONS[2].questions = writingQuestions;
+
+      // ================================================================
+      // STATE
+      // ================================================================
+      let state = {
+        userName: "",
+        currentSection: 0,
+        currentQ: 0,
+        answers: {},
+        timerInterval: null,
+        timeLeft: 0,
+        sectionDone: [false, false, false],
+      };
+
+      // ================================================================
+      // UTILITIES
+      // ================================================================
+      function showPage(n) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById("page" + n).classList.add("active");
+        window.scrollTo(0, 0);
+      }
+      function checkName() {
+        const val = document.getElementById("nameInput").value.trim();
+        state.userName = val;
+        document.getElementById("btnStart").disabled = val.length === 0;
+      }
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+      function fmtTime(s) {
+        return pad(Math.floor(s / 60)) + ":" + pad(s % 60);
+      }
+
+      // ================================================================
+      // EXAM FLOW
+      // ================================================================
+      function startExam() {
+        if (!state.userName) return;
+        showPage(2);
+        state.currentSection = 0;
+        state.currentQ = 0;
+        state.answers = {};
+        loadSection(0);
+      }
+      function loadSection(si) {
+        state.currentSection = si;
+        state.currentQ = 0;
+        clearInterval(state.timerInterval);
+        state.timeLeft = SECTIONS[si].time;
+        for (let i = 0; i < 3; i++) {
+          const tab = document.getElementById("tab" + i);
+          tab.className = "section-tab";
+          if (i === si) tab.classList.add("active");
+          else if (state.sectionDone[i]) tab.classList.add("done");
+        }
+        startTimer();
+        renderQuestion();
+      }
+      function startTimer() {
+        updateTimerDisplay();
+        state.timerInterval = setInterval(() => {
+          state.timeLeft--;
+          updateTimerDisplay();
+          if (state.timeLeft <= 0) {
+            clearInterval(state.timerInterval);
+            autoAdvance();
+          }
+        }, 1000);
+      }
+      function updateTimerDisplay() {
+        const el = document.getElementById("timerDisplay");
+        el.textContent = fmtTime(state.timeLeft);
+        el.className = "timer-display";
+        if (state.timeLeft <= 60) el.classList.add("danger");
+        else if (state.timeLeft <= 180) el.classList.add("warning");
+      }
+      function autoAdvance() {
+        state.sectionDone[state.currentSection] = true;
+        if (state.currentSection < 2) showTransition(state.currentSection + 1);
+        else submitExam();
+      }
+      function showTransition(nextSi) {
+        const icons = ["📖", "✍️"];
+        const titles = ["ส่วนที่ 2: การอ่าน 阅读", "ส่วนที่ 3: การเขียน 书写"];
+        const subs = [
+          "เตรียมตัวสำหรับส่วนการอ่าน\n20 ข้อ • 20 นาที\nอ่านประโยคและเลือกคำตอบที่ถูกต้อง",
+          "เตรียมตัวสำหรับส่วนการเขียน\n10 ข้อ • 15 นาที\nพิมพ์อักษรจีนตอบในช่องว่าง",
+        ];
+        document.getElementById("transIcon").textContent = icons[nextSi - 1];
+        document.getElementById("transTitle").textContent = titles[nextSi - 1];
+        document.getElementById("transSub").textContent = subs[nextSi - 1];
+        document.getElementById("sectionTransition").classList.remove("hidden");
+        document.getElementById("sectionTransition").dataset.next = nextSi;
+      }
+      function continueSection() {
+        const nextSi = parseInt(
+          document.getElementById("sectionTransition").dataset.next
+        );
+        document.getElementById("sectionTransition").classList.add("hidden");
+        loadSection(nextSi);
+      }
+
+      // ================================================================
+      // RENDER QUESTION
+      // ================================================================
+      function renderQuestion() {
+        const sec = SECTIONS[state.currentSection];
+        const qi = state.currentQ;
+        const q = sec.questions[qi];
+        const total = sec.questions.length;
+        const body = document.getElementById("examBody");
+        const pct = Math.round(((qi + 1) / total) * 100);
+        let qHtml = "";
+
+        // ── TRUE/FALSE (type:"tf") ────────────────────────────────
+        // กรณี 1: Listening tf (id 1-10) → audio + imgDesc
+        // กรณี 2: Reading  tf (id 46-50) → passage + statement
+        if (q.type === "tf") {
+          const ans = state.answers[q.id];
+          const trueClass = ans === "对" ? " selected-true" : "";
+          const falseClass = ans === "错" ? " selected-false" : "";
+          const tfBtns = `
+        <div class="tf-container">
+          <button class="tf-btn${trueClass}" onclick="selectAnswer(${q.id},'对')">
+            <div class="tf-icon">✓</div>
+            <div class="tf-char">对</div>
+            <div class="tf-py">duì</div>
+          </button>
+          <button class="tf-btn${falseClass}" onclick="selectAnswer(${q.id},'错')">
+            <div class="tf-icon">✗</div>
+            <div class="tf-char">错</div>
+            <div class="tf-py">cuò</div>
+          </button>
+        </div>`;
+
+          if (q.passage) {
+            // ── กรณี Reading tf: passage + statement ──
+            qHtml = `
+          <div class="q-num">${q.id}</div>
+          <div class="passage-box">
+            <div class="pb-label">阅读短文 · Yuèdú duǎnwén</div>
+            <div class="pb-text">${q.passage}</div>
+            <div class="pb-py">${q.passagePy || ""}</div>
+          </div>
+          <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px 16px;margin-bottom:14px;">
+            <div style="font-size:11px;color:#92400e;font-weight:700;letter-spacing:1px;margin-bottom:6px;">★ 判断下面这句话是否正确 (Pànduàn zhèjù huà shìfǒu zhèngquè)</div>
+            <div style="font-size:17px;font-family:'Noto Sans SC',sans-serif;color:var(--gray-800);">${
+              q.statement || ""
+            }</div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px;">${
+              q.statementPy || ""
+            }</div>
+          </div>
+          ${tfBtns}`;
+          } else {
+            // ── กรณี Listening tf: audio + imgDesc ──
+            const audioHtml = `
+          <div class="q-audio-row">
+            <button class="btn-play" id="playBtn${q.id}" data-qid="${
+              q.id
+            }" onclick="speakById(this.dataset.qid)">
+              ▶ 播放
+            </button>
+            <span class="audio-text-preview">
+              <div style="font-size:11px;color:var(--gray-400);">${
+                q.audioPy || ""
+              }</div>
+              <div style="font-size:15px;">${q.audio || ""}</div>
+            </span>
+          </div>`;
+            const imgHtml = `
+          <div class="img-desc-box">
+            <div class="img-desc-icon">🖼️</div>
+            <div class="img-desc-text">
+              <div class="idt-label">图片说明 (Túpiàn shuōmíng)</div>
+              <div class="idt-content">${q.imgDesc || ""}</div>
+              <div class="idt-py">${q.imgDescPy || ""}</div>
+            </div>
+          </div>`;
+            const instrHtml = `
+          <div style="font-size:14px;color:var(--gray-600);margin-bottom:12px;font-family:'Noto Sans SC',sans-serif;">
+            判断：音频内容与图片是否一致？
+            <span style="font-size:11px;color:var(--gray-400);display:block;margin-top:2px;">Pànduàn: yīnpín nèiróng yǔ túpiàn shìfǒu yīzhì?</span>
+          </div>`;
+            qHtml = `<div class="q-num">${q.id}</div>${audioHtml}${imgHtml}${instrHtml}${tfBtns}`;
+          }
+        }
+
+        // ── MULTIPLE CHOICE ──────────────────────────────────────
+        else if (q.type === "mc") {
+          let audioHtml = "",
+            wenHtml = "",
+            passageHtml = "";
+          // Listening section: add TTS button
+          if (state.currentSection === 0) {
+            audioHtml = `
+          <div class="q-audio-row">
+            <button class="btn-play" id="playBtn${q.id}" data-qid="${
+              q.id
+            }" onclick="speakById(this.dataset.qid)">
+              ▶ 播放
+            </button>
+            <span class="audio-text-preview">
+              <div style="font-size:11px;color:var(--gray-400);">${
+                q.audioPy || ""
+              }</div>
+              <div style="font-size:15px;">${q.audio || ""}</div>
+            </span>
+          </div>`;
+            wenHtml = `<div class="wen-separator">问 <span class="py">wèn</span></div>`;
+          }
+          // Reading passage (if exists)
+          if (q.passage) {
+            passageHtml = `
+          <div class="passage-box">
+            <div class="pb-label">阅读短文 · Yuèdú duǎnwén</div>
+            <div class="pb-text">${q.passage}</div>
+            <div class="pb-py">${q.passagePy || ""}</div>
+          </div>`;
+          }
+          // Choices
+          const choiceHtml = q.choices
+            .map((c) => {
+              const sel = state.answers[q.id] === c.label ? " selected" : "";
+              return `<button class="choice-btn${sel}" onclick="selectAnswer(${q.id},'${c.label}')">
+          <span class="choice-label">${c.label}</span>
+          <span class="choice-text">
+            <span class="py">${c.py}</span>
+            ${c.zh}
+          </span>
+        </button>`;
+            })
+            .join("");
+          qHtml = `
+        <div class="q-num">${q.id}</div>
+        ${audioHtml}${wenHtml}${passageHtml}
+        <div class="q-text">
+          <span class="pinyin">${q.questionPy}</span>
+          <span class="hanzi">${q.question}</span>
+        </div>
+        <div class="choices">${choiceHtml}</div>`;
+        }
+
+        // ── WRITE INPUT ──────────────────────────────────────────
+        else if (q.type === "write") {
+          const val = state.answers[q.id] || "";
+          qHtml = `
+        <div class="q-num">${q.id}</div>
+        <div class="q-text">
+          <span class="pinyin">${q.questionPy}</span>
+          <span class="hanzi">${q.question}</span>
+        </div>
+        <div class="write-instruction">
+          💡 ${q.instruction}
+          <span style="display:block;font-size:11px;color:#b45309;margin-top:3px;">${
+            q.instructionPy
+          }</span>
+        </div>
+        <div class="write-input-wrap">
+          <input type="text" class="write-input"
+            placeholder="请用汉字作答…"
+            value="${val.replace(/"/g, "&quot;")}"
+            oninput="saveWriteAnswer(${q.id},this.value)"
+            id="writeInput${q.id}">
+          <p class="write-hint">请输入汉字 (Qǐng shūrù Hànzì) · 参考答案拼音：${
+            q.answerPy
+          }</p>
+        </div>`;
+        }
+
+        // ── Render shell ─────────────────────────────────────────
+        body.innerHTML = `
+      <div class="section-header">
+        <div class="section-icon ${sec.iconClass}">${sec.icon}</div>
+        <div class="section-header-text">
+          <div class="sh-title">${sec.name}</div>
+          <div class="sh-sub">第 ${qi + 1} 题 / 共 ${total} 题</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:${pct}%"></div>
+        </div>
+      </div>
+      <div class="question-card">${qHtml}</div>`;
+
+        const globalQ = getGlobalQNum();
+        document.getElementById(
+          "qCounter"
+        ).textContent = `第 ${globalQ} 题 / 共 70 题`;
+
+        const btnPrev = document.getElementById("btnPrev");
+        const btnNext = document.getElementById("btnNext");
+        btnPrev.style.display =
+          qi === 0 && state.currentSection === 0 ? "none" : "block";
+        const isLast =
+          state.currentSection === 2 && qi === sec.questions.length - 1;
+        if (isLast) {
+          btnNext.textContent = "✅ 提交试卷";
+          btnNext.className = "btn-nav btn-submit";
+          btnNext.onclick = submitExam;
+        } else {
+          btnNext.textContent = "下一题 →";
+          btnNext.className = "btn-nav btn-next";
+          btnNext.onclick = nextQ;
+        }
+      }
+
+      function getGlobalQNum() {
+        let base = 0;
+        for (let i = 0; i < state.currentSection; i++)
+          base += SECTIONS[i].questions.length;
+        return base + state.currentQ + 1;
+      }
+      function selectAnswer(qid, label) {
+        state.answers[qid] = label;
+        renderQuestion();
+      }
+      function saveWriteAnswer(qid, val) {
+        state.answers[qid] = val;
+      }
+      function prevQ() {
+        if (state.currentQ > 0) {
+          state.currentQ--;
+          renderQuestion();
+        } else if (state.currentSection > 0) {
+          state.currentSection--;
+          state.currentQ = SECTIONS[state.currentSection].questions.length - 1;
+          clearInterval(state.timerInterval);
+          for (let i = 0; i < 3; i++) {
+            const tab = document.getElementById("tab" + i);
+            tab.className = "section-tab";
+            if (i === state.currentSection) tab.classList.add("active");
+            else if (state.sectionDone[i]) tab.classList.add("done");
+          }
+          state.timeLeft = SECTIONS[state.currentSection].time;
+          startTimer();
+          renderQuestion();
+        }
+      }
+      function nextQ() {
+        const sec = SECTIONS[state.currentSection];
+        if (state.currentQ < sec.questions.length - 1) {
+          state.currentQ++;
+          renderQuestion();
+        } else if (state.currentSection < 2) {
+          state.sectionDone[state.currentSection] = true;
+          showTransition(state.currentSection + 1);
+        }
+      }
+
+      // ================================================================
+      // TTS
+      // ================================================================
+
+      // speakById: look up audio text safely from data (no inline string risk)
+      // speakById: look up audio text safely from data
+      function speakById(qid) {
+        qid = parseInt(qid);
+        const allQ = [
+          ...listeningQuestions,
+          ...readingQuestions,
+          ...writingQuestions,
+        ];
+        const q = allQ.find((x) => x.id === qid);
+        if (!q) return;
+
+        // เริ่มสร้างประโยคที่จะให้อ่าน
+        let text = q.audio || "";
+
+        // 1. ถ้าเป็นข้อสอบแบบ ถูก/ผิด (tf) ให้เอาคำอธิบายภาพมาอ่านต่อท้าย
+        if (q.type === "tf" && q.imgDesc) {
+          text = text + " " + q.imgDesc;
+        }
+        // 2. ถ้าเป็นข้อสอบช้อยส์ (mc) ให้เอาคำถามมาอ่านต่อท้ายเหมือนเดิม
+        else if (q.type === "mc" && q.question) {
+          text = text + " 问 " + q.question;
+        }
+
+        speakText(text, qid);
+      }
+      function speakText(text, qid) {
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+          document.querySelectorAll(".btn-play").forEach((b) => {
+            b.textContent = "▶ 播放";
+            b.classList.remove("playing");
+          });
+          return;
+        }
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = "zh-CN";
+        utter.rate = 0.85;
+        utter.pitch = 1;
+        const btn = document.getElementById("playBtn" + qid);
+        if (btn) {
+          btn.textContent = "⏹ 停止";
+          btn.classList.add("playing");
+        }
+        utter.onend = () => {
+          if (btn) {
+            btn.textContent = "▶ 播放";
+            btn.classList.remove("playing");
+          }
+        };
+        window.speechSynthesis.speak(utter);
+      }
+
+      // ================================================================
+      // SUBMIT & RESULTS (ภาษาไทย)
+      // ================================================================
+      function submitExam() {
+        clearInterval(state.timerInterval);
+        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+        buildResults();
+        showPage(3);
+      }
+
+      function buildResults() {
+        let scores = [0, 0, 0];
+        const allQ = [
+          ...listeningQuestions,
+          ...readingQuestions,
+          ...writingQuestions,
+        ];
+        allQ.forEach((q, i) => {
+          const si = i < 35 ? 0 : i < 60 ? 1 : 2;
+          const userAns = (state.answers[q.id] || "").trim();
+          const correct = q.answer.trim();
+          if (q.type === "write") {
+            if (
+              userAns === correct ||
+              userAns.toLowerCase() === correct.toLowerCase()
+            )
+              scores[si]++;
+          } else {
+            if (userAns === correct) scores[si]++;
+          }
+        });
+
+        const total = scores[0] + scores[1] + scores[2];
+        const pct = Math.round((total / 70) * 100);
+        const passed = pct >= 60;
+        const secNames = ["การฟัง", "การอ่าน", "การเขียน"];
+        const secMax = [35, 25, 10];
+        const secIcons = ["🎧", "📖", "✍️"];
+
+        const secScoreHtml = scores
+          .map(
+            (s, i) => `
+      <div class="sscore-box">
+        <div class="ss-icon">${secIcons[i]}</div>
+        <div class="ss-label">${secNames[i]}</div>
+        <div class="ss-score">${s}</div>
+        <div class="ss-max">/ ${secMax[i]}</div>
+      </div>`
+          )
+          .join("");
+
+        // Analysis
+        let analysisHtml = "";
+        const secTitles = [
+          "ส่วนที่ 1: การฟัง (听力)",
+          "ส่วนที่ 2: การอ่าน (阅读)",
+          "ส่วนที่ 3: การเขียน (书写)",
+        ];
+        [listeningQuestions, readingQuestions, writingQuestions].forEach(
+          (qs, si) => {
+            analysisHtml += `<div class="analysis-title">${secIcons[si]} ${secTitles[si]}</div>`;
+            qs.forEach((q) => {
+              const userAns = (state.answers[q.id] || "").trim() || "—";
+              const correct = q.answer;
+              const isCorrect =
+                q.type === "write"
+                  ? userAns.toLowerCase() === correct.toLowerCase()
+                  : userAns === correct;
+              let userDisplay = userAns;
+              let correctDisplay = correct;
+              if (q.type === "mc") {
+                const uc = q.choices.find((c) => c.label === userAns);
+                const cc = q.choices.find((c) => c.label === correct);
+                if (uc) userDisplay = `${userAns}: ${uc.zh} (${uc.py})`;
+                if (cc) correctDisplay = `${correct}: ${cc.zh} (${cc.py})`;
+              } else if (q.type === "tf") {
+                userDisplay =
+                  userAns === "对"
+                    ? "✓ 对 (duì)"
+                    : userAns === "错"
+                    ? "✗ 错 (cuò)"
+                    : "—";
+                correctDisplay = correct === "对" ? "✓ 对 (duì)" : "✗ 错 (cuò)";
+              } else {
+                correctDisplay = `${correct} (${q.answerPy})`;
+              }
+              const rawPreview =
+                q.type === "tf"
+                  ? q.audio || q.statement || q.passage || ""
+                  : q.passage || q.question || "";
+              const qPreview =
+                rawPreview.length > 80
+                  ? rawPreview.substring(0, 80) + "…"
+                  : rawPreview;
+              analysisHtml += `
+          <div class="q-result-card ${isCorrect ? "correct" : "wrong"}">
+            <div class="qr-head">
+              <span class="qr-num">ข้อ ${q.id}</span>
+              <span class="qr-badge ${isCorrect ? "correct" : "wrong"}">${
+                isCorrect ? "✓ ถูก" : "✗ ผิด"
+              }</span>
+            </div>
+            <div class="qr-question">${qPreview}</div>
+            <div class="qr-answers">
+              <span class="qr-user-ans"><span class="ans-label">คำตอบของคุณ: </span>${userDisplay}</span>
+              ${
+                !isCorrect
+                  ? `<span class="qr-correct-ans"><span class="ans-label">เฉลย: </span>${correctDisplay}</span>`
+                  : ""
+              }
+            </div>
+            <div class="qr-explain">${q.explain}</div>
+          </div>`;
+            });
+          }
+        );
+
+        // Strengths
+        const [lp, rp, wp] = [
+          Math.round((scores[0] / 35) * 100),
+          Math.round((scores[1] / 25) * 100),
+          Math.round((scores[2] / 10) * 100),
+        ];
+        let strengths = [],
+          improvements = [];
+        if (lp >= 70)
+          strengths.push(
+            "ทักษะการฟัง: คุณสามารถฟังและเข้าใจบทสนทนาภาษาจีนระดับ HSK 2 ได้ดี"
+          );
+        else
+          improvements.push(
+            "ทักษะการฟัง: ควรฝึกฟังบทสนทนาภาษาจีนทุกวัน โดยเน้นการจับใจความสำคัญ"
+          );
+        if (rp >= 70)
+          strengths.push(
+            "ทักษะการอ่าน: คุณมีความเข้าใจโครงสร้างไวยากรณ์ HSK 2 เป็นอย่างดี"
+          );
+        else
+          improvements.push(
+            "ทักษะการอ่าน: ควรทบทวนโครงสร้างไวยากรณ์ เช่น 比较句, 把字句, 得字句"
+          );
+        if (wp >= 70)
+          strengths.push(
+            "ทักษะการเขียน: คุณจำอักษรจีน HSK 2 และการสะกดได้ถูกต้อง"
+          );
+        else
+          improvements.push(
+            "ทักษะการเขียน: ควรฝึกเขียนอักษรจีนทุกวัน โดยใช้แบบฝึกหัดตัวอักษร HSK 2"
+          );
+        if (pct >= 80)
+          strengths.push(
+            "คะแนนรวมสูงกว่าเกณฑ์ผ่านอย่างชัดเจน แสดงถึงความเข้าใจภาษาจีนระดับ HSK 2 ที่มั่นคง"
+          );
+        if (total >= 63)
+          strengths.push(
+            "คุณพร้อมสำหรับการสอบ HSK 3! ลองเรียนต่อในระดับที่สูงขึ้น"
+          );
+        if (!improvements.length)
+          improvements.push(
+            "ยังคงรักษาระดับและฝึกฝนต่อเนื่อง โดยเริ่มเรียน HSK 3 เพื่อพัฒนาต่อไป"
+          );
+
+        document.getElementById("resultBody").innerHTML = `
+      <div class="score-hero">
+        <div class="greet">🎉 ยินดีด้วย คุณ${state.userName}!</div>
+        <div class="score-circle">
+          <span class="score-num">${total}</span>
+          <span class="score-denom">/ 70</span>
+        </div>
+        <div class="score-pct">คะแนน ${pct}%</div>
+        <div class="pass-badge ${passed ? "passed" : "failed"}">${
+          passed ? "🏆 ผ่านการสอบ!" : "📚 ยังไม่ผ่าน — สู้ต่อไป!"
+        }</div>
+      </div>
+      <div class="section-scores">${secScoreHtml}</div>
+      <div class="strength-grid">
+        <div class="strength-box good">
+          <div class="sb-title good">✨ จุดเด่น (Strengths)</div>
+          ${
+            strengths.map((s) => `<div class="sb-item">${s}</div>`).join("") ||
+            '<div class="sb-item">ยังคงพัฒนาต่อไปเรื่อยๆ!</div>'
+          }
+        </div>
+        <div class="strength-box improve">
+          <div class="sb-title improve">📈 จุดควรพัฒนา</div>
+          ${improvements.map((s) => `<div class="sb-item">${s}</div>`).join("")}
+        </div>
+      </div>
+      <div class="analysis-section">
+        <div class="analysis-title">📋 วิเคราะห์ทุกข้อ</div>
+        ${analysisHtml}
+      </div>
+      <button class="btn-restart" onclick="restartExam()">🔄 สอบใหม่อีกครั้ง</button>
+      <div style="height:20px"></div>`;
+      }
+
+      function restartExam() {
+        state = {
+          userName: "",
+          currentSection: 0,
+          currentQ: 0,
+          answers: {},
+          timerInterval: null,
+          timeLeft: 0,
+          sectionDone: [false, false, false],
+        };
+        document.getElementById("nameInput").value = "";
+        document.getElementById("btnStart").disabled = true;
+        showPage(1);
+      }
+    </script>
+  </body>
+</html>
